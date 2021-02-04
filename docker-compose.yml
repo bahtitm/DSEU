@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dseu.ui:
+    image: ${DOCKER_REGISTRY-}dseuui
+    build:
+      context: .
+      dockerfile: DSEU.UI/Dockerfile
