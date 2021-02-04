@@ -1,0 +1,11 @@
+﻿@page
+@model LogoutModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["LogoutTitle"].Value;
+}
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    <p>@Localizer["You have successfully logged out of the application"].</p>
+</header>

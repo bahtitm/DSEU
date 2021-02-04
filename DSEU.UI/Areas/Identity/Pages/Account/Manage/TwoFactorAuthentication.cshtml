@@ -1,0 +1,58 @@
+﻿@page
+@model TwoFactorAuthenticationModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["TwoFactorAuthenticationTitle"].Value;
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<h4>@ViewData["Title"]</h4>
+@if (Model.Is2faEnabled)
+{
+    if (Model.RecoveryCodesLeft == 0)
+    {
+        <div class="alert error">
+            <strong>@Localizer["NoCodeRecoveryTwoFactorApp"]</strong>
+            <p>@Localizer["YouMust"] <a asp-page="./GenerateRecoveryCodes">@Localizer["GenerateANewSetOfRecoveryCodes"]</a> @Localizer["BeforeYouCanLog"]</p>
+        </div>
+    }
+    else if (Model.RecoveryCodesLeft == 1)
+    {
+        <div class="alert error">
+            <strong>@Localizer["YouHave1CodeRecoveryTwoFactorApp"]</strong>
+            <p>@Localizer["YouCan"]<a asp-page="./GenerateRecoveryCodes">@Localizer["GenerateANewSetOfRecoveryCodes"]</a>.</p>
+        </div>
+    }
+    else if (Model.RecoveryCodesLeft <= 3)
+    {
+        <div class="alert warning">
+            <strong>@Localizer["YouHave"] @Model.RecoveryCodesLeft @Localizer["RecoveryOfCodes"].</strong>
+            <p>@Localizer["YouShould"] <a asp-page="./GenerateRecoveryCodes">@Localizer["GenerateANewSetOfRecoveryCodes"]</a>.</p>
+        </div>
+    }
+
+    if (Model.IsMachineRemembered)
+    {
+        <form method="post" style="display: inline-block">
+            <button type="submit" class="btn btn-primary">@Localizer["ForgetThisBrowser"]</button>
+        </form>
+    }
+    <a asp-page="./Disable2fa" class="btn btn-primary">@Localizer["Disable2FA"]</a>
+    <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">@Localizer["ResetRecoveryCodes"]</a>
+}
+
+<h5>@Localizer["AuthenticatorApp"]</h5>
+@if (!Model.HasAuthenticator)
+{
+    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">@Localizer["AddAuthenticatorApp"]</a>
+}
+else
+{
+    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">@Localizer["SetupAuthenticatorApp"]</a>
+    <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">@Localizer["ResetAuthenticatorApp"]</a>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,39 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/style.css" />
+        <link rel="stylesheet" href="~/lib/UniviaPro/stylesheet.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/styles.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="page">
+        <partial name="_Languages" />
+        <div class="size-page">
+            <partial name="_PageTitle" />
+            <div class="page__subtitle">
+                <p> </p>
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" id="logout-form">
+                    <a href="#" id="logout-link">@Localizer["Logout"]<i class="fa fa-sign-out"></i></a>
+                </form>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+    <environment include="Development">
+        <script src="~/js/script.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/site.min.js"></script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

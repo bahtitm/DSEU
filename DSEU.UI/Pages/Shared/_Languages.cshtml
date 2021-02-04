@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    // получаем список поддерживаемых культур
+    var cultureItems = LocOptions.Value.SupportedUICultures.Select(c => new { Value = c.Name, Text = c.DisplayName, Code = c.TwoLetterISOLanguageName })
+        .ToList();
+}
+@functions{
+    string GetActiveLanguageClass(string name)
+    {
+        var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+        if(requestCulture.RequestCulture.Culture.Name==name)
+        {
+            return "active";
+        }
+        return string.Empty;
+    }
+}
+<div class="language__selection">
+    @foreach (var item in cultureItems)
+    {
+        <a class="@item.Value @GetActiveLanguageClass(item.Value)" asp-area="" asp-page="/SetLanguage"
+           asp-route-culture="@item.Value"
+           asp-route-returnUrl="@Context.Request.Path@Context.Request.QueryString"></a>
+    }
+</div>

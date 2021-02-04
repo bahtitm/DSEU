@@ -1,0 +1,8 @@
+﻿@page
+@model AccessDeniedModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Access denied"].Value;
+}
+
+<p class="text-danger">@Localizer["You do not have access to this resource"]</p>

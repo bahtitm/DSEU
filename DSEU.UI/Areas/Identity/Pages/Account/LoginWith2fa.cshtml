@@ -1,0 +1,36 @@
+﻿@page
+@model LoginWith2faModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["2FA"];
+    string ErrorClass = ModelState.IsValid ? string.Empty : "error";
+}
+
+@section SubTitle{
+    @await Html.PartialAsync("_PageSubTitle", Localizer["ProtectedAuthenticatopApp"])
+}
+
+<form method="post">
+    <div class="authorization__field">
+        <div asp-validation-summary="All" style="color:red;" class="error"></div>
+        <div class="authorization__log">
+            <div class="password-group @ErrorClass">
+                <input asp-for="Input.TwoFactorCode" class="inpt" required placeholder="@Localizer["AuthenticatorCode"]">
+            </div>
+            <input asp-for="Input.RememberMachine" type="checkbox" id="rememberMe">
+            <label class="checked" for="rememberMe">@Localizer["Remember this machine"]</label>
+            <div class="authorization__button">
+                <input type="submit" id="submit" value="@Localizer["Log in"]" class="column button active">
+            </div>
+        </div>
+    </div>
+</form>
+
+<p>
+    @Localizer["DontHaveAccessAuthenticator"]
+    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["LogInWithRecoveryCode"]</a>.
+</p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

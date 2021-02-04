@@ -1,0 +1,29 @@
+﻿@page
+@model LoginWithRecoveryCodeModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Recovery code verification"].Value;
+    string ErrorClass = ModelState.IsValid ? string.Empty : "error";
+}
+
+@section SubTitle{
+    @await Html.PartialAsync("_PageSubTitle", Localizer["You have requested login with recovery code"])
+}
+
+<form method="post">
+    <div class="authorization__field">
+        <div asp-validation-summary="All" style="color:red;" class="error"></div>
+        <div class="authorization__log">
+            <div class="password-group @ErrorClass">
+                <input asp-for="Input.RecoveryCode" class="inpt" required placeholder="@Localizer["RecoveryCode"]">
+            </div>
+            <div class="authorization__button">
+                <input type="submit" id="submit" value="@Localizer["Log in"]" class="column button active">
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

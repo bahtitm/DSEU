@@ -1,0 +1,8 @@
+﻿@page
+@model LockoutModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Locked out"].Value;
+}
+
+<p>@Localizer["This account has been locked out, please try again later"]</p>
