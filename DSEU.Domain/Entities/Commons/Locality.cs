@@ -3,7 +3,7 @@ using DSEU.Domain.Entities.CoreEntities;
 namespace DSEU.Domain.Entities.Commons
 {
     /// <summary>
-    /// Населенный пункт
+    /// 
     /// </summary>
     public class Locality : DatabookEntry
     {

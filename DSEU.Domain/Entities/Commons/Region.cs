@@ -1,10 +1,10 @@
-using System.Collections.Generic;
 using DSEU.Domain.Entities.CoreEntities;
+using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.Commons
 {
     /// <summary>
-    /// Регион
+    /// Велаят либо город на правах Велаята (Ашгабат)
     /// </summary>
     public class Region : DatabookEntry
     {
