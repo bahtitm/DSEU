@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using DSEU.Domain;
 using DSEU.Infrastructure.Identity;
 using DSEU.UI.Resources;
 using DSEU.UI.Resources.Areas.Identity.Pages.Account.Manage;
 using DSEU.UI.Validation;
+using DSEU.Shared;
 
 namespace DSEU.UI.Areas.Identity.Pages.Account.Manage
 {

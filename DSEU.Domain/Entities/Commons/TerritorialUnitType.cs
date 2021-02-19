@@ -1,4 +1,5 @@
 ﻿using DSEU.Domain.Entities.CoreEntities;
+using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.Commons
 {
@@ -16,5 +17,7 @@ namespace DSEU.Domain.Entities.Commons
             Name = name;
             PostFix = postFix;
         }
+
+        public virtual ICollection<TerritorialUnit> TerritorialUnits { get; set; }
     }
 }

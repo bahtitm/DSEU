@@ -5,16 +5,16 @@ using Microsoft.Extensions.Options;
 
 namespace DSEU.Infrastructure.Identity
 {
-    public class DSEUIdentityDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    public class IdentityDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
-        public DSEUIdentityDbContext(DbContextOptions<DSEUIdentityDbContext> options,
+        public IdentityDbContext(DbContextOptions<IdentityDbContext> options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
         public DbSet<UserPasswordHistory> UserPasswordHistory { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DSEUIdentityDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(IdentityDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
     }

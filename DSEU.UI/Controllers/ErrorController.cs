@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DSEU.Application.Common.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,9 +10,6 @@ using Newtonsoft.Json;
 using Npgsql;
 using System;
 using System.Collections.Generic;
-using DSEU.Application.Common.Constants;
-using DSEU.Application.Common.Exceptions;
-using DSEU.Application.Common.Interfaces;
 
 namespace DSEU.UI.Controllers
 {
@@ -21,12 +19,10 @@ namespace DSEU.UI.Controllers
     public class ErrorController : ControllerBase
     {
         private readonly ILogger<ErrorController> logger;
-        private readonly ILocalizationService localizationService;
 
-        public ErrorController(ILogger<ErrorController> logger, ILocalizationService localizationService)
+        public ErrorController(ILogger<ErrorController> logger)
         {
             this.logger = logger;
-            this.localizationService = localizationService;
         }
         [Route("/error-local-development")]
         public IActionResult ErrorLocalDevelopment([FromServices] IWebHostEnvironment webHostEnvironment)
@@ -68,27 +64,21 @@ namespace DSEU.UI.Controllers
                 case NotFoundException _:
                     result = JsonConvert.SerializeObject(new Dictionary<string, string[]>()
                     {
-                        ["error"] = new[] { localizationService[LocalizationKeys.SharedKeys.EntityWithKeyDoesNotExists] }
+                        ["error"] = new[] { "Object not found" }
                     });
                     statusCode = StatusCodes.Status404NotFound;
                     break;
                 case PostgresException postgresException:
-                    result = HandlerSqlException(localizationService, postgresException);
+                    result = HandlerSqlException(postgresException);
                     if (!string.IsNullOrEmpty(result))
                         statusCode = StatusCodes.Status400BadRequest;
                     break;
-                //case VirusDetectedException _:
-                //    result = JsonConvert.SerializeObject(new Dictionary<string, string[]>()
-                //    {
-                //        ["error"] = new[] { localizationService[LocalizationKeys.ElectronicDocumentVersionKeys.VirusDetected] }
-                //    });
-                //    break;
                 default:
                     if (context.Error.InnerException != null)
                     {
                         if (context.Error.InnerException is PostgresException postgresException)
                         {
-                            result = HandlerSqlException(localizationService, postgresException);
+                            result = HandlerSqlException(postgresException);
                             break;
                         }
                     }
@@ -97,13 +87,13 @@ namespace DSEU.UI.Controllers
                         ["error"] = new[] { "Произошла ошибка. Обратитесь к администратору системы." }
                     });
                     break;
-                   
+
             }
 
             return (statusCode, result);
         }
 
-        private static string HandlerSqlException(ILocalizationService localizationService, PostgresException postgresException)
+        private static string HandlerSqlException(PostgresException postgresException)
         {
             if (postgresException.SqlState == "23503")
             {
@@ -111,14 +101,14 @@ namespace DSEU.UI.Controllers
                 {
                     return JsonConvert.SerializeObject(new Dictionary<string, string[]>()
                     {
-                        ["error"] = new[] { localizationService[LocalizationKeys.SharedKeys.HasOneOreMoreDependencies] }
+                        ["error"] = new[] { postgresException.Message }
                     });
                 }
                 if (postgresException.MessageText.ToLower().Contains("insert"))
                 {
                     return JsonConvert.SerializeObject(new Dictionary<string, string[]>()
                     {
-                        ["error"] = new[] { localizationService[LocalizationKeys.SharedKeys.EntityWithKeyDoesNotExists] }
+                        ["error"] = new[] { postgresException.Message }
                     });
                 }
             }

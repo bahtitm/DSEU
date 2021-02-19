@@ -12,14 +12,14 @@ namespace DSEU.UI.Extensions
             app.UseSwaggerUI(config =>
             {
                 config.DefaultModelsExpandDepth(-1);
-                config.SwaggerEndpoint("/swagger/v2/swagger.json", "Netije API V2");
+                config.SwaggerEndpoint("/swagger/v2/swagger.json", "DSEU API V1");
                 config.RoutePrefix = "swagger";
                 config.DocExpansion(DocExpansion.None);
                 config.EnableFilter();
                 config.OAuthConfigObject = new OAuthConfigObject()
                 {
-                    AppName  = "TTDoc.UI",
-                    ClientId = "TTDoc.UI",
+                    AppName  = "DSEU.Api",
+                    ClientId = "DSEU.Api",
                     UsePkceWithAuthorizationCodeGrant = true
                 };
               

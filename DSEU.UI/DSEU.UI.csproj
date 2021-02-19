@@ -10,6 +10,10 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     <PackageReference Include="Serilog.Sinks.Http" Version="7.2.0" />
@@ -22,14 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSEU.Devexpress\DSEU.Devexpress.csproj" />
-    <ProjectReference Include="..\DSEU.Domain\DSEU.Domain.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.DataProtection\DSEU.Infrastructure.DataProtection.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.Identity\DSEU.Infrastructure.Identity.csproj" />
-    <ProjectReference Include="..\DSEU.Infrastructure.Permissions\DSEU.Infrastructure.Permissions.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.Persistence\DSEU.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure\DSEU.Infrastructure.csproj" />
-    <ProjectReference Include="..\DSEU.Security\DSEU.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>

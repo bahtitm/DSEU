@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using DSEU.Infrastructure.Identity;
+using DSEU.Shared;
+using DSEU.UI.Resources;
+using DSEU.UI.Resources.Areas.Identity.Pages.Account;
+using DSEU.UI.Validation;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -7,12 +12,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using DSEU.Domain;
-using DSEU.Infrastructure.Identity;
-using DSEU.UI.Authorization;
-using DSEU.UI.Resources;
-using DSEU.UI.Resources.Areas.Identity.Pages.Account;
-using DSEU.UI.Validation;
 
 namespace DSEU.UI.Areas.Identity.Pages.Account
 {
@@ -76,9 +75,6 @@ namespace DSEU.UI.Areas.Identity.Pages.Account
                     if (user.NeedChangePassword)
                     {
                         await _signInManager.SignOutAsync();
-                        HttpContext.Session.SetString(SessionKeys.UserFirstTimeLogin, Input.UserName);
-                        HttpContext.Session.SetString(SessionKeys.UserFirstTimePassword, Input.Password);
-                        HttpContext.Session.SetString(SessionKeys.RememberMe, Input.RememberMe.ToString());
                         await HttpContext.Session.CommitAsync();
                         return RedirectToPage("./MustChangePassword", new { ReturnUrl = returnUrl });
                     }

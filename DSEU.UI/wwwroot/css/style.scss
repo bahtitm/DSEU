@@ -1,0 +1,585 @@
+@import "./mixins-media.scss";
+@import "./mixins-style.scss";
+
+html body {
+  margin: 0;
+  padding: 0;
+  font-family: Univia Pro;
+  font-size: 12px;
+}
+body {
+  background: url(../img/component.png) no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+}
+$mainColor: #007c38;
+$txtColor: #999999;
+$btnColor: #f0f0f0;
+$whiteColor: #ffffff;
+$errorTxtColor: #e94335;
+a {
+  text-decoration: none;
+  color: $mainColor;
+}
+
+.validation-error {
+    color: $errorTxtColor;
+}
+.page {
+  margin: auto;
+  border-radius: 25px;
+  padding: 30px 40px;
+  background-color: #ffffff;
+  @include minmax(320px, 600px) {
+    padding: 20px;
+  }
+  .size {
+    font-size: 14px;
+    width: 20vw;
+    @include minmax(1025px, 1280px) {
+      width: 30vw;
+    }
+    @include minmax(768px, 1024px) {
+      width: 50vw;
+    }
+    @include minmax(601px, 768px) {
+      width: 70vw;
+    }
+    @include minmax(320px, 600px) {
+      width: 90vw;
+    }
+  }
+
+  .size-page {
+    width: 50vw;
+    // max-height: 50vh;
+    @include minmax(1025px, 1500px) {
+      width: 60vw;
+    }
+    @include minmax(601px, 1024px) {
+      width: 60vw;
+    }
+    @include minmax(320px, 600px) {
+      width: 90vw;
+    }
+  }
+}
+
+.language__selection {
+  display: flex;
+  justify-content: flex-end;
+  a {
+    width: 30px;
+    height: 18px;
+    margin-left: 10px;
+  }
+  .ru {
+    background: url(../icon/rus.svg) no-repeat;
+    background-size: 30px;
+    background-position: center;
+    border-radius: 3px;
+  }
+  .tk {
+    background: url(../icon/tkm.svg) no-repeat;
+    background-size: 30px;
+    background-position: center;
+    border-radius: 3px;
+  }
+  .active {
+    box-shadow: 5px 5px 5px 0 $txtColor;
+  }
+}
+
+.page__title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  user-select: none;
+
+  .title__logo {
+    width: 80px;
+    height: 80px;
+    background: url(../img/netije_logo.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+      padding: 40px;
+    }
+  }
+
+  .title__name {
+    color: $mainColor;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 2.1em;
+  }
+}
+
+.page__subtitle {
+  user-select: none;
+  font-size: 1.5em;
+  margin: 0 0 20px 10px;
+  color: $txtColor;
+  display: flex;
+  justify-content: space-between;
+  @include max(1024px) {
+    p {
+      width: 60%;
+    }
+  }
+  label {
+    color: $mainColor;
+    cursor: pointer;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    color: $mainColor;
+    align-self: end;
+    i {
+      margin-left: 5px;
+      font-size: 1.5em;
+      color: $mainColor;
+      vertical-align: middle;
+    }
+  }
+}
+
+.authorization__field {
+  display: flex;
+  flex-direction: column;
+  @include rememberCheckBox;
+}
+
+.authorization__log {
+  display: flex;
+  flex-direction: column;
+
+  .login-group {
+    display: flex;
+    flex-direction: column;
+    span {
+      @include messageOff;
+    }
+    input {
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      &:focus {
+        &::placeholder {
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+      }
+      height: 50px;
+      @include column;
+      @include img;
+      background-image: url(../icon/outline-account_circle-24px.svg);
+    }
+    &.error {
+      span {
+        @include messageOn;
+      }
+      input {
+        
+        @include erorrimg;
+      }
+    }
+  }
+  .password-group {
+    display: flex;
+    flex-direction: column;
+    span {
+      @include messageOff;
+    }
+    input {
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      &:focus {
+        &::placeholder {
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+      }
+      height: 30px;
+      @include column;
+      @include img;
+      background-image: url(../icon/outline-https-24px.svg);
+    }
+    &.error {
+      span {
+        @include messageOn;
+      }
+      input {
+        
+        @include erorrimg;
+      }
+    }
+  }
+  .email-group {
+    display: flex;
+    flex-direction: column;
+    span {
+      @include messageOff;
+    }
+    input {
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      &:focus {
+        &::placeholder {
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+      }
+      height: 50px;
+      @include column;
+      @include img;
+      background-image: url(../icon/baseline-mail_outline-24px.svg);
+    }
+    &.error {
+      span {
+        @include messageOn;
+      }
+      input {
+        
+        @include erorrimg;
+      }
+    }
+  }
+}
+.authorization__button {
+  @include authorizationButton;
+}
+
+// SETTING PAGE
+
+.settings__main {
+  display: flex;
+  border-top: 1px solid black;
+  padding-top: 20px;
+  min-height: 60vh;
+  @include max(1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.button__back_mobile {
+  @include buttonBack;
+  align-self: center;
+  @include min(1024px) {
+    display: none;
+  }
+}
+
+.left__bar {
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include max(1024px) {
+    width: 100%;
+  }
+  .button__back {
+    @include buttonBack;
+    @include max(1024px) {
+      display: none;
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .active {
+      background-color: $mainColor;
+      a {
+        color: #ffffff;
+      }
+    }
+    @include max(1024px) {
+      display: flex;
+    }
+    li {
+      border-radius: 5px;
+      margin-bottom: 10px;
+      &:hover {
+        background: $mainColor;
+      }
+      @include max(1024px) {
+        margin: 5px;
+        display: flex;
+        flex-basis: 100px;
+        flex-grow: 1;
+        min-height: 60px;
+      }
+    }
+    a {
+      display: block;
+      text-decoration: none;
+      font-size: 1.5em;
+      color: $txtColor;
+      width: 100%;
+      height: 100%;
+      transition: 0.2s linear;
+      padding: 5px;
+      &:hover {
+        border-radius: 5px;
+        color: #ffffff;
+      }
+      &:after {
+        right: 5px;
+        color: #ffffff;
+        transition: 0.2s linear;
+      }
+      @include max(1024px) {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  }
+}
+.right__bar {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  flex-grow: 1;
+  width: 40%;
+  @include max(1024px) {
+    margin: 20px 0;
+    align-items: center;
+    width: 100%;
+  }
+
+  .setting__name {
+    font-size: 2em;
+    margin: 0 0 20px 5px;
+    user-select: none;
+  }
+
+  .alert {
+    border: 1px solid transparent;
+    width: 80%;
+    border-radius: 4px;
+    padding: 0px 10px;
+    padding-right: 35px;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    &.done {
+      background-color: #dff0d8;
+      border: 1px solid #d6e9c6;
+      color: #3c763d;
+    }
+
+    &.warning {
+      background-color: #fcf8e3;
+      border: 1px solid #faebcc;
+      color: #8a6d3b;
+    }
+
+    &.error {
+      background-color: #f2dede;
+      border: 1px solid #ebccd1;
+      color: #a94442;
+    }
+  }
+  .password-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 10px 0 10px 0;
+    max-width: 400px;
+    input {
+      @include column;
+      border: none;
+      padding: 10px 50px;
+      color: $txtColor;
+      &:focus ~ label,
+      &:valid ~ label {
+        font-size: 1.5em;
+        top: -25px;
+        left: 50px;
+      }
+    }
+
+    label {
+      position: absolute;
+      color: $txtColor;
+      font-size: 1.5em;
+      top: 25%;
+      left: 35%;
+      padding-top: 8px;
+      transition: 0.5s;
+      pointer-events: none;
+    }
+
+    #oldassword {
+      @include img;
+      background-image: url(../icon/password.svg);
+    }
+
+    #newPassword {
+      @include img;
+      background-image: url(../icon/password-new.svg);
+    }
+
+    #confirmPassword {
+      @include img;
+      background-image: url(../icon/password-ok.svg);
+    }
+
+    span {
+      @include messageOff;
+    }
+
+    &.error {
+      span {
+        @include messageOn;
+      }
+
+      input {
+        
+        @include erorrimg;
+      }
+    }
+  }
+
+  .authorization__button {
+    @include authorizationButton;
+    max-width: 200px;
+  }
+  .setting__steps {
+    user-select: none;
+    color: $txtColor;
+    font-size: 1.2em;
+    padding: 0;
+    #qr-txt {
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: black;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    a {
+      text-decoration: none;
+      color: $mainColor;
+    }
+    li {
+      margin-bottom: 20px;
+
+      &:nth-child(2) {
+        line-height: 30px;
+      }
+
+      &:nth-child(4) {
+        list-style: none;
+        margin-bottom: 0;
+      }
+    }
+    @include max(1024px) {
+      padding-left: 40px;
+    }
+  }
+}
+
+.twoFactorAuthorization__buttons_code {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    @include max(1024px) {
+      flex-direction: column;
+    }
+  }
+  p {
+    font-size: 1.5em;
+  }
+  .authorization__button {
+    button {
+      border: none;
+      outline-style: none;
+      font-size: 1.2em;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px 10px 0;
+      color: #ffffff;
+      background-color: $mainColor;
+      border-radius: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    a {
+      font-size: 1.2em;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px 10px 0;
+      color: #ffffff;
+      background-color: $mainColor;
+      border-radius: 10px;
+    }
+  }
+}
+.twoFactorAuthorization__buttons_app {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    @include max(1024px) {
+      flex-direction: column;
+    }
+  }
+  p {
+    font-size: 1.2em;
+  }
+  .authorization__button {
+    a {
+      font-size: 1.2em;
+      text-decoration: none;
+      padding: 10px;
+      margin: 0 10px 10px 0;
+      color: #ffffff;
+      background-color: $mainColor;
+      border-radius: 10px;
+    }
+  }
+}
+
+.setting__message {
+  background-color: #f9d12b;
+  opacity: 0.5;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  border-radius: 10px;
+
+  span {
+    &:nth-child(1) {
+      font-weight: bold;
+    }
+    padding: 20px;
+  }
+  margin: 20px 0;
+}
+.reset__button {
+  button {
+    font-size: 16px;
+    border-radius: 5px;
+    border-width:0px;
+    padding: 10px;
+    background-color: #dc3545;
+    text-decoration: none;
+    color: #ffffff;
+  }
+}

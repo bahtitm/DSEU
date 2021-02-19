@@ -1,17 +1,11 @@
-using Serilog;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+using Serilog;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using DSEU.UI.Data;
-using DSEU.UI.Data.Extensions;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace DSEU.UI
 {
@@ -19,12 +13,8 @@ namespace DSEU.UI
     {
         public static async Task Main(string[] args)
         {
-            var host=CreateHostBuilder(args).Build();
-
-
-
+            var host = CreateHostBuilder(args).Build();
             await host.RunAsync();
-            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -48,7 +38,6 @@ namespace DSEU.UI
                .ConfigureServices((builder, services) =>
                {
                    services.Configure<KestrelServerOptions>(builder.Configuration.GetSection("Kestrel"));
-                   services.AddDataMigrations();
                })
               .UseSerilog((context, configuration) =>
               {
@@ -68,10 +57,5 @@ namespace DSEU.UI
                 builder.AddJsonFile(file);
             }
         }
-
-
-
-
-
     }
 }

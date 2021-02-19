@@ -19,14 +19,10 @@ namespace DSEU.Domain.Entities.Commons
             //TODO:Реализовать логику
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(ComputeMainAddressPart());
-            stringBuilder.Append(ComputeAdditionalAddressPart());
+            stringBuilder.Append(additionalInfo.ToString());
             return stringBuilder.ToString();
         }
 
-        private string ComputeAdditionalAddressPart()
-        {
-            return string.Empty;
-        }
 
         private string ComputeMainAddressPart()
         {
@@ -53,6 +49,8 @@ namespace DSEU.Domain.Entities.Commons
 
             return stringBuilder.ToString();
         }
+
+
     }
 
     public class AddressAdditionalInfo
@@ -60,7 +58,7 @@ namespace DSEU.Domain.Entities.Commons
         /// <summary>
         /// Номер дома
         /// </summary>
-        public string House { get; set; }
+        public string[] House { get; set; }
         /// <summary>
         /// Корпус
         /// </summary>
@@ -73,5 +71,87 @@ namespace DSEU.Domain.Entities.Commons
         /// Квартира
         /// </summary>
         public string Appartment { get; set; }
+        /// <summary>
+        /// Комплекс
+        /// </summary>
+        public string Complex { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(CalculateHousingString());
+            stringBuilder.Append(CalculcateBlockString());
+            stringBuilder.Append(CalculateHouseString());
+            stringBuilder.Append(CalculateAppartmentString());
+
+            return stringBuilder.ToString();
+        }
+
+        private string CalculateHouseString()
+        {
+            if (House == null)
+                return string.Empty;
+
+            if (House.Length > 1)
+            {
+                var house = string.Join('-', House);
+                return string.Format(", {0} jaýlary", house);
+            }
+            if (House.Length == 1)
+            {
+                var house = House[0].Trim();
+                if (ValidString(house))
+                {
+                    return string.Format(", {0}-belgili jaýy", house);
+                }
+            }
+            return string.Empty;
+        }
+
+        private string CalculateAppartmentString()
+        {
+            if (House == null)
+                return string.Empty;
+
+            if (House.Length == 1)
+            {
+                if (ValidString(Appartment))
+                {
+                    var appartment = Appartment.Trim();
+
+                    return string.Format(", {0}-belgili öýi", appartment);
+                }
+            }
+
+            return string.Empty;
+        }
+
+        private string CalculcateBlockString()
+        {
+            if (ValidString(Block))
+            {
+                var block = Block.Trim();
+
+                return string.Format(", {0}-belgili blogynyň", block);
+            }
+            return string.Empty;
+        }
+
+        private string CalculateHousingString()
+        {
+            if (ValidString(Housing))
+            {
+                var housing = Housing.Trim();
+
+                return string.Format(", {0}-belgili korpusynyň", housing);
+            }
+            return string.Empty;
+        }
+
+        private bool ValidString(string value)
+        {
+            return !string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value.Trim());
+        }
     }
 }

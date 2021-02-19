@@ -1,0 +1,95 @@
+@mixin rememberCheckBox {
+  #rememberMe {
+    display: none;
+    &:checked + label:before {
+      background-color: $mainColor;
+    }
+  }
+  .checked {
+    user-select: none;
+    font-size: 1.25em;
+    margin: 20px 0;
+    margin-left: 20px;
+    cursor: pointer;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #cdcdcd;
+      border-radius: 10px;
+      vertical-align: middle;
+      margin: 0 10px 3px -10px;
+      transition: 0.5s;
+    }
+  }
+}
+
+@mixin column {
+  text-align: center;
+  font-size: 1.05em;
+  border-radius: 10px;
+  margin: 10px 0;
+  // padding: 0 70px;
+  border: none;
+  height: 30px;
+  background-color: $btnColor;
+  color: $txtColor;
+  outline: none;
+  position: relative;
+  &::placeholder {
+    color: $txtColor;
+  }
+}
+
+@mixin authorizationButton {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  .button {
+    @include column;
+    transition: 0.2s linear;
+    &.active {
+      transition: 0.2s linear;
+      background-color: $mainColor;
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+}
+
+@mixin img {
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 23px 50%;
+}
+
+@mixin erorrimg {
+  background-size: 22px;
+  background-repeat: no-repeat;
+  background-position: 26px 50%;
+}
+
+@mixin messageOff {
+  display: none;
+}
+
+@mixin messageOn {
+  display: block;
+  margin-left: 10px;
+  width: 70%;
+  color: $errorTxtColor;
+}
+
+@mixin buttonBack {
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 10px;
+  // margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: $whiteColor;
+  background-color: $mainColor;
+  max-width: 100px;
+}

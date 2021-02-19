@@ -13,9 +13,11 @@ namespace DSEU.Domain.Entities.Commons
             Type = type;
         }
 
-        public TerritorialUnitType Type { get; set; }
-        public TerritorialUnit Parent { get; set; }
-        public List<TerritorialUnit> Childs { get; set; } = new();
+        public virtual TerritorialUnitType Type { get; set; }
+        public int TypeId { get; set; }
+        public virtual TerritorialUnit Parent { get; set; }
+        public virtual ICollection<TerritorialUnit> Childs { get; set; } = new List<TerritorialUnit>();
+        public int? ParentId { get; set; }
 
         /// <summary>
         /// Добавить дочерний терр. юнит

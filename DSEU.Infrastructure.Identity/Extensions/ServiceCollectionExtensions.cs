@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using DSEU.Application.Common.Constants;
+using DSEU.Shared.Constants;
 
 namespace DSEU.Infrastructure.Identity.Extensions
 {
@@ -16,8 +16,7 @@ namespace DSEU.Infrastructure.Identity.Extensions
         public static void AddIdentityServer4(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, DSEUIdentityDbContext>(options => ConfigureApiAuthorization(options, configuration))
-                .AddProfileService<DefaultProfileService>();
+                .AddApiAuthorization<ApplicationUser, IdentityDbContext>(options => ConfigureApiAuthorization(options, configuration));
 
             var tokenValidIssuers = configuration.GetSection($"IdentityServer:TokenValidationParameters:ValidIssuers").Get<string[]>();
 
@@ -57,7 +56,7 @@ namespace DSEU.Infrastructure.Identity.Extensions
         private static void ConfigureApiResources(ApiResourceCollection apiResources)
         {
             var apiResource = apiResources.First();
-            apiResource.UserClaims = new string[] { EmployeeClaimTypes.UserIdentifier };
+            apiResource.UserClaims = new string[] { EmployeeClaimTypes.EmployeeId };
         }
 
         private static void ConfigureClients(ClientCollection clients, IConfiguration configuration)

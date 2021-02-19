@@ -13,7 +13,7 @@ namespace DSEU.Infrastructure.Identity
     {
         public static IServiceCollection AddDSEUIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DSEUIdentityDbContext>((sp, options) =>
+            services.AddDbContext<IdentityDbContext>((sp, options) =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
@@ -30,7 +30,7 @@ namespace DSEU.Infrastructure.Identity
             services.AddDefaultIdentity<ApplicationUser>()
                     .AddErrorDescriber<MultilanguageIdentityErrorDescriber>()
                     .AddRoles<IdentityRole>()
-                    .AddEntityFrameworkStores<DSEUIdentityDbContext>()
+                    .AddEntityFrameworkStores<IdentityDbContext>()
                     .AddUserManager<ApplicationUserManager<ApplicationUser>>()
                     .AddPasswordValidator<PasswordContainsUserNameValidator>()
                     .AddPasswordValidator<LastPasswordsRestrictionValidator>()

@@ -11,6 +11,7 @@ using DSEU.Infrastructure.Identity;
 using DSEU.UI.Resources;
 using DSEU.UI.Validation;
 using DSEU.Application.Common.Interfaces;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace DSEU.UI.Areas.Identity.Pages.Account
 {

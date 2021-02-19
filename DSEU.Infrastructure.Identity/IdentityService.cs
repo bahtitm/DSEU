@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DSEU.Application.Common.Exceptions;
 using DSEU.Application.Common.Interfaces;
-using DSEU.Domain;
+using DSEU.Shared;
 
 namespace DSEU.Infrastructure.Identity
 {

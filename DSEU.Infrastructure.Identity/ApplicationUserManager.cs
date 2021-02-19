@@ -9,7 +9,7 @@ namespace DSEU.Infrastructure.Identity
 {
     public class ApplicationUserManager<TUser> : UserManager<TUser>, IDisposable where TUser : class
     {
-        private readonly DSEUIdentityDbContext dbContext;
+        private readonly IdentityDbContext dbContext;
 
         public ApplicationUserManager(IUserStore<TUser> store,
             IOptions<IdentityOptions> optionsAccessor,
@@ -20,7 +20,7 @@ namespace DSEU.Infrastructure.Identity
             IdentityErrorDescriber errors,
             IServiceProvider services,
             ILogger<UserManager<TUser>> logger,
-            DSEUIdentityDbContext dbContext) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators,
+            IdentityDbContext dbContext) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators,
                 keyNormalizer, errors, services, logger)
         {
             this.dbContext = dbContext;

@@ -9,9 +9,9 @@ namespace DSEU.Infrastructure.Identity.Validation
 {
     public class LastPasswordsRestrictionValidator : IPasswordValidator<ApplicationUser>
     {
-        private readonly DSEUIdentityDbContext dbContext;
+        private readonly IdentityDbContext dbContext;
         private readonly PasswordValidationOptions options;
-        public LastPasswordsRestrictionValidator(DSEUIdentityDbContext dbContext,
+        public LastPasswordsRestrictionValidator(IdentityDbContext dbContext,
             IOptions<PasswordValidationOptions> options)
         {
             this.dbContext = dbContext;
