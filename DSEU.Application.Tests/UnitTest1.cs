@@ -48,7 +48,7 @@ namespace DSEU.Application.Tests
             maryEtrapGenesh.AddChild(maryEtrapGeneshStreet);
             maryEtrap.AddChild(maryEtrapGenesh);
             mary.AddChild(maryEtrap);
-            maryEtrapGenesh.AddChild(myetrap1);
+            maryEtrapGenesh.AddChild(mary);
 
 
             AddressAdditionalInfo additionalInfo = new();

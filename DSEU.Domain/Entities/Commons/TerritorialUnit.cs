@@ -1,4 +1,5 @@
 ﻿using DSEU.Domain.Entities.CoreEntities;
+using DSEU.Domain.Exceptions.Commons;
 using System;
 using System.Collections.Generic;
 
@@ -92,6 +93,29 @@ namespace DSEU.Domain.Entities.Commons
         {
             //TODO:Реализовать (parent,child)
             target.AddChild(source);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj==null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (obj is TerritorialUnit parent)
+            {
+                while (parent.Parent!=null)
+                {
+                    if (this.Id == parent.ParentId)
+                    {
+                        throw new TerritorialUnitException();
+                    }
+                    parent = parent.Parent;
+                }
+                return true;
+            }
+
+            return false;
+
         }
     }
 }
