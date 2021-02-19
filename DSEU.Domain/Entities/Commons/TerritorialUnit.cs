@@ -26,8 +26,10 @@ namespace DSEU.Domain.Entities.Commons
         /// <param name="child"></param>
         public void AddChild(TerritorialUnit child)
         {
+            ThrowIfCircularReference(child);
             child.Parent = this;
             Childs.Add(child);
+
         }
 
         /// <summary>
@@ -95,27 +97,23 @@ namespace DSEU.Domain.Entities.Commons
             target.AddChild(source);
         }
 
-        public override bool Equals(object obj)
+
+        void ThrowIfCircularReference(TerritorialUnit child)
         {
-            if (obj==null)
+            if (child == null)
             {
                 throw new ArgumentNullException();
             }
-            if (obj is TerritorialUnit parent)
+
+            var curentParent = Parent;
+            while (curentParent != null)
             {
-                while (parent.Parent!=null)
+                if (curentParent.Id == child.Id)
                 {
-                    if (this.Id == parent.ParentId)
-                    {
-                        throw new TerritorialUnitException();
-                    }
-                    parent = parent.Parent;
+                    throw new TerritorialUnitException();
                 }
-                return true;
+                curentParent = curentParent.Parent;
             }
-
-            return false;
-
         }
     }
 }
