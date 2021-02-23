@@ -1,4 +1,5 @@
 ﻿using DSEU.Domain.Entities.Commons;
+using DSEU.Domain.Entities.Company;
 using NUnit.Framework;
 
 namespace DSEU.Application.Tests

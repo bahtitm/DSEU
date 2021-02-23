@@ -1,4 +1,4 @@
-using DevExtreme.AspNet.Data;
+
 using DSEU.Application;
 using DSEU.Application.Common.Interfaces;
 using DSEU.Infrastructure;
@@ -31,7 +31,7 @@ namespace DSEU.UI
         private const string AllowedDomainsCorsPolicy = "AllowedDomains";
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
-            DataSourceLoadOptionsBase.StringToLowerDefault = true;
+           // DataSourceLoadOptionsBase.StringToLowerDefault = true;
             Configuration = configuration;
             this.Env = env;
         }
