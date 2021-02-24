@@ -11,11 +11,12 @@ namespace DSEU.Infrastructure.Persistence
         {
             services.AddDbContext<AppDbContext>((sp, options) =>
             {
+                options.UseLazyLoadingProxies();
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<AppDbContext>());
-            services.AddScoped<IReadOnlyApplicationDbContext>(provider => provider.GetService<AppDbContext>());
+            
 
             return services;
         }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace DSEU.Domain.Entities.Company
 {
     /// <summary>
-    /// Наша организация
+    /// Unit-ы в рег. службе 
     /// </summary>
     public class OrganizationalUnit:DatabookEntry 
     {
@@ -15,15 +15,12 @@ namespace DSEU.Domain.Entities.Company
         {
             Name = name;
             Type = type;
-        }
-
-        
+        }        
         public int TypeId { get; set; }
         public virtual OrganizationalUnit Parent { get; set; }
         public virtual ICollection<OrganizationalUnit> Childs { get; set; } = new List<OrganizationalUnit>();
         public int? ParentId { get; set; }
         public virtual OrganizationalUnitType Type { get; set; }
-
         /// <summary>
         /// Добавить дочерний организцион. юнит
         /// </summary>
@@ -35,7 +32,6 @@ namespace DSEU.Domain.Entities.Company
             Childs.Add(child);
 
         }
-
         /// <summary>
         /// Пометить как закрытый
         /// </summary>
@@ -43,34 +39,31 @@ namespace DSEU.Domain.Entities.Company
         {
             Status = Status.Closed;
         }
-
         /// <summary>
         /// Объединение организационных единиц
         /// </summary>
         /// <param name="target"></param>
         /// <param name="distinationName"></param>
         /// <returns></returns>
-        public OrganizationalUnit Merge(OrganizationalUnit target, string distinationName, Reason reason)
+        public OrganizationalUnit Merge(OrganizationalUnit target, string distinationName)
         {
             //TODO: Реализовать логику
-            MarkAsClosed(reason);
-            target.MarkAsClosed(reason);
+            //MarkAsClosed(reason);
+            //target.MarkAsClosed(reason);
             OrganizationalUnit newUnit = new(distinationName, this.Type);
             return newUnit;
         }
-
         /// <summary>
         /// Объединение организационных единиц
         /// </summary>
         /// <param name="target"></param>
         /// <param name="distinationName"></param>
         /// <returns></returns>
-        public IEnumerable<OrganizationalUnit> Split(IEnumerable<SplitSettings> settings)
+        public IEnumerable<OrganizationalUnit> Split()
         {
             //TODO: Реализовать логику
             throw new NotImplementedException();
         }
-
         /// <summary>
         /// Сменить наименование
         /// </summary>
@@ -80,7 +73,6 @@ namespace DSEU.Domain.Entities.Company
         {
             Name = newName;
         }
-
         /// <summary>
         /// Сменить наименование
         /// </summary>
@@ -89,7 +81,6 @@ namespace DSEU.Domain.Entities.Company
         {
             Type = target;
         }
-
         /// <summary>
         /// Переместить административную единицу
         /// </summary>
@@ -100,15 +91,12 @@ namespace DSEU.Domain.Entities.Company
             //TODO:Реализовать (parent,child)
             target.AddChild(source);
         }
-
-
         void ThrowIfCircularReference(OrganizationalUnit child)
         {
             if (child == null)
             {
                 throw new ArgumentNullException();
             }
-
             var curentParent = Parent;
             while (curentParent != null)
             {
@@ -119,7 +107,5 @@ namespace DSEU.Domain.Entities.Company
                 curentParent = curentParent.Parent;
             }
         }
-
-
     }
 }

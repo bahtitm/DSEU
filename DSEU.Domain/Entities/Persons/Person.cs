@@ -13,13 +13,19 @@
         /// Фамилия
         /// </summary>
         public string LastName { get; set; }
+        /// <summary>
+        /// отчество
+        /// </summary>
         public string MiddleName { get; set; }
         public Passport Passport { get; set; }
-
-
+        /// <summary>
+        /// Прописка
+        /// </summary>
         public string Registration { get; set; }
+        /// <summary>
+        /// Гражданство
+        /// </summary>
         public string Citizenship { get; set; }
         public PersonStatus PersonStatus { get; set; }
-
     }
 }

@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.Commons
 {
+    /// <summary>
+    /// определенная територия 
+    /// </summary>
     public class TerritorialUnit : DatabookEntry
     {
         protected TerritorialUnit() { }
@@ -31,7 +34,6 @@ namespace DSEU.Domain.Entities.Commons
             Childs.Add(child);
 
         }
-
         /// <summary>
         /// Пометить как закрытый
         /// </summary>
@@ -39,7 +41,6 @@ namespace DSEU.Domain.Entities.Commons
         {
             Status = Status.Closed;
         }
-
         /// <summary>
         /// Объединение территориальных единиц
         /// </summary>
@@ -54,7 +55,6 @@ namespace DSEU.Domain.Entities.Commons
             TerritorialUnit newUnit = new(distinationName, this.Type);
             return newUnit;
         }
-
         /// <summary>
         /// Объединение территориальных единиц
         /// </summary>
@@ -66,7 +66,6 @@ namespace DSEU.Domain.Entities.Commons
             //TODO: Реализовать логику
             throw new NotImplementedException();
         }
-
         /// <summary>
         /// Сменить наименование
         /// </summary>
@@ -76,7 +75,6 @@ namespace DSEU.Domain.Entities.Commons
         {
             Name = newName;
         }
-
         /// <summary>
         /// Сменить наименование
         /// </summary>
@@ -85,7 +83,6 @@ namespace DSEU.Domain.Entities.Commons
         {
             Type = target;
         }
-
         /// <summary>
         /// Переместить административную единицу
         /// </summary>
@@ -96,15 +93,12 @@ namespace DSEU.Domain.Entities.Commons
             //TODO:Реализовать (parent,child)
             target.AddChild(source);
         }
-
-
         void ThrowIfCircularReference(TerritorialUnit child)
         {
             if (child == null)
             {
                 throw new ArgumentNullException();
             }
-
             var curentParent = Parent;
             while (curentParent != null)
             {

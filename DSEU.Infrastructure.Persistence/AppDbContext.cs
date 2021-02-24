@@ -11,7 +11,7 @@ using DSEU.Domain.Entities;
 
 namespace DSEU.Infrastructure.Persistence
 {
-    public class AppDbContext : DbContext, IApplicationDbContext, IReadOnlyApplicationDbContext
+    public class AppDbContext : DbContext, IApplicationDbContext
     {
         private readonly IMediator mediator;
         public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator) : base(options)
@@ -78,16 +78,9 @@ namespace DSEU.Infrastructure.Persistence
             }
         }
 
-        IQueryable<T> IReadOnlyApplicationDbContext.Query<T>() where T : class
-        {
-            return Set<T>().AsNoTracking();
-        }
+       
 
-        IQueryable<T> IReadOnlyApplicationDbContext.FromSqlInterpolated<T>(FormattableString format) where T : class
-        {
-            return Set<T>().FromSqlInterpolated(format);
-        }
-
+        
         async Task IApplicationDbContext.AddAsync<T>(T entity, CancellationToken cancellationToken)
         {
             await AddAsync(entity, cancellationToken);

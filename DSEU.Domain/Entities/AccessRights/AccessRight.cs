@@ -1,24 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.AccessRights
 {
-    public class AccessRight:BaseEntity
+    /// <summary>
+    /// Права на различные обьекты
+    /// </summary>
+    public class AccessRight : BaseEntity
     {
-        public AccessRightType  AccessRightType { get; set; }
+        /// <summary>
+        /// Типы права чтение и на запись
+        /// </summary>
+        public AccessRightType AccessRightType { get; set; }
+        /// <summary>
+        /// ид сущности
+        /// </summary>
         public int? EntityId { get; set; }
         /// <summary>
         /// Для экземпляра
         /// </summary>
         public bool IsForInstance { get; set; }
-        public ICollection<AccessRightEntry> Entries { get; set; }
+        /// <summary>
+        /// Сущности для которых дать доступ
+        /// </summary>
+        public ICollection<AccessRightEntry> AccessRightEntries { get; set; }
 
     }
 
-    public class AccessRightEntry
+    public class AccessRightEntry:BaseEntity
     {
     }
 

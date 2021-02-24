@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSEU.Domain.Entities.ServicesOffered
+﻿namespace DSEU.Domain.Entities.ServicesOffered
 {
     /// <summary>
-    /// Услуги регю службы
+    /// Услуги рег. службы
     /// </summary>
     public class Service
     {
-        
+
     }
 }

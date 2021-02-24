@@ -3,17 +3,18 @@ using System.Text;
 
 namespace DSEU.Domain.Entities.Commons
 {
+    /// <summary>
+    /// Адресс недвижимости
+    /// </summary>
     public class Address
     {
         private readonly TerritorialUnit territorialUnit;
         private readonly AddressAdditionalInfo additionalInfo;
-
         public Address(TerritorialUnit territorialUnit, AddressAdditionalInfo additionalInfo)
         {
             this.territorialUnit = territorialUnit;
             this.additionalInfo = additionalInfo;
         }
-
         public string Compute()
         {
             //TODO:Реализовать логику
@@ -22,8 +23,6 @@ namespace DSEU.Domain.Entities.Commons
             stringBuilder.Append(additionalInfo.ToString());
             return stringBuilder.ToString();
         }
-
-
         private string ComputeMainAddressPart()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -34,8 +33,6 @@ namespace DSEU.Domain.Entities.Commons
                 units.Push(current);
                 current = current.Parent;
             }
-
-
             while (units.Count > 0)
             {
                 var unit = units.Pop();
@@ -46,13 +43,9 @@ namespace DSEU.Domain.Entities.Commons
                     stringBuilder.Append(',');
                 }
             }
-
             return stringBuilder.ToString();
         }
-
-
     }
-
     public class AddressAdditionalInfo
     {
         /// <summary>
@@ -75,24 +68,19 @@ namespace DSEU.Domain.Entities.Commons
         /// Комплекс
         /// </summary>
         public string Complex { get; set; }
-
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-
             stringBuilder.Append(CalculateHousingString());
             stringBuilder.Append(CalculcateBlockString());
             stringBuilder.Append(CalculateHouseString());
             stringBuilder.Append(CalculateAppartmentString());
-
             return stringBuilder.ToString();
         }
-
         private string CalculateHouseString()
         {
             if (House == null)
                 return string.Empty;
-
             if (House.Length > 1)
             {
                 var house = string.Join('-', House);
@@ -108,12 +96,10 @@ namespace DSEU.Domain.Entities.Commons
             }
             return string.Empty;
         }
-
         private string CalculateAppartmentString()
         {
             if (House == null)
                 return string.Empty;
-
             if (House.Length == 1)
             {
                 if (ValidString(Appartment))
@@ -123,32 +109,26 @@ namespace DSEU.Domain.Entities.Commons
                     return string.Format(", {0}-belgili öýi", appartment);
                 }
             }
-
             return string.Empty;
         }
-
         private string CalculcateBlockString()
         {
             if (ValidString(Block))
             {
                 var block = Block.Trim();
-
                 return string.Format(", {0}-belgili blogynyň", block);
             }
             return string.Empty;
         }
-
         private string CalculateHousingString()
         {
             if (ValidString(Housing))
             {
                 var housing = Housing.Trim();
-
                 return string.Format(", {0}-belgili korpusynyň", housing);
             }
             return string.Empty;
         }
-
         private bool ValidString(string value)
         {
             return !string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value.Trim());

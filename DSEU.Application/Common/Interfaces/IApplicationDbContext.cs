@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DSEU.Application.Common.Interfaces
 {
-    public interface IApplicationDbContext : IReadOnlyApplicationDbContext
+    public interface IApplicationDbContext 
     {
         DbSet<T> Set<T>() where T : class;
         Task AddAsync<T>(T entity, CancellationToken cancellationToken = default) where T : class;
