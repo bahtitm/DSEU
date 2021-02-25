@@ -1,21 +1,23 @@
+using DSEU.Domain.Entities.Company;
 using DSEU.Domain.Entities.CoreEntities;
 using System;
 using System.Collections.Generic;
 
-namespace DSEU.Domain.Entities.Company
+namespace DSEU.Domain.Entities.OurOrganization
 {
     /// <summary>
     /// Unit-ы в рег. службе 
     /// </summary>
-    public class OrganizationalUnit:DatabookEntry 
+    /// todo надо еще подумать
+    public class OrganizationalUnit : DatabookEntry
     {
         protected OrganizationalUnit() { }
-        
+
         public OrganizationalUnit(string name, OrganizationalUnitType type)
         {
             Name = name;
             Type = type;
-        }        
+        }
         public int TypeId { get; set; }
         public virtual OrganizationalUnit Parent { get; set; }
         public virtual ICollection<OrganizationalUnit> Childs { get; set; } = new List<OrganizationalUnit>();
@@ -38,32 +40,8 @@ namespace DSEU.Domain.Entities.Company
         public void MarkAsClosed()
         {
             Status = Status.Closed;
-        }
-        /// <summary>
-        /// Объединение организационных единиц
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="distinationName"></param>
-        /// <returns></returns>
-        public OrganizationalUnit Merge(OrganizationalUnit target, string distinationName)
-        {
-            //TODO: Реализовать логику
-            //MarkAsClosed(reason);
-            //target.MarkAsClosed(reason);
-            OrganizationalUnit newUnit = new(distinationName, this.Type);
-            return newUnit;
-        }
-        /// <summary>
-        /// Объединение организационных единиц
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="distinationName"></param>
-        /// <returns></returns>
-        public IEnumerable<OrganizationalUnit> Split()
-        {
-            //TODO: Реализовать логику
-            throw new NotImplementedException();
-        }
+        }        
+        
         /// <summary>
         /// Сменить наименование
         /// </summary>

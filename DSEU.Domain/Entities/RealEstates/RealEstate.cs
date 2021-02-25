@@ -1,7 +1,11 @@
-﻿namespace DSEU.Domain.Entities.RealEstates
+﻿using DSEU.Domain.Entities.Commons;
+using DSEU.Domain.Entities.RealEstateRights;
+using System.Collections.Generic;
+
+namespace DSEU.Domain.Entities.RealEstates
 {
     /// <summary>
-    /// Абстрактный недвижимость
+    /// Недвижимость
     /// </summary>
     public abstract class RealEstate : BaseEntity
     {
@@ -12,10 +16,16 @@
         /// <summary>
         /// Кадастровая цена
         /// </summary>
-        public double CadastralCost { get; set; }
+        public decimal? CadastralCost { get; set; }
         /// <summary>
         /// Цена сделки
         /// </summary>
-        public double DealCost { get; set; }
+        public decimal? DealCost { get; set; }
+        /// <summary>
+        /// Валюта
+        /// </summary>
+        public Currency Currency { get; set; }
+        public int? CurrencyId { get; set; }
+        public virtual ICollection<RealEstateRight> Rights { get; set; }
     }
 }

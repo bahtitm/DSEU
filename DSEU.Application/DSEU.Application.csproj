@@ -18,4 +18,16 @@
     <ProjectReference Include="..\DSEU.Domain\DSEU.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Modules\AccessRights\Dtos\" />
+    <Folder Include="Modules\AccessRights\Queries\" />
+    <Folder Include="Modules\Commons\" />
+    <Folder Include="Modules\Company\" />
+    <Folder Include="Modules\CoreEntities\" />
+    <Folder Include="Modules\Persons\" />
+    <Folder Include="Modules\RealEstateRights\" />
+    <Folder Include="Modules\RealEstates\" />
+    <Folder Include="Modules\ServicesOffered\" />
+  </ItemGroup>
+
 </Project>

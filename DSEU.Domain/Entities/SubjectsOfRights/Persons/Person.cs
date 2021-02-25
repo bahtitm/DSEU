@@ -26,6 +26,5 @@
         /// Гражданство
         /// </summary>
         public string Citizenship { get; set; }
-        public PersonStatus PersonStatus { get; set; }
     }
 }

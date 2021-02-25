@@ -7,9 +7,9 @@
         /// </summary>
         OnReview,
         /// <summary>
-        /// Одобрено
+        /// Зарегестрировано
         /// </summary>
-        Approved,
+        Registered,
         /// <summary>
         /// Отклонено
         /// </summary>

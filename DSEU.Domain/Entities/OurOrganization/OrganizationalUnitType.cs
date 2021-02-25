@@ -1,4 +1,5 @@
 ﻿using DSEU.Domain.Entities.CoreEntities;
+using DSEU.Domain.Entities.OurOrganization;
 using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.Company
