@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DSEU.Domain.Entities.Persons
+namespace DSEU.Domain.Entities.SubjectsOfRights.Persons
 {
     public class Passport : IdentityDocument
     {

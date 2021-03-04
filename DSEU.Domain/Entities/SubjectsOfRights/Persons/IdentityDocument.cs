@@ -1,4 +1,4 @@
-﻿namespace DSEU.Domain.Entities.Persons
+﻿namespace DSEU.Domain.Entities.SubjectsOfRights.Persons
 {
     /// <summary>
     /// удостоверяющий документ

@@ -12,4 +12,9 @@
     <ProjectReference Include="..\DSEU.Shared\DSEU.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\ArchiveDepartment\" />
+    <Folder Include="Entities\ArrestAndBail\" />
+  </ItemGroup>
+
 </Project>

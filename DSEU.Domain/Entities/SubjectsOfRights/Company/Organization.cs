@@ -1,12 +1,11 @@
-﻿using DSEU.Domain.Entities.Persons;
-using DSEU.Domain.Entities.SubjectsOfRights;
+﻿using DSEU.Domain.Entities.SubjectsOfRights.Persons;
 
-namespace DSEU.Domain.Entities.Company
+namespace DSEU.Domain.Entities.SubjectsOfRights.Company
 {
     /// <summary>
     /// Организация
     /// </summary>
-    public abstract class Organization : SubjectsOfRight
+    public abstract class Organization : SubjectOfRight
     {
         public string Name { get; set; }
         /// <summary>

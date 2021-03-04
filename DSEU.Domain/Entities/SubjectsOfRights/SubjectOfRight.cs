@@ -3,7 +3,7 @@
     /// <summary>
     /// Субъект прав
     /// </summary>
-    public class SubjectsOfRight : BaseEntity
+    public class SubjectOfRight : BaseEntity
     {
         public string Name { get; set; }
         /// <summary>

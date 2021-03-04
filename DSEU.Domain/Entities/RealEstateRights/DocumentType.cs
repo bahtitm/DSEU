@@ -12,10 +12,14 @@
         /// <summary>
         /// уточняющий
         /// </summary>
-        clarifying,
+        Сlarifying,
         /// <summary>
         /// обриминяющий
         /// </summary>
-        burdening
+        Burdening,
+        /// <summary>
+        /// Заявление
+        /// </summary>
+        Application
     }
 }

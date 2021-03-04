@@ -13,6 +13,11 @@ namespace DSEU.Domain.Entities.RealEstates
         /// Наименование
         /// </summary>
         public string Name { get; set; }
+        public string Address { get; set; }
+        /// <summary>
+        /// Цель
+        /// </summary>
+        public string Purpose { get; set; }
         /// <summary>
         /// Кадастровая цена
         /// </summary>
