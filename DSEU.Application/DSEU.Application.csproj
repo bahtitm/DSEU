@@ -22,7 +22,9 @@
     <Folder Include="Modules\AccessRights\Dtos\" />
     <Folder Include="Modules\AccessRights\Queries\" />
     <Folder Include="Modules\Commons\" />
-    <Folder Include="Modules\Company\" />
+    <Folder Include="Modules\Company\Employees\Commands\ChangePassword\" />
+    <Folder Include="Modules\Company\Employees\Commands\EditEmployee\" />
+    <Folder Include="Modules\Company\Employees\Commands\UpdateEmployee\" />
     <Folder Include="Modules\CoreEntities\" />
     <Folder Include="Modules\Persons\" />
     <Folder Include="Modules\RealEstateRights\" />
