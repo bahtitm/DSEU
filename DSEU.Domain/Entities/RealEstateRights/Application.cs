@@ -9,7 +9,7 @@ namespace DSEU.Domain.Entities.RealEstateRights
     /// <summary>
     /// Заявление
     /// </summary>
-    public class Application : Document
+    public class Application : BaseEntity
     {
         /// <summary>
         /// Номер заявления
