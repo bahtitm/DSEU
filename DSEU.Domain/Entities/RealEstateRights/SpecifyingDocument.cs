@@ -3,7 +3,7 @@
     /// <summary>
     /// Уточняющий документ
     /// </summary>
-    public class SpecifyingDocument : Document
+    public class SpecifyingDocument : BasisForChangeDocument
     {
 
     }
