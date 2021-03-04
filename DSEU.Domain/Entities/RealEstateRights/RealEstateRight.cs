@@ -26,7 +26,7 @@ namespace DSEU.Domain.Entities.RealEstateRights
         public virtual RealEstate RealEstate { get; set; }
         public virtual Applicant Applicant { get; set; }
 
-        public virtual ICollection<Document> Documents { get; set; }
+        public virtual ICollection<BasisForChangeDocument> Documents { get; set; }
     }
 
     /// <summary>

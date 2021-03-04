@@ -3,7 +3,7 @@
     /// <summary>
     /// абстрактный класс для Правоудостоверяющих и уточняющих документов
     /// </summary>
-    public abstract class Document : BaseEntity
+    public abstract class BasisForChangeDocument : BaseEntity
     {
         public DocumentType DocumentType { get; set; }
         public string Name { get; set; }
