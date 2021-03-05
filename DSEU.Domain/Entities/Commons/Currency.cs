@@ -11,5 +11,25 @@ namespace DSEU.Domain.Entities.Commons
         /// Код валюты
         /// </summary>
         public string Code { get; set; }
+        /// <summary>
+        /// 3-х значный Буквенный код
+        /// </summary>
+        public string AlphaCode { get; set; }
+        /// <summary>
+        /// Сокр. наименование
+        /// </summary>
+        public string ShortName { get; set; }
+        /// <summary>
+        /// Дробная часть
+        /// </summary>
+        public string FractionName { get; set; }
+        /// <summary>
+        /// Валюта по умолчанию
+        /// </summary>
+        public bool IsDefault { get; set; }
+        /// <summary>
+        /// Цифровой код
+        /// </summary>
+        public string NumericCode { get; set; }
     }
 }

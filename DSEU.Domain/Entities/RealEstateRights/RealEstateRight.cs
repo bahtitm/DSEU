@@ -32,16 +32,16 @@ namespace DSEU.Domain.Entities.RealEstateRights
     /// <summary>
     /// Право на собственность
     /// </summary>
-    public class RealEstateOwnRight: RealEstateRight
+    public class RealEstateOwnRight : RealEstateRight
     {
 
     }
 
-    /// <summary>
-    /// Право на аренду
-    /// </summary>
-    public class RealEstateRentRight : RealEstateRight
-    {
+    ///// <summary>
+    ///// Право на аренду
+    ///// </summary>
+    //public class RealEstateRentRight : RealEstateRight
+    //{
 
-    }
+    //}
 }

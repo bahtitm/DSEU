@@ -3,7 +3,7 @@ using System;
 
 namespace DSEU.Domain.Entities.SubjectsOfRights
 {
-    public class Applicant
+    public class Applicant:BaseEntity
     {
 
         /// <summary>

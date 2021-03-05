@@ -9,7 +9,7 @@
         /// <summary>
         /// Учетная запись
         /// </summary>
-        public Login Login { get; set; }
+        public virtual  Login Login { get; set; }
         /// <summary>
         /// UserId
         /// </summary>

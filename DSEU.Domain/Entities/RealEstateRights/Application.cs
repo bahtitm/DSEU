@@ -16,6 +16,14 @@ namespace DSEU.Domain.Entities.RealEstateRights
         /// </summary>
         public string Number { get; set; }
         /// <summary>
+        /// порядковый номер в журнале
+        /// </summary>
+        public int? SerialNumber { get; set; }
+        /// <summary>
+        /// Цель заявление
+        /// </summary>
+        public string PurposeAplication { get; set; }
+        /// <summary>
         /// Время заявления (dd.MM.yyyy HH:mm)
         /// </summary>
         public DateTime? DateTime { get; set; }
@@ -38,7 +46,16 @@ namespace DSEU.Domain.Entities.RealEstateRights
         /// <summary>
         /// Принятые документы от заявителя
         /// </summary>
-        public List<string> Documents { get; set; }
+        public List<string> AcceptedDocuments { get; set; }
+        /// <summary>
+        /// Выданные документы
+        /// </summary>
+        public List<string> IssuedDocuments { get; set; }
+        /// <summary>
+        /// Принятое Решение
+        /// </summary>
+        public string Decision { get; set; }
         public string Description { get; set; }
+        
     }
 }

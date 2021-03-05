@@ -8,9 +8,9 @@ namespace DSEU.Infrastructure.Persistence.Configurations.RealEstateRights
     {
         public void Configure(EntityTypeBuilder<RealEstateRight> builder)
         {
-            builder.Property(p => p.Name).IsRequired();
+           // builder.Property(p => p.Name).IsRequired();
 
-            builder.OwnsOne(p => p.Applicant);
+            //builder.OwnsOne(p => p.Applicant);
         }
     }
 }
