@@ -22,7 +22,7 @@ namespace DSEU.Infrastructure.Identity
 
             services.Configure<IdentityOptions>(options =>
             {
-                options.User.AllowedUserNameCharacters += " äşýňöüžçä";
+                options.User.AllowedUserNameCharacters += " äşýňöüžçÄŞÝŇÖÜŽÇ";
             });
 
             services.Configure<PasswordValidationOptions>(configuration.GetSection("IdentityOptions:PasswordValidation"));

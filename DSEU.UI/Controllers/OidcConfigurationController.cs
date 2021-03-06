@@ -7,6 +7,7 @@ using System;
 namespace DSEU.UI.Controllers
 {
     [AllowAnonymous]
+    ///[ApiVersion("1.1")]
     public class OidcConfigurationController : Controller
     {
         private readonly ILogger<OidcConfigurationController> _logger;
@@ -20,6 +21,7 @@ namespace DSEU.UI.Controllers
         public IClientRequestParametersProvider ClientRequestParametersProvider { get; }
 
         [HttpGet("_configuration/{clientId}")]
+       /// [MapToApiVersion("1.1")]
         public IActionResult GetClientRequestParameters([FromRoute]string clientId)
         {
             string hostName = this.Request.Host.Host;

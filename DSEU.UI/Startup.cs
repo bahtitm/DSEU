@@ -12,6 +12,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
@@ -31,7 +32,7 @@ namespace DSEU.UI
         private const string AllowedDomainsCorsPolicy = "AllowedDomains";
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
-           // DataSourceLoadOptionsBase.StringToLowerDefault = true;
+            //DataSourceLoadOptionsBase.StringToLowerDefault = true;
             Configuration = configuration;
             this.Env = env;
         }
@@ -41,13 +42,13 @@ namespace DSEU.UI
             services.AddDSEUApplicationCore()
                     .AddDSEUInfrastructureServices()
                     .AddDSEUPersistence(Configuration)
-                    .AddDSEUPersistentDataProtectionKeys(Configuration)
+                    //.AddDSEUPersistentDataProtectionKeys(Configuration)
                     .AddDSEUIdentity(Configuration);
 
-            services.AddValidatorsFromAssembly(typeof(Application.DependencyInjection).Assembly);
+             services.AddValidatorsFromAssembly(typeof(Application.DependencyInjection).Assembly);
 
-            services.AddHttpContextAccessor();
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
+             services.AddHttpContextAccessor();
+             services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddCors(ConfigureCors);
 
@@ -103,27 +104,32 @@ namespace DSEU.UI
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-            app.UseCors(AllowedDomainsCorsPolicy);
+            //app.UseCors(AllowedDomainsCorsPolicy);
 
-            app.UseAuthentication();
-            app.UseIdentityServer();
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseIdentityServer();
+            //app.UseAuthorization();
 
 
-            app.UseSession();
+            //app.UseSession();
 
-            app.UseSwagger();
+            //app.UseSwagger();
 
-            app.UseEndpoints(endpoints =>
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers().RequireAuthorization();
+            //    endpoints.MapRazorPages().RequireAuthorization();
+
+            //});
+            app.Run(async (context) =>
             {
-                endpoints.MapControllers().RequireAuthorization();
-                endpoints.MapRazorPages().RequireAuthorization();
+                await context.Response.WriteAsync("Hello World!");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-            });
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
+            //});
         }
 
         private void ConfigureCors(CorsOptions options)

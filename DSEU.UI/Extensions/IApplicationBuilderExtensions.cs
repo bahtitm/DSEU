@@ -18,8 +18,8 @@ namespace DSEU.UI.Extensions
                 config.EnableFilter();
                 config.OAuthConfigObject = new OAuthConfigObject()
                 {
-                    AppName  = "DSEU.Api",
-                    ClientId = "DSEU.Api",
+                    AppName  = "DSEU.UI",
+                    ClientId = "DSEU.UI",
                     UsePkceWithAuthorizationCodeGrant = true
                 };
               

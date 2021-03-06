@@ -11,9 +11,9 @@ namespace DSEU.Infrastructure.Persistence
         {
             services.AddDbContext<AppDbContext>((sp, options) =>
             {
-                //options.UseLazyLoadingProxies();
-                //options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
-                options.UseInMemoryDatabase("DSEU");
+                options.UseLazyLoadingProxies();
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+                //options.UseInMemoryDatabase("DSEUDB");
             });
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<AppDbContext>());

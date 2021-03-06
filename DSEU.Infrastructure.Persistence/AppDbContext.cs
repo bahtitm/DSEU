@@ -26,13 +26,11 @@ namespace DSEU.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+            
             base.OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder.UseInMemoryDatabase("DSEU"));
-        }
+        
 
         public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
         {
