@@ -119,10 +119,10 @@ namespace DSEU.UI
 
             });
 
-            //app.UseSpa(spa =>
-            //{
-            //    spa.Options.SourcePath = "ClientApp";
-            //});
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+            });
         }
 
         private void ConfigureCors(CorsOptions options)

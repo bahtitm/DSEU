@@ -292,3 +292,9 @@ System.InvalidOperationException: The SPA default page middleware could not retu
 2021-03-09 11:06:58.405 +05:00 [ERR] {"error":["Произошла ошибка. Обратитесь к администратору системы."]}
 2021-03-09 11:13:26.883 +05:00 [INF] Starting IdentityServer4 version 4.1.0+5a4433f83e8c6fca7d8979141fa5a92684ad56f6
 2021-03-09 11:13:27.066 +05:00 [INF] Using explicitly configured authentication scheme Identity.Application for IdentityServer
+2021-03-09 11:15:36.598 +05:00 [INF] Starting IdentityServer4 version 4.1.0+5a4433f83e8c6fca7d8979141fa5a92684ad56f6
+2021-03-09 11:15:36.786 +05:00 [INF] Using explicitly configured authentication scheme Identity.Application for IdentityServer
+2021-03-09 11:15:58.536 +05:00 [INF] User with name Administrator logged in at 09.03.2021 11:15:58 
+2021-03-09 11:21:54.448 +05:00 [INF] Starting IdentityServer4 version 4.1.0+5a4433f83e8c6fca7d8979141fa5a92684ad56f6
+2021-03-09 11:21:54.654 +05:00 [INF] Using explicitly configured authentication scheme Identity.Application for IdentityServer
+2021-03-09 11:22:32.831 +05:00 [INF] User with name Administrator logged in at 09.03.2021 11:22:32 
