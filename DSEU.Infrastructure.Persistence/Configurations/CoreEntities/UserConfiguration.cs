@@ -8,14 +8,14 @@ namespace DSEU.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.Property(p => p.UserId).IsRequired(true);
-            builder.HasIndex(p => p.UserId).IsUnique(true);
+            //builder.Property(p => p.UserId).IsRequired(true);
+            //builder.HasIndex(p => p.UserId).IsUnique(true);
 
-            builder.HasOne(p => p.Login)
-                .WithOne()
-                .HasForeignKey<User>(p => p.LoginId)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(p => p.Login)
+            //    .WithOne()
+            //    .HasForeignKey<User>(p => p.LoginId)
+            //    .IsRequired(true)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

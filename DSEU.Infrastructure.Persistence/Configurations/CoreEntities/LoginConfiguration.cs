@@ -8,8 +8,8 @@ namespace DSEU.Infrastructure.Persistence.Configurations.CoreEntities
     {
         public void Configure(EntityTypeBuilder<Login> builder)
         {
-            builder.Property(p => p.LoginName).IsRequired(true);
-            builder.HasIndex(p => p.LoginName).IsUnique(true);
+            //builder.Property(p => p.LoginName).IsRequired(true);
+            //builder.HasIndex(p => p.LoginName).IsUnique(true);
         }
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -23,8 +23,9 @@
     <Folder Include="Modules\AccessRights\Queries\" />
     <Folder Include="Modules\Commons\" />
     <Folder Include="Modules\Company\Employees\Commands\ChangePassword\" />
-    <Folder Include="Modules\Company\Employees\Commands\EditEmployee\" />
+    <Folder Include="Modules\Company\Employees\Commands\DeleteEmployee\" />
     <Folder Include="Modules\Company\Employees\Commands\UpdateEmployee\" />
+    <Folder Include="Modules\Company\Employees\Queries\" />
     <Folder Include="Modules\CoreEntities\" />
     <Folder Include="Modules\Persons\" />
     <Folder Include="Modules\RealEstateRights\" />
