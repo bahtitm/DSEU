@@ -14,11 +14,12 @@
     string GetActiveLanguageClass(string name)
     {
         var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-        if(requestCulture.RequestCulture.Culture.Name==name)
-        {
-            return "active";
-        }
-        return string.Empty;
+        return "active";
+        //if(requestCulture.RequestCulture.Culture.Name==name)
+        //{
+        //    return "active";
+        //}
+        //return string.Empty;
     }
 }
 <div class="language__selection">

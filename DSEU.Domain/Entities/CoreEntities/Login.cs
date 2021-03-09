@@ -12,6 +12,6 @@
         /// <summary>
         /// Тип аутентификации
         /// </summary>
-        //public AuthenticationType AuthenticationType { get; set; }
+        public AuthenticationType AuthenticationType { get; set; }
     }
 }

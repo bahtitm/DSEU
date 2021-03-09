@@ -1,8 +1,6 @@
-
 using DSEU.Application;
 using DSEU.Application.Common.Interfaces;
 using DSEU.Infrastructure;
-using DSEU.Infrastructure.DataProtection;
 using DSEU.Infrastructure.Identity;
 using DSEU.Infrastructure.Persistence;
 using DSEU.UI.Extensions;
@@ -12,7 +10,6 @@ using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
@@ -45,10 +42,10 @@ namespace DSEU.UI
                     //.AddDSEUPersistentDataProtectionKeys(Configuration)
                     .AddDSEUIdentity(Configuration);
 
-             services.AddValidatorsFromAssembly(typeof(Application.DependencyInjection).Assembly);
+            services.AddValidatorsFromAssembly(typeof(Application.DependencyInjection).Assembly);
 
-             services.AddHttpContextAccessor();
-             services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddHttpContextAccessor();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddCors(ConfigureCors);
 
@@ -104,26 +101,22 @@ namespace DSEU.UI
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-            //app.UseCors(AllowedDomainsCorsPolicy);
+            app.UseCors(AllowedDomainsCorsPolicy);
 
-            //app.UseAuthentication();
-            //app.UseIdentityServer();
-            //app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseIdentityServer();
+            app.UseAuthorization();
 
 
-            //app.UseSession();
+            app.UseSession();
 
-            //app.UseSwagger();
+            app.UseSwagger();
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers().RequireAuthorization();
-            //    endpoints.MapRazorPages().RequireAuthorization();
-
-            //});
-            app.Run(async (context) =>
+            app.UseEndpoints(endpoints =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                endpoints.MapControllers().RequireAuthorization();
+                endpoints.MapRazorPages().RequireAuthorization();
+
             });
 
             //app.UseSpa(spa =>

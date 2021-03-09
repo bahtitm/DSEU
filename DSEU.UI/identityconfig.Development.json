@@ -1,0 +1,37 @@
+{
+  "IdentityServer": {
+    "Clients": {
+      "DSEU.UI": {
+        "Profile": "SPA",
+        "RedirectUri": "http://localhost:3000/callback",
+        "AdditionalHosts": [ "https://localhost/" ],
+        "LogoutUri": "http://localhost:3000/"
+      },
+      "DSEU.UI-prod": {
+        "Profile": "SPA",
+        "RedirectUri": "https://localhost:5001/callback",
+        "LogoutUri": "https://localhost:5001/"
+      }
+    },
+    "TokenValidationParameters": {
+      "ValidIssuers": [ "https://192.168.4.188", "http://localhost:3001" ]
+    },
+    "Key": {
+      "Type": "Development"
+    }
+  },
+  "IdentityOptions": {
+    "Lockout": {
+      "MaxFailedAccessAttempts": 10,
+      "DefaultLockoutTimeSpan": "00:20:00"
+    },
+    "Password": {
+      "RequiredLength": 5,
+      "RequiredUniqueChars": 1,
+      "RequireDigit": false,
+      "RequireLowercase": false,
+      "RequireNonAlphanumeric": false,
+      "RequireUppercase": false
+    }
+  }
+}

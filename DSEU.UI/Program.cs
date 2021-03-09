@@ -1,3 +1,5 @@
+using DSEU.UI.Data;
+using DSEU.UI.Data.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +16,9 @@ namespace DSEU.UI
         public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+            using var scope = host.Services.CreateScope();
+            await MigrateDatabases(scope);
+            await SeedData(scope);
             await host.RunAsync();
         }
 
@@ -38,6 +43,9 @@ namespace DSEU.UI
                .ConfigureServices((builder, services) =>
                {
                    services.Configure<KestrelServerOptions>(builder.Configuration.GetSection("Kestrel"));
+                   services.AddScoped<DatabaseMigrator>();
+                   services.AddScoped<DataSeeder>();
+                   services.AddAppVersionManualMigrations();
                })
               .UseSerilog((context, configuration) =>
               {
@@ -56,6 +64,18 @@ namespace DSEU.UI
             {
                 builder.AddJsonFile(file);
             }
+        }
+
+        private static async Task MigrateDatabases(IServiceScope scope)
+        {
+            var databaseMigrator = scope.ServiceProvider.GetRequiredService<DatabaseMigrator>();
+            await databaseMigrator.MigrateAsync();
+        }
+
+        private static async Task SeedData(IServiceScope scope)
+        {
+            DataSeeder dataSeeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+            await dataSeeder.SeedData();
         }
     }
 }
