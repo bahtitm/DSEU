@@ -20,10 +20,12 @@ namespace DSEU.Domain.Entities.RealEstateRights
         /// </summary>
 
         public DateTime? StatementDate { get; set; }
+        public int? RealEstateId { get; set; }
         /// <summary>
         /// Недвижимость
         /// </summary>        
         public virtual RealEstate RealEstate { get; set; }
+        public int? ApplicantId { get; set; }
         public virtual Applicant Applicant { get; set; }
 
         public virtual ICollection<BasisForChangeDocument> Documents { get; set; }

@@ -1,18 +1,20 @@
-﻿using DSEU.Domain.Entities.Commons;
-using DSEU.Domain.Entities.RealEstateRights;
-using System.Collections.Generic;
+﻿using DSEU.Application.Common.Mapping;
+using DSEU.Domain.Entities.RealEstates;
 
-namespace DSEU.Domain.Entities.RealEstates
+namespace DSEU.Application.Dtos
 {
     /// <summary>
     /// Недвижимость
     /// </summary>
-    public abstract class RealEstate : BaseEntity
+    public class RealEstateDto : BaseEntityDto, IMapFrom<RealEstate>
     {
         /// <summary>
         /// Наименование
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Адрес
+        /// </summary>
         public string Address { get; set; }
         /// <summary>
         /// Цель
@@ -29,7 +31,6 @@ namespace DSEU.Domain.Entities.RealEstates
         /// <summary>
         /// Валюта
         /// </summary>
-        public Currency Currency { get; set; }
-        public virtual ICollection<RealEstateRight> Rights { get; set; }
+        public int? CurrencyId { get; set; }
     }
 }
