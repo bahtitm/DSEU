@@ -1,5 +1,4 @@
 using DSEU.Domain.Entities.Commons;
-using DSEU.Domain.Entities.Company;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

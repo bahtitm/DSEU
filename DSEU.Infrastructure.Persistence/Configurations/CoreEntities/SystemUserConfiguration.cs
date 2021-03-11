@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DSEU.Infrastructure.Persistence.Configurations
+namespace DSEU.Infrastructure.Persistence.Configurations.CoreEntities
 {
-    class UserConfiguration : IEntityTypeConfiguration<User>
+    public class SystemUserConfiguration : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            
         }
     }
 }

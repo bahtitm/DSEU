@@ -8,7 +8,7 @@ namespace DSEU.Infrastructure.Persistence.Configurations.OurOrganization
     {
         public void Configure(EntityTypeBuilder<OrganizationalUnit> builder)
         {
-            builder.Property(p => p.Name).IsRequired();
+            builder.Property(p => p.Name).IsRequired();            
         }
     }
 }

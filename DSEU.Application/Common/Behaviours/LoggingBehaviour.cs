@@ -23,7 +23,7 @@ namespace DSEU.Application.Common.Behaviours
             //var userId = _currentUserService.UserId;
 
             //_logger.LogInformation("DSEU Request: {Name} {@UserId} {@Request}",
-              //  requestName, userId,  request);
+            //  requestName, userId,  request);
         }
     }
 }
