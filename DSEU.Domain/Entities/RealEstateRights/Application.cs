@@ -1,5 +1,4 @@
 ﻿using DSEU.Domain.Entities.OurOrganization;
-using DSEU.Domain.Entities.Persons;
 using DSEU.Domain.Entities.SubjectsOfRights;
 using System;
 using System.Collections.Generic;
@@ -34,7 +33,7 @@ namespace DSEU.Domain.Entities.RealEstateRights
         /// <summary>
         /// Регистратор
         /// </summary>
-        public Employee Employee { get; set; }
+        public User User { get; set; }
         /// <summary>
         /// Заявитель
         /// </summary>
@@ -56,6 +55,6 @@ namespace DSEU.Domain.Entities.RealEstateRights
         /// </summary>
         public string Decision { get; set; }
         public string Description { get; set; }
-        
+
     }
 }

@@ -5,13 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Modules\Company\OurOrganization\Commands\ChangePassword\**" />
+    <EmbeddedResource Remove="Modules\Company\OurOrganization\Commands\ChangePassword\**" />
+    <None Remove="Modules\Company\OurOrganization\Commands\ChangePassword\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="FluentValidation" Version="9.4.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,15 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\AccessRights\Dtos\" />
-    <Folder Include="Modules\AccessRights\Queries\" />
     <Folder Include="Modules\Commons\" />
-    <Folder Include="Modules\Company\Employees\Commands\ChangePassword\" />
-    <Folder Include="Modules\Company\Employees\Commands\DeleteEmployee\" />
-    <Folder Include="Modules\Company\Employees\Commands\UpdateEmployee\" />
-    <Folder Include="Modules\Company\Employees\Queries\" />
     <Folder Include="Modules\CoreEntities\" />
-    <Folder Include="Modules\Persons\" />
     <Folder Include="Modules\RealEstateRights\" />
     <Folder Include="Modules\RealEstates\" />
     <Folder Include="Modules\ServicesOffered\" />

@@ -13,7 +13,6 @@ namespace DSEU.Infrastructure.Persistence
             {
                 options.UseLazyLoadingProxies();
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
-                //options.UseInMemoryDatabase("DSEUDB");
             });
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<AppDbContext>());

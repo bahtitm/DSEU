@@ -15,6 +15,7 @@
   <ItemGroup>
     <Folder Include="Entities\ArchiveDepartment\" />
     <Folder Include="Entities\ArrestAndBail\" />
+    <Folder Include="Events\" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
 ﻿using DSEU.Domain.Entities.Commons;
-using DSEU.Domain.Entities.Company;
 using NUnit.Framework;
 
 namespace DSEU.Application.Tests
@@ -44,7 +43,7 @@ namespace DSEU.Application.Tests
             {
                 Id = 5
             };
-            
+
 
             maryEtrapGenesh.AddChild(maryEtrapGeneshStreet);
             maryEtrap.AddChild(maryEtrapGenesh);

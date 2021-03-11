@@ -1,7 +1,7 @@
 ﻿using DSEU.Application.Common.Constants;
 using DSEU.Application.Common.Interfaces;
 using DSEU.Domain.Entities;
-using DSEU.Domain.Entities.CoreEntities;
+using DSEU.Domain.Entities.OurOrganization;
 using DSEU.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -46,24 +46,14 @@ namespace DSEU.UI.Data.DataMigrations.V_1.V1_0_0
                 if (!string.IsNullOrEmpty(password))
                     await userManager.AddPasswordAsync(applicationUser, password);
 
-                var user = new SystemUser()
+                var user = new User()
                 {
-                    Login = new Login
-                    {
-                        AuthenticationType = AuthenticationType.Password,
-                        LoginName = name,
-                        Status = Status.Active
-                    },
+
                     Name = name,
                     Status = Status.Active,
                     UserId = applicationUser.Id
                 };
                 await dbContext.AddAsync(user);
-
-                //foreach (var role in roles)
-                //{
-                //    var serverRole = await dbContext.Set<Role>().FirstAsync(p => p.Uid == role);
-                //}
 
                 await dbContext.SaveChangesAsync();
                 await userManager.AddClaimAsync(applicationUser, new Claim(EmployeeClaimTypes.UserIdentifier, user.Id.ToString()));
