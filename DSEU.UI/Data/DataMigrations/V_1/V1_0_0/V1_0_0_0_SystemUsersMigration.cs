@@ -48,10 +48,9 @@ namespace DSEU.UI.Data.DataMigrations.V_1.V1_0_0
 
                 var user = new User()
                 {
-
+                    UserId = applicationUser.Id,
                     Name = name,
                     Status = Status.Active,
-                    UserId = applicationUser.Id
                 };
                 await dbContext.AddAsync(user);
 

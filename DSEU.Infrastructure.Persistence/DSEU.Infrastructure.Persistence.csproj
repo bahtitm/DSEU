@@ -22,4 +22,8 @@
     <ProjectReference Include="..\DSEU.Application\DSEU.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configurations\CoreEntities\" />
+  </ItemGroup>
+
 </Project>

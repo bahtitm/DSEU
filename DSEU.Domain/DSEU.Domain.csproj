@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Events\**" />
+    <EmbeddedResource Remove="Events\**" />
+    <None Remove="Events\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 
@@ -15,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Entities\ArchiveDepartment\" />
     <Folder Include="Entities\ArrestAndBail\" />
-    <Folder Include="Events\" />
   </ItemGroup>
 
 </Project>
