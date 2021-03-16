@@ -19,31 +19,22 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("DSEU.Domain.Entities.AppInfo", b =>
+            modelBuilder.Entity("DSEU.Domain.Entities.AppMigrationHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("InstallDate")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<string>("InstalledVersion")
-                        .HasColumnType("text");
-
-                    b.Property<string>("MainLanguage")
                         .HasColumnType("text");
 
                     b.Property<string>("MigrationName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
-                    b.ToTable("AppInfo");
+                    b.ToTable("AppMigrationHistory");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.Commons.Currency", b =>
@@ -236,9 +227,6 @@ namespace DSEU.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("text");
-
-                    b.Property<int?>("Sex")
-                        .HasColumnType("integer");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");

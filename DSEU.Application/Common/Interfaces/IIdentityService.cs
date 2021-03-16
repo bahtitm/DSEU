@@ -31,6 +31,13 @@ namespace DSEU.Application.Common.Interfaces
         /// <returns></returns>
         Task UnlockUserAsync(string userId, CancellationToken cancellationToken = default);
         /// <summary>
+        /// Добавить пользователя к роли
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
+        Task AddToRoleAsync(string userId, string roleName);
+        /// <summary>
         /// Добавление утверждение для работника
         /// </summary>
         /// <param name="userId">Id работника</param>

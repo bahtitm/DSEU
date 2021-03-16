@@ -10,11 +10,11 @@ namespace DSEU.UI.Data.Extensions
         public static void AddAppVersionManualMigrations(this IServiceCollection services)
         {
             var types = Assembly.GetExecutingAssembly().DefinedTypes
-                .Where(p => !p.IsAbstract && !p.IsInterface && p.ImplementedInterfaces.Any(p => p.IsAssignableFrom(typeof(IAppVersionDataMigration))));
+                .Where(p => !p.IsAbstract && !p.IsInterface && p.ImplementedInterfaces.Any(p => p.IsAssignableFrom(typeof(IDataMigration))));
 
             foreach (var type in types)
             {
-                services.AddScoped(typeof(IAppVersionDataMigration), type);
+                services.AddScoped(typeof(IDataMigration), type);
             }
         }
     }

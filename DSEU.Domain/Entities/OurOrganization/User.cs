@@ -29,10 +29,7 @@ namespace DSEU.Domain.Entities.OurOrganization
         /// Отчество
         /// </summary>
         public string MiddleName { get; set; }
-        /// <summary>
-        /// Пол
-        /// </summary>
-        public Sex? Sex { get; set; }
+       
         /// <summary>
         /// Дата рождения
         /// </summary>

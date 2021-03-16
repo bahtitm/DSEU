@@ -11,6 +11,7 @@ namespace DSEU.Infrastructure.Identity
     {
         private readonly IdentityDbContext dbContext;
 
+
         public ApplicationUserManager(IUserStore<TUser> store,
             IOptions<IdentityOptions> optionsAccessor,
             IPasswordHasher<TUser> passwordHasher,
@@ -80,6 +81,7 @@ namespace DSEU.Infrastructure.Identity
 
         private async Task WritePasswordHistory(TUser user, string newPassword)
         {
+            
             var userId = await Store.GetUserIdAsync(user, CancellationToken);
             await dbContext.Set<UserPasswordHistory>().AddAsync(new UserPasswordHistory
             {

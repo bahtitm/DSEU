@@ -3,10 +3,12 @@ using DSEU.Application.Common.Interfaces;
 using DSEU.Infrastructure;
 using DSEU.Infrastructure.Identity;
 using DSEU.Infrastructure.Persistence;
+using DSEU.UI.Authorization;
 using DSEU.UI.Extensions;
 using DSEU.UI.Resources;
 using DSEU.UI.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
@@ -50,6 +52,16 @@ namespace DSEU.UI
             services.AddCors(ConfigureCors);
 
             services.AddControllers();
+
+            services.AddAuthorization((options) =>
+            {
+                options.AddPolicy(AuthPolicy.RegisterRealEstate, (builder) =>
+                {
+                    builder.AddRequirements(new RegisterRealEstateAuthRequirement());
+                });
+            });
+
+            services.AddScoped<IAuthorizationHandler, RegisterRealEstateAuthHandler>();
 
             services.AddRazorPages()
                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
@@ -114,10 +126,8 @@ namespace DSEU.UI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-                //endpoints.MapControllers().RequireAuthorization();
-                //endpoints.MapRazorPages().RequireAuthorization();
-
+                endpoints.MapControllers().RequireAuthorization();
+                endpoints.MapRazorPages().RequireAuthorization();
             });
 
             app.UseSpa(spa =>

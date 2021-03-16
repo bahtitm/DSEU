@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DSEU.Infrastructure.Persistence.Configurations
 {
-    internal class AppInfoConfiguration : IEntityTypeConfiguration<AppInfo>
+    internal class AppInfoConfiguration : IEntityTypeConfiguration<AppMigrationHistory>
     {
-        public void Configure(EntityTypeBuilder<AppInfo> builder)
+        public void Configure(EntityTypeBuilder<AppMigrationHistory> builder)
         {
 
         }

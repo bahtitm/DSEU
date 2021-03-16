@@ -3,9 +3,12 @@ using DSEU.Application.Modules.RealEstates.Buildings.Commands.DeleteBuilding;
 using DSEU.Application.Modules.RealEstates.Buildings.Commands.UpdateBuilding;
 using DSEU.Application.Modules.RealEstates.Buildings.Queries.GetAllBuildings;
 using DSEU.Application.Modules.RealEstates.Buildings.Queries.GetBuildingDetail;
+using DSEU.UI.Authorization;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Threading.Tasks;
 
 namespace DSEU.UI.Controllers.RealEstates
@@ -16,10 +19,12 @@ namespace DSEU.UI.Controllers.RealEstates
     public class BuildingController : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly IAuthorizationService authorizationService;
 
-        public BuildingController(IMediator mediator)
+        public BuildingController(IMediator mediator, IAuthorizationService authorizationService)
         {
             this.mediator = mediator;
+            this.authorizationService = authorizationService;
         }
 
         [HttpGet]
@@ -41,6 +46,16 @@ namespace DSEU.UI.Controllers.RealEstates
             await mediator.Send(command);
             return NoContent();
         }
+
+
+        //[Authorize(Policy = AuthPolicy.RegisterRealEstate)]
+        //public async Task<IActionResult> Register([FromBody] object command)
+        //{
+        //    var result = await authorizationService.AuthorizeAsync(User, command, AuthPolicy.RegisterRealEstate);
+        //    if (!result.Succeeded)
+        //        return Forbid();
+
+        //}
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateBuildingCommand command)

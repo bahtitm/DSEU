@@ -76,6 +76,7 @@ namespace DSEU.UI
         {
             DataSeeder dataSeeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
             await dataSeeder.SeedData();
+            
         }
     }
 }

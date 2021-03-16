@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Modules\Company\OurOrganization\Commands\ChangePassword\**" />
-    <EmbeddedResource Remove="Modules\Company\OurOrganization\Commands\ChangePassword\**" />
-    <None Remove="Modules\Company\OurOrganization\Commands\ChangePassword\**" />
+    <Compile Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <EmbeddedResource Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <None Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <Folder Include="Modules\Commons\" />
+    <Folder Include="Modules\Company\OurOrganization\Role\Commands\Delete\" />
+    <Folder Include="Modules\Company\OurOrganization\Role\Querys\" />
     <Folder Include="Modules\CoreEntities\" />
     <Folder Include="Modules\RealEstateRights\" />
     <Folder Include="Modules\RealEstates\" />

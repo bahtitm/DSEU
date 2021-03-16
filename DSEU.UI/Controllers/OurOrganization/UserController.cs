@@ -1,8 +1,8 @@
-﻿using DSEU.Application.Modules.Company.OurOrganization.Commands.CreateUser;
-using DSEU.Application.Modules.Company.OurOrganization.Commands.DeleteUser;
-using DSEU.Application.Modules.Company.OurOrganization.Commands.UpdateUser;
-using DSEU.Application.Modules.Company.OurOrganization.Queries.GetAllUser;
-using DSEU.Application.Modules.Company.OurOrganization.Queries.GetUserDetail;
+﻿using DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.CreateUser;
+using DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.DeleteUser;
+using DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.UpdateUser;
+using DSEU.Application.Modules.Company.OurOrganization.ForUser.Queries.GetAllUser;
+using DSEU.Application.Modules.Company.OurOrganization.ForUser.Queries.GetUserDetail;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

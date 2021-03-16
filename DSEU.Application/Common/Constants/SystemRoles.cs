@@ -2,19 +2,30 @@
 {
     public static class SystemRoles
     {
-        public const string Admin = "Admin";
+        public const string Admin = "Administrator";
+        /// <summary>
+        /// Аудитор
+        /// </summary>
         public const string Auditor = "Auditor";
-        public const string User = "User";
-        public const string DepartmentManager = "DepartmentManager";
-        public const string BusinessUnitHead = "BusinessUnitHead";
-        public const string ResponsibleForContracts = "ResponsibleForContracts";
-        public const string ResponsibleForTheFinancialArchive = "ResponsibleForTheFinancialArchive";
-        public const string ResponsibleForCounterparts = "ResponsibleForCounterparts";
-        public const string ResponsibleForRegistrationSettings = "ResponsibleForRegistrationSettings";
-        public const string DocumentDeletion = "DocumentDeletion";
-        public const string Signer = "Signer";
-        public const string Service = "Service";
-        public const string Clerk = "Clerk";
-        public const string Exchange = "Exchange";
+        /// <summary>
+        /// Пользователь
+        /// </summary>
+        public const string User = "Ulanyjy";
+        /// <summary>
+        /// Регистратор
+        /// </summary>
+        public const string Registrar = "Bellige alyjy";
+        /// <summary>
+        /// Архиватор
+        /// </summary>
+        public const string Archiver = "Arhiwçi";
     }
+
+
+    //public const string Registrar = "Регистратор";
+    //public const string Auditor = "Аудитор";
+    //public const string Archiver = "Архиватор";
+    //public const string AcceptOfApplication = "Принятие заявлений";
+    //public const string Consultatiotion = "Предоставление консультации";
+
 }

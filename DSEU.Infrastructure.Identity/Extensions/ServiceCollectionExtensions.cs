@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+﻿using DSEU.Application.Common.Constants;
+using IdentityModel;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
-using DSEU.Shared.Constants;
 
 namespace DSEU.Infrastructure.Identity.Extensions
 {
@@ -18,45 +20,18 @@ namespace DSEU.Infrastructure.Identity.Extensions
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, IdentityDbContext>(options => ConfigureApiAuthorization(options, configuration));
 
-            var tokenValidIssuers = configuration.GetSection($"IdentityServer:TokenValidationParameters:ValidIssuers").Get<string[]>();
-
             services.AddAuthentication().AddIdentityServerJwt();
+
             services.Configure<JwtBearerOptions>(IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
-                options =>
-                {
-                    options.TokenValidationParameters.ValidIssuers = tokenValidIssuers;
-                    var originalOnMessageRecieveEvent = options.Events.OnMessageReceived;
-                    options.Events = new JwtBearerEvents
-                    {
-                        OnMessageReceived = context =>
-                        {
-                            var accessToken = context.Request.Query["access_token"];
-                            // If the request is for our hub...
-                            var path = context.HttpContext.Request.Path;
-                            if (!string.IsNullOrEmpty(accessToken))
-                            {
-                                // Read the token out of the query string
-                                context.Token = accessToken;
-                            }
-                            originalOnMessageRecieveEvent(context);
-                            return Task.CompletedTask;
-                        }
-                    };
-                });
+                options => ConfigureJwtBearerOptions(options, configuration));
         }
 
         private static void ConfigureApiAuthorization(ApiAuthorizationOptions options, IConfiguration configuration)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             ConfigureClients(options.Clients, configuration);
-
             ConfigureApiResources(options.ApiResources);
-
-        }
-
-        private static void ConfigureApiResources(ApiResourceCollection apiResources)
-        {
-            var apiResource = apiResources.First();
-            apiResource.UserClaims = new string[] { EmployeeClaimTypes.EmployeeId };
+            
         }
 
         private static void ConfigureClients(ClientCollection clients, IConfiguration configuration)
@@ -86,5 +61,39 @@ namespace DSEU.Infrastructure.Identity.Extensions
                 client.AccessTokenLifetime = (int)TimeSpan.FromHours(8).TotalSeconds;
             }
         }
+
+        private static void ConfigureApiResources(ApiResourceCollection apiResources)
+        {
+            var apiResource = apiResources.First();
+            var claims = new List<string>();
+            claims.AddRange(UserClaimTypes.All);
+            claims.Add(JwtClaimTypes.Role);
+            apiResource.UserClaims = claims;
+        }
+
+        private static void ConfigureJwtBearerOptions(JwtBearerOptions options, IConfiguration configuration)
+        {
+            //var tokenValidIssuers = configuration.GetSection($"IdentityServer:TokenValidationParameters:ValidIssuers").Get<string[]>();
+
+            //options.TokenValidationParameters.ValidIssuers = tokenValidIssuers;
+            //var originalOnMessageRecieveEvent = options.Events.OnMessageReceived;
+            //options.Events = new JwtBearerEvents
+            //{
+            //    OnMessageReceived = context =>
+            //    {
+            //        var accessToken = context.Request.Query["access_token"];
+            //        // If the request is for our hub...
+            //        var path = context.HttpContext.Request.Path;
+            //        if (!string.IsNullOrEmpty(accessToken))
+            //        {
+            //            // Read the token out of the query string
+            //            context.Token = accessToken;
+            //        }
+            //        originalOnMessageRecieveEvent(context);
+            //        return Task.CompletedTask;
+            //    }
+            //};
+        }
+
     }
 }

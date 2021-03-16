@@ -1,3 +1,6 @@
+using DSEU.Application.Common.Exceptions;
+using DSEU.Application.Common.Interfaces;
+using DSEU.Shared;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -5,23 +8,24 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
-using DSEU.Application.Common.Exceptions;
-using DSEU.Application.Common.Interfaces;
-using DSEU.Shared;
 
 namespace DSEU.Infrastructure.Identity
 {
     public class IdentityService : IIdentityService
     {
         private readonly ApplicationUserManager<ApplicationUser> userManager;
-
-        public IdentityService(ApplicationUserManager<ApplicationUser> userManager)
+        private readonly RoleManager<IdentityRole> roleManager;
+        public IdentityService(ApplicationUserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         public async Task<string> CreateUserAsync(string userName, string email, string password, bool needChangePassword = true, CancellationToken cancellationToken = default)
         {
+
+
+
             var user = new ApplicationUser
             {
                 UserName = userName,
@@ -113,6 +117,12 @@ namespace DSEU.Infrastructure.Identity
             {
                 throw new ValidationException(identityResult.Errors.Select(prop => new ValidationFailure(prop.Code, prop.Description)));
             }
+        }
+
+        public async Task AddToRoleAsync(string userId, string roleName)
+        {
+            var user = await userManager.FindByIdAsync(userId);
+            await userManager.AddToRoleAsync(user, roleName);
         }
     }
 }
