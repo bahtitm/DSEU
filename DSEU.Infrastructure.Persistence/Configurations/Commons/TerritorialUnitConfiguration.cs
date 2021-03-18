@@ -11,10 +11,7 @@ namespace DSEU.Infrastructure.Persistence.Configurations.Commons
             builder.Property(p => p.Name).IsRequired();
             builder.HasIndex(p => p.Name);
 
-            builder.HasOne(p => p.Type)
-                .WithMany(p => p.TerritorialUnits)
-                .HasForeignKey(prop => prop.TypeId)
-                .OnDelete(DeleteBehavior.Restrict);
+            
 
             builder.HasOne(p => p.Parent)
                 .WithMany(prop => prop.Childs)

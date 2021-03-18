@@ -28,7 +28,7 @@ namespace DSEU.Domain.Entities.RealEstateRights
         public int? ApplicantId { get; set; }
         public virtual Applicant Applicant { get; set; }
 
-        public virtual ICollection<BasisForChangeDocument> Documents { get; set; }
+        public virtual ICollection<Basis> Documents { get; set; }
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using DSEU.Domain.Entities.OurOrganization;
+﻿using DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple;
+using DSEU.Domain.Entities.OurOrganization;
 using DSEU.Domain.Entities.SubjectsOfRights;
 using System;
 using System.Collections.Generic;
@@ -8,40 +9,36 @@ namespace DSEU.Domain.Entities.RealEstateRights
     /// <summary>
     /// Заявление
     /// </summary>
-    public class Application : BaseEntity
+    public class Statement : BaseEntity
     {
+        /// <summary>
+        /// Порядковый номер в журнале
+        /// </summary>
+        public int Index { get; set; }
         /// <summary>
         /// Номер заявления
         /// </summary>
         public string Number { get; set; }
         /// <summary>
-        /// порядковый номер в журнале
+        /// Цель заявления
         /// </summary>
-        public int? SerialNumber { get; set; }
-        /// <summary>
-        /// Цель заявление
-        /// </summary>
-        public string PurposeAplication { get; set; }
+        public string Purpose { get; set; }
         /// <summary>
         /// Время заявления (dd.MM.yyyy HH:mm)
         /// </summary>
         public DateTime? DateTime { get; set; }
         /// <summary>
-        /// Отделение принявшее заявление
-        /// </summary>
-        public OrganizationalUnit OurOrganizationUnit { get; set; }
-        /// <summary>
         /// Регистратор
         /// </summary>
-        public User User { get; set; }
+        public virtual User User { get; set; }
         /// <summary>
         /// Заявитель
         /// </summary>
-        public Applicant Applicant { get; set; }
+        public virtual Applicant Applicant { get; set; }
         /// <summary>
         /// Представитель
         /// </summary>
-        public ICollection<Applicant> Representatives { get; set; }
+        public virtual ICollection<Applicant> Representatives { get; set; }
         /// <summary>
         /// Принятые документы от заявителя
         /// </summary>
@@ -51,10 +48,17 @@ namespace DSEU.Domain.Entities.RealEstateRights
         /// </summary>
         public List<string> IssuedDocuments { get; set; }
         /// <summary>
+        /// Информация о недвижимости
+        /// </summary>
+        public string RealEstate { get; set; }
+        /// <summary>
         /// Принятое Решение
         /// </summary>
-        public string Decision { get; set; }
-        public string Description { get; set; }
-
+        public Decision Decision { get; set; }
+        public int? RealEstateRightId { get; set; }
+        public virtual RealEstateRight RealEstateRight { get; set; }
+        public int LocalityId { get; set; }
+        public virtual Locality Locality { get; set; }
+        public string Note { get; set; }
     }
 }

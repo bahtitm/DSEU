@@ -4,11 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DSEU.Infrastructure.Persistence.Configurations.OurOrganization
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    class UserConfiguration : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            
             builder.Property(p => p.LoginName).IsRequired(true);
             builder.Property(p => p.UserId).IsRequired(false);
             builder.HasIndex(p => p.UserId).IsUnique(true);
@@ -25,7 +24,6 @@ namespace DSEU.Infrastructure.Persistence.Configurations.OurOrganization
                 .WithMany(p => p.Users)
                 .HasForeignKey(p => p.OrganizationalUnitId)
                 .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }

@@ -25,7 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Commons\" />
+    <Folder Include="Modules\Commons\TerritorialUnits\Comands\DeleteTerritorialUnit\" />
+    <Folder Include="Modules\Commons\TerritorialUnits\Comands\UpdateTerritorialUnit\" />
+    <Folder Include="Modules\Commons\TerritorialUnits\Queries\" />
     <Folder Include="Modules\Company\OurOrganization\Role\Commands\Delete\" />
     <Folder Include="Modules\Company\OurOrganization\Role\Querys\" />
     <Folder Include="Modules\CoreEntities\" />

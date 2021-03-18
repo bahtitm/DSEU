@@ -13,6 +13,6 @@ namespace DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple
         /// <summary>
         /// Этрапы
         /// </summary>
-        public ICollection<District> Districts { get; set; }
+        public virtual ICollection<District> Districts { get; set; }
     }
 }

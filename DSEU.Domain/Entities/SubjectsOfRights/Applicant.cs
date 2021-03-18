@@ -1,15 +1,14 @@
-﻿using DSEU.Domain.Entities.SubjectsOfRights.Persons;
+﻿using DSEU.Domain.Entities.RealEstateRights;
+using DSEU.Domain.Entities.SubjectsOfRights.Persons;
 using System;
 
 namespace DSEU.Domain.Entities.SubjectsOfRights
 {
-    public class Applicant:BaseEntity
+    /// <summary>
+    /// Предствитель (Физическое лицо)
+    /// </summary>
+    public class Applicant : BaseEntity
     {
-
-        /// <summary>
-        /// Имя
-        /// </summary>
-        public string Name { get; set; }
         /// <summary>
         /// Имя
         /// </summary>
@@ -33,7 +32,7 @@ namespace DSEU.Domain.Entities.SubjectsOfRights
         /// <summary>
         /// Вид документа
         /// </summary>
-        public IdentityDocumentType IdentityDocumentType { get; set; }
+        public IdentityDocumentType? IdentityDocumentType { get; set; }
         /// <summary>
         /// Номер документа
         /// </summary>
@@ -54,5 +53,7 @@ namespace DSEU.Domain.Entities.SubjectsOfRights
         /// Прописка
         /// </summary>
         public string Registration { get; set; }
+        public int StatementId { get; set; }
+        public virtual Statement Statement { get; set; }
     }
 }

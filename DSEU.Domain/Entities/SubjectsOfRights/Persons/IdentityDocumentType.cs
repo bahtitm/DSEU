@@ -5,7 +5,13 @@
     /// </summary>
     public enum IdentityDocumentType
     {
+        /// <summary>
+        /// Паспорт
+        /// </summary>
         Passport,
+        /// <summary>
+        /// Военный билет
+        /// </summary>
         MilitaryID
     }
 }

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DSEU.Infrastructure.Persistence.Configurations.RealEstateRights
 {
-    public class BasisForChangeDocumentConfiguration : IEntityTypeConfiguration<BasisForChangeDocument>
+    class BasisConfiguration : IEntityTypeConfiguration<Basis>
     {
-        public void Configure(EntityTypeBuilder<BasisForChangeDocument> builder)
+        public void Configure(EntityTypeBuilder<Basis> builder)
         {
-            
+
         }
     }
 }

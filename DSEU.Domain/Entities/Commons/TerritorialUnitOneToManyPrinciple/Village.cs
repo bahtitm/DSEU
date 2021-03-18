@@ -8,6 +8,6 @@ namespace DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple
     public class Village : DatabookEntry
     {
         public int LocalityId { get; set; }
-        public Locality Locality { get; set; }
+        public virtual Locality Locality { get; set; }
     }
 }

@@ -15,31 +15,27 @@ namespace DSEU.Application.Tests
         public void TestAddress()
         {
 
-            TerritorialUnitType welayat = new TerritorialUnitType("Welayat", "welaýatynyň");
-            TerritorialUnitType etrap = new TerritorialUnitType("Etrap", "etrabynyň");
-            TerritorialUnitType genes = new TerritorialUnitType("Genes", "geneşiniň");
-            TerritorialUnitType street = new TerritorialUnitType("Street", "köçesiniň");
-            TerritorialUnitType etrap1 = new TerritorialUnitType("Etrap", "etrabynyň");
-            TerritorialUnit mary = new TerritorialUnit("Mary", welayat)
+            
+            TerritorialUnit mary = new TerritorialUnit("Mary")
             {
                 Id = 1
             };
 
-            var maryEtrap = new TerritorialUnit("Mary", etrap)
+            var maryEtrap = new TerritorialUnit("Mary")
             {
                 Id = 2
             };
 
-            var maryEtrapGenesh = new TerritorialUnit("Kopetdag", genes)
+            var maryEtrapGenesh = new TerritorialUnit("Kopetdag")
             {
                 Id = 3
             };
-            var maryEtrapGeneshStreet = new TerritorialUnit("Magtymguly", street)
+            var maryEtrapGeneshStreet = new TerritorialUnit("Magtymguly")
             {
                 Id = 4
             };
 
-            var myetrap1 = new TerritorialUnit("Mary", etrap)
+            var myetrap1 = new TerritorialUnit("Mary")
             {
                 Id = 5
             };

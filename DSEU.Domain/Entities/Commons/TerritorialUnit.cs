@@ -11,14 +11,15 @@ namespace DSEU.Domain.Entities.Commons
     public class TerritorialUnit : DatabookEntry
     {
         protected TerritorialUnit() { }
-        public TerritorialUnit(string name, TerritorialUnitType type)
+        public TerritorialUnit(string name)
         {
-            Name = name;
-            Type = type;
+            Name = name;            
         }
+        /// <summary>
+        /// Имя типа населеного пункта (welayat oba şäher)
+        /// </summary>
+        public string TypeName { get; set; }
 
-        public virtual TerritorialUnitType Type { get; set; }
-        public int TypeId { get; set; }
         public virtual TerritorialUnit Parent { get; set; }
         public virtual ICollection<TerritorialUnit> Childs { get; set; } = new List<TerritorialUnit>();
         public int? ParentId { get; set; }
@@ -52,7 +53,7 @@ namespace DSEU.Domain.Entities.Commons
             //TODO: Реализовать логику
             MarkAsClosed(reason);
             target.MarkAsClosed(reason);
-            TerritorialUnit newUnit = new(distinationName, this.Type);
+            TerritorialUnit newUnit = new(distinationName);
             return newUnit;
         }
         /// <summary>
@@ -75,14 +76,7 @@ namespace DSEU.Domain.Entities.Commons
         {
             Name = newName;
         }
-        /// <summary>
-        /// Сменить наименование
-        /// </summary>
-        /// <param name="newName"></param>
-        public void ChangeType(TerritorialUnitType target)
-        {
-            Type = target;
-        }
+        
         /// <summary>
         /// Переместить административную единицу
         /// </summary>

@@ -1,7 +1,6 @@
 ﻿using DSEU.Application.Common.Constants;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
 using System.Threading.Tasks;
 
 namespace DSEU.UI.Controllers.Claim
@@ -12,10 +11,10 @@ namespace DSEU.UI.Controllers.Claim
     public class ClaimController : ControllerBase
     {
         [HttpGet]
-        public async Task<IActionResult> Claims() 
+        public async Task<IActionResult> Claims()
         {
             return Ok(UserClaimTypes.All);
-            
+
         }
 
     }

@@ -36,7 +36,7 @@ namespace DSEU.Domain.Entities.Commons
             while (units.Count > 0)
             {
                 var unit = units.Pop();
-                stringBuilder.AppendFormat("{0} {1}", unit.Name, unit.Type.PostFix);
+                stringBuilder.AppendFormat("{0} {1}", unit.Name, unit.TypeName);
 
                 if (units.Count > 0)
                 {

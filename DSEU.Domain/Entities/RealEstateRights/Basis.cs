@@ -1,9 +1,9 @@
 ﻿namespace DSEU.Domain.Entities.RealEstateRights
 {
     /// <summary>
-    /// абстрактный класс документы основание на изменение
+    /// документ основание для действий
     /// </summary>
-    public abstract class BasisForChangeDocument : BaseEntity
+    public abstract class Basis : BaseEntity
     {
         public DocumentType DocumentType { get; set; }
         public string Name { get; set; }
