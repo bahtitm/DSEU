@@ -1,0 +1,10 @@
+{
+	"ElasticOptions": {
+		"RetryOnConflict": 2,
+		"ResponseIndexFrom": 0,
+		"ResponseCount": 1,
+		"SlopCount": 2,
+		"BoostValue": 1.1,
+		"EditDistanceCount": 2
+	}
+}

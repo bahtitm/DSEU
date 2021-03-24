@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DSEU.Infrastructure.DataProtection\DSEU.Infrastructure.DataProtection.csproj" />
+    <ProjectReference Include="..\DSEU.Infrastructure.ElasticSearch\DSEU.Infrastructure.ElasticSearch.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.Identity\DSEU.Infrastructure.Identity.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.Persistence\DSEU.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure\DSEU.Infrastructure.csproj" />

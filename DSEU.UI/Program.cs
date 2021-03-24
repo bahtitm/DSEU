@@ -1,3 +1,5 @@
+using DSEU.Infrastructure.ElasticSearch;
+using DSEU.Infrastructure.ElasticSearch.Configuration;
 using DSEU.UI.Data;
 using DSEU.UI.Data.Extensions;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +21,7 @@ namespace DSEU.UI
             using var scope = host.Services.CreateScope();
             await MigrateDatabases(scope);
             await SeedData(scope);
+            await ElasticSearchConfiugue(scope);
             await host.RunAsync();
         }
 
@@ -28,6 +31,7 @@ namespace DSEU.UI
                {
                    builder.AddEnvironmentVariables()
                           .AddJsonFile($"emailConfig.json", optional: true)
+                          .AddJsonFile($"elasticconfig.json", optional: true)
                           .AddJsonFile($"serilogconfig.{context.HostingEnvironment.EnvironmentName}.json", optional: true)
                           .AddJsonFile("serilogconfig.json");
 
@@ -45,7 +49,11 @@ namespace DSEU.UI
                    services.Configure<KestrelServerOptions>(builder.Configuration.GetSection("Kestrel"));
                    services.AddScoped<DatabaseMigrator>();
                    services.AddScoped<DataSeeder>();
+                   services.AddScoped<ElasticSearchConfiguration>();
                    services.AddAppVersionManualMigrations();
+
+                   services.Configure<ElasticSearchOptions>(builder.Configuration.GetSection("ElasticOptions"));
+                   services.AddDSEUElasticSearch(builder.Configuration);
                })
               .UseSerilog((context, configuration) =>
               {
@@ -76,6 +84,12 @@ namespace DSEU.UI
         {
             DataSeeder dataSeeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
             await dataSeeder.SeedData();
+        }
+
+        private static async Task ElasticSearchConfiugue(IServiceScope scope)
+        {
+            ElasticSearchConfiguration elasticSearch = scope.ServiceProvider.GetRequiredService<ElasticSearchConfiguration>();
+            await elasticSearch.CreateElasticSearchIndex();
         }
     }
 }

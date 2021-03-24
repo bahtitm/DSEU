@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DSEU.Application.Common.Interfaces;
+using DSEU.Application.Modules.ElasticSearch.Dtos;
 using DSEU.Domain.Entities.RealEstates;
 using MediatR;
 using System.Threading;
