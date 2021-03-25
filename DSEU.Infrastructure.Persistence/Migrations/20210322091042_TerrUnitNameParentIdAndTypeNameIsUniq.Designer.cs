@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DSEU.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210318181607_TerUnTypeRm")]
-    partial class TerUnTypeRm
+    [Migration("20210322091042_TerrUnitNameParentIdAndTypeNameIsUniq")]
+    partial class TerrUnitNameParentIdAndTypeNameIsUniq
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,9 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int?>("Level")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -98,9 +101,8 @@ namespace DSEU.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name");
-
-                    b.HasIndex("ParentId");
+                    b.HasIndex("Name", "ParentId", "TypeName")
+                        .IsUnique();
 
                     b.ToTable("TerritorialUnit");
                 });
@@ -665,16 +667,6 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.HasDiscriminator().HasValue("Land");
                 });
 
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnit", b =>
-                {
-                    b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnit", "Parent")
-                        .WithMany("Childs")
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Parent");
-                });
-
             modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.District", b =>
                 {
                     b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Region", "Region")
@@ -844,11 +836,6 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                         .HasForeignKey("CurrencyId");
 
                     b.Navigation("Currency");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnit", b =>
-                {
-                    b.Navigation("Childs");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Country", b =>

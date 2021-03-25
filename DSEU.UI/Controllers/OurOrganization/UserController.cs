@@ -21,18 +21,22 @@ namespace DSEU.UI.Controllers.OurOrganization
         {
             this.mediator = mediator;
         }
-
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var user = await mediator.Send(new GetAllUserQuery());
+            return Ok(user);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            return Ok(await mediator.Send(new GetUserDetailQuery(id)));
+        }
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] CreateUserCommand command)
         {
             await mediator.Send(command);
 
-            return NoContent();
-        }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await mediator.Send(new DeleteUserComand(id));
             return NoContent();
         }
         [HttpPut("{id}")]
@@ -42,22 +46,14 @@ namespace DSEU.UI.Controllers.OurOrganization
             {
                 return BadRequest($"Check request: {id} not equals {command.Id}");
             }
-
             await mediator.Send(command);
-
             return NoContent();
         }
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var employees = await mediator.Send(new GetAllUserQuery());
-            return Ok(employees);
-        }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-
-            return Ok(await mediator.Send(new GetUserDetailQuery(id)));
-        }
+            await mediator.Send(new DeleteUserComand(id));
+            return NoContent();
+        }                
     }
 }

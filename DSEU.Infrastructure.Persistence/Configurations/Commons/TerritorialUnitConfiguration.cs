@@ -9,14 +9,7 @@ namespace DSEU.Infrastructure.Persistence.Configurations.Commons
         public void Configure(EntityTypeBuilder<TerritorialUnit> builder)
         {
             builder.Property(p => p.Name).IsRequired();
-            builder.HasIndex(p => p.Name);
-
-            
-
-            builder.HasOne(p => p.Parent)
-                .WithMany(prop => prop.Childs)
-                .HasForeignKey(prop => prop.ParentId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasIndex(p => new { p.Name, p.ParentId ,p.TypeName}).IsUnique(); 
         }
     }
 }

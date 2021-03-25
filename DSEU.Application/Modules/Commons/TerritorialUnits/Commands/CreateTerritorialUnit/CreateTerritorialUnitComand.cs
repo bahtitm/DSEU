@@ -1,11 +1,10 @@
-﻿using DSEU.Domain.Entities;
-using MediatR;
+﻿using MediatR;
 
-namespace DSEU.Application.Modules.Commons.TerritorialUnits.Comands.CreateTerritorialUnit
+namespace DSEU.Application.Modules.Commons.TerritorialUnits.Commands.CreateTerritorialUnit
 {
     public class CreateTerritorialUnitComand : IRequest
     {
-        public int Id { get; set; }
+
         /// <summary>
         /// Наименование
         /// </summary>
@@ -17,7 +16,7 @@ namespace DSEU.Application.Modules.Commons.TerritorialUnits.Comands.CreateTerrit
         /// <summary>
         /// Состояние
         /// </summary>
-        public Status Status { get; set; }
+        //public Status Status { get; set; }
         public int? ParentId { get; set; }
 
     }

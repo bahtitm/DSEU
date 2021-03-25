@@ -15,7 +15,6 @@ namespace DSEU.UI.Data.DataMigrations.V_1.V1_0_0
         {
             this.roleManager = roleManager;
         }
-
         public async Task Migrate()
         {
             await roleManager.CreateAsync(new IdentityRole(SystemRoles.Admin));

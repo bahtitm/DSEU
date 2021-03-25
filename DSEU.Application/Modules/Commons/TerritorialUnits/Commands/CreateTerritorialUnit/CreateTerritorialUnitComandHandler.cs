@@ -5,7 +5,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DSEU.Application.Modules.Commons.TerritorialUnits.Comands.CreateTerritorialUnit
+namespace DSEU.Application.Modules.Commons.TerritorialUnits.Commands.CreateTerritorialUnit
 {
     public class CreateTerritorialUnitComandHandler : AsyncRequestHandler<CreateTerritorialUnitComand>
     {

@@ -19,32 +19,32 @@ namespace DSEU.Domain.Entities.Commons
         {
             //TODO:Реализовать логику
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(ComputeMainAddressPart());
+            //stringBuilder.Append(ComputeMainAddressPart());
             stringBuilder.Append(additionalInfo.ToString());
             return stringBuilder.ToString();
         }
-        private string ComputeMainAddressPart()
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            Stack<TerritorialUnit> units = new(new[] { territorialUnit });
-            var current = territorialUnit.Parent;
-            while (current != null)
-            {
-                units.Push(current);
-                current = current.Parent;
-            }
-            while (units.Count > 0)
-            {
-                var unit = units.Pop();
-                stringBuilder.AppendFormat("{0} {1}", unit.Name, unit.TypeName);
+        //private string ComputeMainAddressPart()
+        //{
+        //    StringBuilder stringBuilder = new StringBuilder();
+        //    Stack<TerritorialUnit> units = new(new[] { territorialUnit });
+        //    var current = territorialUnit.Parent;
+        //    while (current != null)
+        //    {
+        //        units.Push(current);
+        //        current = current.Parent;
+        //    }
+        //    while (units.Count > 0)
+        //    {
+        //        var unit = units.Pop();
+        //        stringBuilder.AppendFormat("{0} {1}", unit.Name, unit.TypeName);
 
-                if (units.Count > 0)
-                {
-                    stringBuilder.Append(',');
-                }
-            }
-            return stringBuilder.ToString();
-        }
+        //        if (units.Count > 0)
+        //        {
+        //            stringBuilder.Append(',');
+        //        }
+        //    }
+        //    return stringBuilder.ToString();
+        //}
     }
     public class AddressAdditionalInfo
     {

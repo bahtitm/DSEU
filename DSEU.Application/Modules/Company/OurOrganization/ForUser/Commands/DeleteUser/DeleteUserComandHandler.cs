@@ -18,8 +18,8 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.Dele
 
         protected override async Task Handle(DeleteUserComand request, CancellationToken cancellationToken)
         {
-            var employee = await dbContext.FindByIdAsync<User>(request.Id, cancellationToken);
-            dbContext.Set<User>().Remove(employee);
+            var user = await dbContext.FindByIdAsync<User>(request.Id, cancellationToken);
+            dbContext.Set<User>().Remove(user);
             await dbContext.SaveChangesAsync(cancellationToken);
 
         }

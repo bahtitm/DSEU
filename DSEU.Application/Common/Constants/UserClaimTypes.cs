@@ -4,14 +4,19 @@ namespace DSEU.Application.Common.Constants
 {
     public static class UserClaimTypes
     {
-        public static class User
-        {
-            /// <summary>
-            /// Идентификатор сотрудника
-            /// </summary>
-            public const string Id = "UserId";
-            public const string Regions = "Regions";
-        }
+        //Claim-ы Для роли администратора
+        public const string ManipulateWithDataBookEntries = "ManipulateWithDataBookEntries";
+        public const string UserRegistration = "UserRegistration";
+        public const string UserClaimRoleRegistration = "UserClaimRoleRegistration";
+        //Claim-ы для регистратора
+        public const string RegistrationOfStatement= "RegistrationOfStatement";
+        public const string RegistrationOfRight = "RegistrationOfRight";
+        public const string RightToChange = "RightToChange";
+        public const string RightToTechnicalChange = "RightToTechnicalChange";
+        public const string RegistrationOfArrest = "RegistrationOfArrest";
+        public const string RegistrationOfBail = "RegistrationOfBail";
+        //Claim-ы для архиватора
+        public const string AcceptanceToArchive = "AcceptanceToArchive";
         public static class RealEstate
         {
             public const string Read = "ReadRealEstate";

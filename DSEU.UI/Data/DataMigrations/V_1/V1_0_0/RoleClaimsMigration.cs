@@ -1,6 +1,5 @@
 ﻿using DSEU.Application.Common.Constants;
 using Microsoft.AspNetCore.Identity;
-using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Security.Claims;
