@@ -1,0 +1,42 @@
+{
+	"IdentityServer": {
+		"Clients": {
+			"DSEU.UI": {
+				"Profile": "SPA",
+				"RedirectUri": "http://localhost:3000/callback",
+				"LogoutUri": "http://localhost:3000/"
+			},
+			"DSEU.UI-prod": {
+				"Profile": "SPA",
+				"RedirectUri": "https://192.168.4.188/callback",
+				"AdditionalHosts": [ "https://localhost", "https://127.0.0.1" ],
+				"LogoutUri": "https://192.168.4.188/"
+			}
+		},
+		"TokenValidationParameters": {
+			"ValidIssuers": [ "https://192.168.4.188", "http://localhost:3000" ]
+		},
+		"Key": {
+			"Type": "File",
+			"FilePath": "/https/aspnetapp.pfx",
+			"Password": "Password1!"
+		}
+	},
+	"IdentityOptions": {
+		"Lockout": {
+			"MaxFailedAccessAttempts": 10,
+			"DefaultLockoutTimeSpan": "00:20:00"
+		},
+		"Password": {
+			"RequiredLength": 5,
+			"RequiredUniqueChars": 1,
+			"RequireDigit": false,
+			"RequireLowercase": false,
+			"RequireNonAlphanumeric": false,
+			"RequireUppercase": false
+		},
+		"PasswordValidation": {
+			"NumberOfDistinctLastPasswordsInHistory": 4
+		}
+	}
+}

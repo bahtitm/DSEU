@@ -1,13 +1,20 @@
 version: '3.4'
 
 services:
-  dseu.ui:
+  dseu:
     environment:
+      - ConnectionStrings__DefaultConnection=Server=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DB};User Id=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Password1!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - WAIT_HOSTS=${APP_WAIT_HOSTS}
+      - Organization__Name=Dseu
     ports:
-      - "80"
-      - "443"
+      - 443:443
+    networks:
+      - dseu-network
     volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ./certs/app:/https:ro
+      - ./config:/config:ro
+    command: sh -c "dotnet DSEU.UI.dll" 

@@ -102,6 +102,7 @@ namespace DSEU.UI
             {
                 app.UseExceptionHandler("/error-local-development");
                 app.UseForwardedHeaders();
+                
             }
             else
             {
@@ -113,20 +114,19 @@ namespace DSEU.UI
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseSwagger();
+
             app.UseCors(AllowedDomainsCorsPolicy);
 
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
 
-
             app.UseSession();
-
-            app.UseSwagger();
 
             app.UseEndpoints(endpoints =>
             {
-               // endpoints.MapControllers();
                endpoints.MapControllers().RequireAuthorization();
                endpoints.MapRazorPages().RequireAuthorization();
             });

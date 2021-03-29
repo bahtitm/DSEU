@@ -10,6 +10,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include=".env" />
+    <None Include="certs\app\aspnetapp.pfx" />
+    <None Include="config\identityconfig.json" />
+    <None Include="docker-compose-start.ps1" />
+    <None Include="docker-compose-stop.ps1" />
+    <None Include="docker-compose.db.override.yml">
+      <DependentUpon>docker-compose.db.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.db.yml" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>

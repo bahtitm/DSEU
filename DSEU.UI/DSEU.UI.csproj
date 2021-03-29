@@ -2,9 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>bfda39aa-8713-4a09-9cc7-720c32864fb4</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <SpaRoot>ClientApp\</SpaRoot>
   </PropertyGroup>
 
   <ItemGroup>
@@ -120,9 +118,21 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="$(SpaRoot)dist\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>bfda39aa-8713-4a09-9cc7-720c32864fb4</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <PackageId>DSEU</PackageId>
+    <Authors>Kleperson Timur</Authors>
+    <Company>Turkmen Tranzit</Company>
+    <Product>DSEU</Product>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>

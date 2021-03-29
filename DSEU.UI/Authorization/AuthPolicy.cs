@@ -29,7 +29,7 @@ namespace DSEU.UI.Authorization
             //context.Succeed(requirement);
             var user = context.User;
             if (user.IsInRole(SystemRoles.Registrar) &&
-            user.FindFirst(p => p.Type == UserClaimTypes.RealEstate.Register)?.Value == bool.TrueString.ToLower())
+            user.FindFirst(p => p.Type == UserClaimTypes.Register)?.Value == bool.TrueString.ToLower())
             {
                 var isAdmin = user.IsInRole(SystemRoles.Admin);
                 var isRegistrat = user.IsInRole(SystemRoles.Registrar);

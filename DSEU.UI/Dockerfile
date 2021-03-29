@@ -5,6 +5,9 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+ENV TZ=Asia/Ashgabat
+
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["DSEU.UI/DSEU.UI.csproj", "DSEU.UI/"]

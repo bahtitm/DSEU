@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 
 namespace DSEU.Application.Common.Constants
@@ -17,26 +18,26 @@ namespace DSEU.Application.Common.Constants
         public const string RegistrationOfBail = "RegistrationOfBail";
         //Claim-ы для архиватора
         public const string AcceptanceToArchive = "AcceptanceToArchive";
-        public static class RealEstate
-        {
-            public const string Read = "ReadRealEstate";
-            public const string Register = "RegisterRealEstate";
-            public static IEnumerable<string> All
-            {
-                get
-                {
-                    yield return RealEstate.Read;
-                    yield return RealEstate.Register;
-                }
-            }
-        }
+
+        public const string Read = "ReadRealEstate";
+        public const string Register = "RegisterRealEstate";
 
         public static IEnumerable<string> All
         {
             get
             {
-                foreach (var item in RealEstate.All)
-                    yield return item;
+                yield return UserClaimTypes.ManipulateWithDataBookEntries;
+                yield return UserClaimTypes.UserRegistration;
+                yield return UserClaimTypes.UserClaimRoleRegistration;
+                yield return UserClaimTypes.RegistrationOfStatement;
+                yield return UserClaimTypes.RegistrationOfRight;
+                yield return UserClaimTypes.RightToChange;
+                yield return UserClaimTypes.RightToTechnicalChange;
+                yield return UserClaimTypes.RegistrationOfArrest;
+                yield return UserClaimTypes.RegistrationOfBail;
+                yield return UserClaimTypes.AcceptanceToArchive;
+                yield return UserClaimTypes.Read;
+                yield return UserClaimTypes.Register;
             }
         }
     }
