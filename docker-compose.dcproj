@@ -11,6 +11,47 @@
   <ItemGroup>
     <None Include=".env" />
     <None Include="certs\app\aspnetapp.pfx" />
+    <None Include="ClientApp\dist\.nojekyll" />
+    <None Include="ClientApp\dist\200.html" />
+    <None Include="ClientApp\dist\dataApi.js" />
+    <None Include="ClientApp\dist\favicon.ico" />
+    <None Include="ClientApp\dist\icon.png" />
+    <None Include="ClientApp\dist\icons\main-logo.svg" />
+    <None Include="ClientApp\dist\index.html" />
+    <None Include="ClientApp\dist\README.md" />
+    <None Include="ClientApp\dist\sw.js" />
+    <None Include="ClientApp\dist\_nuxt\15325cc.js" />
+    <None Include="ClientApp\dist\_nuxt\6573b61.js" />
+    <None Include="ClientApp\dist\_nuxt\78aa237.js" />
+    <None Include="ClientApp\dist\_nuxt\c12ae4a.js" />
+    <None Include="ClientApp\dist\_nuxt\e7decb6.js" />
+    <None Include="ClientApp\dist\_nuxt\fc6703c.js" />
+    <None Include="ClientApp\dist\_nuxt\feff274.js" />
+    <None Include="ClientApp\dist\_nuxt\fonts\dxicons.ade87a8.woff" />
+    <None Include="ClientApp\dist\_nuxt\fonts\dxicons.d601b53.woff2" />
+    <None Include="ClientApp\dist\_nuxt\fonts\dxicons.d8b3a23.ttf" />
+    <None Include="ClientApp\dist\_nuxt\icons\icon_120x120.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\icon_144x144.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\icon_152x152.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\icon_192x192.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\icon_384x384.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\icon_512x512.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\icon_64x64.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_ipadpro10_1668x2224.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_ipadpro12_2048x2732.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_ipadpro9_1536x2048.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_ipad_1536x2048.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_iphone6_50x1334.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_iphoneplus_1080x1920.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_iphonese_640x1136.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_iphonexr_828x1792.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_iphonexsmax_1242x2688.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\icons\splash_iphonex_1125x2436.5f6a36.png" />
+    <None Include="ClientApp\dist\_nuxt\img\main-logo.64e669d.svg" />
+    <None Include="ClientApp\dist\_nuxt\LICENSES" />
+    <None Include="ClientApp\dist\_nuxt\manifest.78fd31eb.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="config\identityconfig.json" />
     <None Include="docker-compose-start.ps1" />
     <None Include="docker-compose-stop.ps1" />

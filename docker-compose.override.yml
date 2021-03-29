@@ -16,6 +16,6 @@ services:
       - dseu-network
     volumes:
       - ./certs/app:/https:ro
-      - dseu-api-data:/DSEU.UI/ClientApp/dist
+      - ./ClientApp:/app/ClientApp:ro
       - ./config:/config:ro
     command: sh -c "dotnet DSEU.UI.dll" 
