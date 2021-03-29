@@ -5,16 +5,8 @@ using System;
 namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.CreateUser
 {
     public class CreateUserCommand : IRequest
-    {
-        public CreateUserCommand(bool needChangePassword)
-        {
-            NeedChangePassword = needChangePassword;
-        }
-
-        public CreateUserCommand()
-        {
-
-        }
+    {        
+        
         public string Name { get; set; }
         /// <summary>
         /// Имя

@@ -21,6 +21,7 @@ namespace DSEU.UI.Controllers.OurOrganization
         {
             this.mediator = mediator;
         }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -32,13 +33,15 @@ namespace DSEU.UI.Controllers.OurOrganization
         {
             return Ok(await mediator.Send(new GetUserDetailQuery(id)));
         }
+
         [HttpPost]
-        public async Task<IActionResult> Post([FromForm] CreateUserCommand command)
+        public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
         {
             await mediator.Send(command);
 
             return NoContent();
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateUserComand command)
         {
@@ -49,6 +52,7 @@ namespace DSEU.UI.Controllers.OurOrganization
             await mediator.Send(command);
             return NoContent();
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
