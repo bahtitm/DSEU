@@ -6,8 +6,11 @@
 
   <ItemGroup>
     <Compile Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <Compile Remove="Modules\Company\OurOrganization\Role\Querys\**" />
     <EmbeddedResource Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <EmbeddedResource Remove="Modules\Company\OurOrganization\Role\Querys\**" />
     <None Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <None Remove="Modules\Company\OurOrganization\Role\Querys\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +21,7 @@
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,8 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Company\OurOrganization\Role\Commands\Delete\" />
-    <Folder Include="Modules\Company\OurOrganization\Role\Querys\" />
     <Folder Include="Modules\CoreEntities\" />
     <Folder Include="Modules\RealEstateRights\" />
     <Folder Include="Modules\RealEstates\" />
