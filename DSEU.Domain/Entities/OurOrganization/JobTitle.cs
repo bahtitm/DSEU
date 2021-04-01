@@ -8,6 +8,6 @@ namespace DSEU.Domain.Entities.OurOrganization
     /// </summary>
     public class JobTitle : DatabookEntry
     {
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; } = new List<User>();
     }
 }
