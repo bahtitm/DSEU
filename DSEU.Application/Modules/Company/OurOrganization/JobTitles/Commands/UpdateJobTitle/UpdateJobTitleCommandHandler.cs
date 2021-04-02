@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using DSEU.Application.Common.Extensions;
 using DSEU.Application.Common.Interfaces;
 using DSEU.Domain.Entities.OurOrganization;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +20,7 @@ namespace DSEU.Application.Modules.Company.OurOrganization.JobTitles.Commands.Up
 
         protected override async Task Handle(UpdateJobTitleCommand request, CancellationToken cancellationToken)
         {
-            var jobTitle = await dbContext.Set<JobTitle>().FirstOrDefaultAsync(p => p.Id == request.Id);
+            var jobTitle = await dbContext.FindByIdAsync<JobTitle>(request.Id, cancellationToken);
             mapper.Map(request, jobTitle);
             await dbContext.SaveChangesAsync();
         }
