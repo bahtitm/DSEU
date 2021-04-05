@@ -1,5 +1,5 @@
-﻿using DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple;
-using DSEU.Domain.Entities.CoreEntities;
+﻿using DSEU.Domain.Entities.CoreEntities;
+using DSEU.Domain.Entities.RealEstateRights.Cases;
 using System;
 using System.Collections.Generic;
 
@@ -59,8 +59,8 @@ namespace DSEU.Domain.Entities.OurOrganization
         /// <summary>
         /// ID организационной единицы
         /// </summary>
-        public int? OrganizationalUnitId { get; set; }
-        public virtual OrganizationalUnit OrganizationalUnit { get; set; }
+        //public int? OrganizationalUnitId { get; set; }
+        //public virtual OrganizationalUnit OrganizationalUnit { get; set; }
         /// <summary>
         /// ID Организации
         /// </summary>
@@ -69,17 +69,20 @@ namespace DSEU.Domain.Entities.OurOrganization
         /// Должность
         /// </summary>
         public virtual JobTitle JobTitle { get; set; }
-        public virtual ICollection<UserLocality> Localities { get; set; }
+
+        public int? DistrictId { get; set; }
+        public virtual District District { get; set; }
+        //public virtual ICollection<UserLocality> Localities { get; set; }
     }
 
     /// <summary>
     /// Зона влияния пользователя
     /// </summary>
-    public class UserLocality
-    {
-        public virtual User User { get; set; }
-        public int UserId { get; set; }
-        public int LocalityId { get; set; }
-        public virtual Locality Locality { get; set; }
-    }
+    //public class UserLocality
+    //{
+    //    public virtual User User { get; set; }
+    //    public int UserId { get; set; }
+    //    public int LocalityId { get; set; }
+    //    public virtual Locality Locality { get; set; }
+    //}
 }

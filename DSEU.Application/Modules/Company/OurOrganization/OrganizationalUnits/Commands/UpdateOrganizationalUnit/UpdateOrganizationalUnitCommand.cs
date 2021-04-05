@@ -1,13 +1,19 @@
-using DSEU.Domain.Entities.CoreEntities;
+﻿using DSEU.Domain.Entities;
+using MediatR;
 
-namespace DSEU.Domain.Entities.OurOrganization
+namespace DSEU.Application.Modules.Company.OurOrganization.OrganizationalUnits.Commands.UpdateOrganizationalUnit
 {
-    /// <summary>
-    /// Unit-ы в рег. службе 
-    /// </summary>
-    /// todo надо еще подумать
-    public class OrganizationalUnit : DatabookEntry
+    public class UpdateOrganizationalUnitCommand : IRequest
     {
+        public int Id { get; set; }
+        /// <summary>
+        /// Наименование
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Состояние
+        /// </summary>
+        public Status Status { get; set; }
         /// <summary>
         /// Имя типа населеного пункта (welayat oba şäher)
         /// </summary>

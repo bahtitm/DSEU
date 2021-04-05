@@ -30,7 +30,7 @@ namespace DSEU.UI.Controllers.Commons
         }
 
         [HttpGet("id")]
-        public async Task<IActionResult> GetDetail([FromQuery] int id)
+        public async Task<IActionResult> GetDetail(int id)
         {
             return Ok(await mediator.Send(new GetDistrictDetailQuery(id)));
         }

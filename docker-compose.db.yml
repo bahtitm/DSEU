@@ -13,7 +13,7 @@ services:
 
    elasticsearch:
     container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.2
+    image: elasticsearch_plugins:7.11.2
     restart: always
 
 volumes:

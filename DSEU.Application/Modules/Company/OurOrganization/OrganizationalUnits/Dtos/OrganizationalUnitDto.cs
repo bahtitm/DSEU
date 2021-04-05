@@ -1,12 +1,10 @@
-using DSEU.Domain.Entities.CoreEntities;
+﻿using DSEU.Application.Common.Mapping;
+using DSEU.Application.Dtos;
+using DSEU.Domain.Entities.OurOrganization;
 
-namespace DSEU.Domain.Entities.OurOrganization
+namespace DSEU.Application.Modules.Company.OurOrganization.OrganizationalUnits.Dtos
 {
-    /// <summary>
-    /// Unit-ы в рег. службе 
-    /// </summary>
-    /// todo надо еще подумать
-    public class OrganizationalUnit : DatabookEntry
+    public class OrganizationalUnitDto : DatabookEntryDto, IMapFrom<OrganizationalUnit>
     {
         /// <summary>
         /// Имя типа населеного пункта (welayat oba şäher)
