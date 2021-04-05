@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using DSEU.Application.Common.Interfaces;
 using DSEU.Domain.Entities.RealEstateRights;
-using DSEU.Domain.Entities.SubjectsOfRights;
-using DSEU.Shared;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

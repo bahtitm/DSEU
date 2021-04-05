@@ -3,7 +3,6 @@ using DSEU.Application.Modules.Statements.Commands.RegisterStatement;
 using DSEU.Domain.Entities.RealEstateRights;
 using DSEU.Domain.Entities.SubjectsOfRights;
 using System;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DSEU.Application.Modules.Statements.Commands
 {

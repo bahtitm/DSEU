@@ -1,3 +1,5 @@
+using DSEU.Application.Common.Interfaces;
+using DSEU.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -6,8 +8,6 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using DSEU.Application.Common.Interfaces;
-using DSEU.Domain.Entities;
 
 namespace DSEU.Infrastructure.Persistence
 {
@@ -22,15 +22,15 @@ namespace DSEU.Infrastructure.Persistence
         {
             return base.Entry(entity);
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-            
+
             base.OnModelCreating(modelBuilder);
         }
 
-        
+
 
         public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
         {
@@ -81,9 +81,9 @@ namespace DSEU.Infrastructure.Persistence
             }
         }
 
-       
 
-        
+
+
         async Task IApplicationDbContext.AddAsync<T>(T entity, CancellationToken cancellationToken)
         {
             await AddAsync(entity, cancellationToken);
@@ -114,13 +114,13 @@ namespace DSEU.Infrastructure.Persistence
 
             return result;
         }
-        
+
         public override int SaveChanges()
         {
             return SaveChangesAsync().GetAwaiter().GetResult();
         }
 
-        
+
         //public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         //{
         //    foreach (var entry in ChangeTracker.Entries<DatabookEntry>())

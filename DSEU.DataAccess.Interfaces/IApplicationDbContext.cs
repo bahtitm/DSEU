@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace DSEU.Application.Common.Interfaces
 {
+
     public interface IApplicationDbContext
     {
         DbSet<T> Set<T>() where T : class;

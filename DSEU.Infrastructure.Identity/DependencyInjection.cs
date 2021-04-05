@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using DSEU.Application.Common.Interfaces;
+﻿using DSEU.Application.Common.Interfaces;
 using DSEU.Infrastructure.Identity.Extensions;
 using DSEU.Infrastructure.Identity.Localization;
 using DSEU.Infrastructure.Identity.Validation;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DSEU.Infrastructure.Identity
 {
@@ -19,6 +19,7 @@ namespace DSEU.Infrastructure.Identity
             });
 
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<IRoleManager, RoleManager>();
 
             services.Configure<IdentityOptions>(options =>
             {

@@ -1,6 +1,4 @@
-﻿using DSEU.Application.Dtos;
-using MediatR;
-using System.Collections.Generic;
+﻿using MediatR;
 
 namespace DSEU.Application.Modules.RealEstates.Buildings.Commands.UpdateBuilding
 {

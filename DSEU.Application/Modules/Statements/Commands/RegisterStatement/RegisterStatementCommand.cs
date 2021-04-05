@@ -1,8 +1,6 @@
 ﻿using DSEU.Application.Common.Interfaces;
-using DSEU.Domain.Entities.OurOrganization;
 using MediatR;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DSEU.Application.Modules.Statements.Commands.RegisterStatement
 {

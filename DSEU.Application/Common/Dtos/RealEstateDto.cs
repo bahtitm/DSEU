@@ -1,12 +1,9 @@
-﻿using DSEU.Application.Common.Mapping;
-using DSEU.Domain.Entities.RealEstates;
-
-namespace DSEU.Application.Dtos
+﻿namespace DSEU.Application.Dtos
 {
     /// <summary>
     /// Недвижимость
     /// </summary>
-    public class RealEstateDto : BaseEntityDto, IMapFrom<RealEstate>
+    public class RealEstateDto : BaseEntityDto
     {
         /// <summary>
         /// Наименование

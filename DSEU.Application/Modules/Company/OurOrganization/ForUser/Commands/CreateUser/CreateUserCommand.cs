@@ -1,5 +1,4 @@
-﻿using DSEU.Domain.Entities.OurOrganization;
-using MediatR;
+﻿using MediatR;
 using System;
 
 namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.CreateUser

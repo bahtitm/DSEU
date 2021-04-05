@@ -1,13 +1,11 @@
-﻿using DSEU.Application.Common.Mapping;
-using DSEU.Application.Dtos;
-using DSEU.Domain.Entities.RealEstates;
+﻿using DSEU.Application.Dtos;
 
 namespace DSEU.Application.Modules.RealEstates.Buildings.Dtos
 {
     /// <summary>
     /// Строение
     /// </summary>
-    public class BuildingDto : RealEstateDto, IMapFrom<Building>
+    public class BuildingDto : RealEstateDto
     {
         /// <summary>
         /// Строение

@@ -20,7 +20,7 @@ namespace DSEU.UI.Data.DataMigrations.V_1.V1_0_0
 
         public async Task Migrate()
         {
-            await AssignClaimToRole(SystemRoles.Registrar, UserClaimTypes.All.ToArray());
+            await AssignClaimToRole(SystemRoles.Registrar, UserClaimTypesConstants.All.ToArray());
         }
 
         private async Task AssignClaimToRole(string roleName, params string[] claims)

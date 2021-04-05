@@ -3,6 +3,7 @@ using DSEU.Application.Common.Interfaces;
 using DSEU.Infrastructure;
 using DSEU.Infrastructure.Identity;
 using DSEU.Infrastructure.Persistence;
+using DSEU.Infrastructure.Report;
 using DSEU.UI.Authorization;
 using DSEU.UI.Extensions;
 using DSEU.UI.Resources;
@@ -40,6 +41,8 @@ namespace DSEU.UI
         {
             services.AddDSEUApplicationCore()
                     .AddDSEUInfrastructureServices()
+                    .AddReportingServices()
+                    .AddDSEUPersistence(Configuration)
                     .AddDSEUPersistence(Configuration)
                     //.AddDSEUPersistentDataProtectionKeys(Configuration)
                     .AddDSEUIdentity(Configuration);

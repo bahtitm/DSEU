@@ -1,10 +1,8 @@
-﻿using DSEU.Application.Common.Mapping;
-using DSEU.Application.Dtos;
-using DSEU.Domain.Entities.OurOrganization;
+﻿using DSEU.Application.Dtos;
 
 namespace DSEU.Application.Modules.Company.OurOrganization.OrganizationalUnits.Dtos
 {
-    public class OrganizationalUnitDto : DatabookEntryDto, IMapFrom<OrganizationalUnit>
+    public class OrganizationalUnitDto : DatabookEntryDto
     {
         /// <summary>
         /// Имя типа населеного пункта (welayat oba şäher)

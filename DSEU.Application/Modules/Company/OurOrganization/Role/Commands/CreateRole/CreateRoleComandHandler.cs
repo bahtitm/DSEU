@@ -1,7 +1,5 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Security.Claims;
+﻿using DSEU.Application.Common.Interfaces;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,29 +7,15 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Role.Commands.CreateR
 {
     public class CreateRoleComandHandler : AsyncRequestHandler<CreateRoleCommand>
     {
-        private readonly RoleManager<IdentityRole> roleManager;
-
-        public CreateRoleComandHandler(RoleManager<IdentityRole> roleManager)
+        private readonly IRoleManager roleManager;
+        public CreateRoleComandHandler(IRoleManager roleManager)
         {
             this.roleManager = roleManager;
         }
 
         protected override async Task Handle(CreateRoleCommand request, CancellationToken cancellationToken)
         {
-            var roleResult = await roleManager.CreateAsync(new IdentityRole(request.Name));
-
-            if (!roleResult.Succeeded)
-            {
-                throw new Exception();
-            }
-
-            var role = await roleManager.FindByNameAsync(request.Name);
-
-            foreach (var claim in request.UserClaimTypes)
-            {
-                var roleClaim = new Claim(claim.ToString(), bool.TrueString);
-                await roleManager.AddClaimAsync(role, roleClaim);
-            }
+            await roleManager.CreateAsync(request.Name, request.UserClaimTypes);
         }
     }
 }

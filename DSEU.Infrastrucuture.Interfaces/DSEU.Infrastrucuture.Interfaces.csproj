@@ -3,7 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="9.4.0" />
+    <ProjectReference Include="..\DSEU.Domain\DSEU.Domain.csproj" />
   </ItemGroup>
+
 </Project>

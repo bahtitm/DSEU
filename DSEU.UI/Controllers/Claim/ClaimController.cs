@@ -13,7 +13,7 @@ namespace DSEU.UI.Controllers.Claim
         [HttpGet]
         public async Task<IActionResult> Claims()
         {
-            return Ok(UserClaimTypes.All);
+            return Ok(UserClaimTypesConstants.All);
 
         }
 

@@ -3,7 +3,6 @@ using AutoMapper.QueryableExtensions;
 using DSEU.Application.Modules.Company.OurOrganization.Role.Dtos;
 using DSEU.Application.Modules.Company.OurOrganization.Role.Queries.GetAllRoles;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;

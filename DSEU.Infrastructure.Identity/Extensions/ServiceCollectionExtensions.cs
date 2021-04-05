@@ -66,7 +66,7 @@ namespace DSEU.Infrastructure.Identity.Extensions
         {
             var apiResource = apiResources.First();
             var claims = new List<string>();
-            claims.AddRange(UserClaimTypes.All);
+            claims.AddRange(UserClaimTypesConstants.All);
             claims.Add(JwtClaimTypes.Role);
             apiResource.UserClaims = claims;
         }

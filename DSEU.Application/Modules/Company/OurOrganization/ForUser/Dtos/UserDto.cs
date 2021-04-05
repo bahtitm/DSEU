@@ -1,11 +1,9 @@
-﻿using DSEU.Application.Common.Mapping;
-using DSEU.Application.Dtos;
-using DSEU.Domain.Entities.OurOrganization;
+﻿using DSEU.Application.Dtos;
 using System;
 
 namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Dtos
 {
-    public class UserDto : DatabookEntryDto, IMapFrom<User>
+    public class UserDto : DatabookEntryDto
     {
         /// <summary>
         /// Имя

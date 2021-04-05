@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace DSEU.Application.Common.Interfaces
 {
+
     public interface IIdentityService
     {
         /// <summary>

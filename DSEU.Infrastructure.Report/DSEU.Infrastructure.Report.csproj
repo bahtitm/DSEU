@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DSEU.Application\DSEU.Application.csproj" />
+    <ProjectReference Include="..\DSEU.Reporting.Interfaces\DSEU.Reporting.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

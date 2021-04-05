@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -19,11 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSEU.Application\DSEU.Application.csproj" />
+    <Folder Include="Configurations\CoreEntities\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\CoreEntities\" />
+    <ProjectReference Include="..\DSEU.DataAccess.Interfaces\DSEU.DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\DSEU.Domain\DSEU.Domain.csproj" />
   </ItemGroup>
 
 </Project>

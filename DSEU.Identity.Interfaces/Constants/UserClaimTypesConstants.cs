@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace DSEU.Application.Common.Constants
 {
-    public static class UserClaimTypes
+    public static class UserClaimTypesConstants
     {
+        public const string EmployeeId = "EmployeeId";
         //Claim-ы Для роли администратора
         public const string ManipulateWithDataBookEntries = "ManipulateWithDataBookEntries";
         public const string UserRegistration = "UserRegistration";
@@ -26,18 +27,18 @@ namespace DSEU.Application.Common.Constants
         {
             get
             {
-                yield return UserClaimTypes.ManipulateWithDataBookEntries;
-                yield return UserClaimTypes.UserRegistration;
-                yield return UserClaimTypes.UserClaimRoleRegistration;
-                yield return UserClaimTypes.RegistrationOfStatement;
-                yield return UserClaimTypes.RegistrationOfRight;
-                yield return UserClaimTypes.RightToChange;
-                yield return UserClaimTypes.RightToTechnicalChange;
-                yield return UserClaimTypes.RegistrationOfArrest;
-                yield return UserClaimTypes.RegistrationOfBail;
-                yield return UserClaimTypes.AcceptanceToArchive;
-                yield return UserClaimTypes.Read;
-                yield return UserClaimTypes.Register;
+                yield return UserClaimTypesConstants.ManipulateWithDataBookEntries;
+                yield return UserClaimTypesConstants.UserRegistration;
+                yield return UserClaimTypesConstants.UserClaimRoleRegistration;
+                yield return UserClaimTypesConstants.RegistrationOfStatement;
+                yield return UserClaimTypesConstants.RegistrationOfRight;
+                yield return UserClaimTypesConstants.RightToChange;
+                yield return UserClaimTypesConstants.RightToTechnicalChange;
+                yield return UserClaimTypesConstants.RegistrationOfArrest;
+                yield return UserClaimTypesConstants.RegistrationOfBail;
+                yield return UserClaimTypesConstants.AcceptanceToArchive;
+                yield return UserClaimTypesConstants.Read;
+                yield return UserClaimTypesConstants.Register;
             }
         }
     }

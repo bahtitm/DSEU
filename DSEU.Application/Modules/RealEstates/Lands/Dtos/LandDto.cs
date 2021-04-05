@@ -1,10 +1,8 @@
-﻿using DSEU.Application.Common.Mapping;
-using DSEU.Application.Dtos;
-using DSEU.Domain.Entities.RealEstates;
+﻿using DSEU.Application.Dtos;
 
 namespace DSEU.Application.Modules.RealEstates.Lands.Dtos
 {
-    public class LandDto : RealEstateDto, IMapFrom<Land>
+    public class LandDto : RealEstateDto
     {
         /// <summary>
         /// Кадастровый номер

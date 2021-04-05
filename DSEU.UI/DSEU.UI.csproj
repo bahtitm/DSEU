@@ -25,10 +25,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DSEU.DataAccess.Interfaces\DSEU.DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\DSEU.Identity.Interfaces\DSEU.Identity.Interfaces.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.DataProtection\DSEU.Infrastructure.DataProtection.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.Identity\DSEU.Infrastructure.Identity.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.Persistence\DSEU.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\DSEU.Infrastructure.Report\DSEU.Infrastructure.Report.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure\DSEU.Infrastructure.csproj" />
+    <ProjectReference Include="..\DSEU.Infrastrucuture.Interfaces\DSEU.Infrastrucuture.Interfaces.csproj" />
   </ItemGroup>
 
   <ItemGroup>

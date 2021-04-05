@@ -19,16 +19,19 @@
     <PackageReference Include="FluentValidation" Version="9.4.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DSEU.DataAccess.Interfaces\DSEU.DataAccess.Interfaces.csproj" />
     <ProjectReference Include="..\DSEU.Domain\DSEU.Domain.csproj" />
+    <ProjectReference Include="..\DSEU.Identity.Interfaces\DSEU.Identity.Interfaces.csproj" />
+    <ProjectReference Include="..\DSEU.Infrastrucuture.Interfaces\DSEU.Infrastrucuture.Interfaces.csproj" />
+    <ProjectReference Include="..\DSEU.Reporting.Interfaces\DSEU.Reporting.Interfaces.csproj" />
+    <ProjectReference Include="..\DSEU.Shared\DSEU.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Modules\Company\OurOrganization\Role\Dtos\" />
     <Folder Include="Modules\CoreEntities\" />
     <Folder Include="Modules\RealEstateRights\" />
     <Folder Include="Modules\RealEstates\" />
