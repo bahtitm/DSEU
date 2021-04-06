@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using DSEU.Application.Common.Interfaces;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -6,18 +7,16 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Role.Commands.DeleteR
 {
     public class DeleteRoleCommandHandler : AsyncRequestHandler<DeleteRoleCommand>
     {
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IRoleManager roleManager;
 
-        public DeleteRoleCommandHandler(RoleManager<IdentityRole> roleManager)
+        public DeleteRoleCommandHandler(IRoleManager roleManager)
         {
             this.roleManager = roleManager;
         }
 
         protected override async Task Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
         {
-            var role = await roleManager.FindByIdAsync(request.Id);
-
-            await roleManager.DeleteAsync(role);
+            await roleManager.DeleteRoleAsync(request.Id);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DSEU.Application.Modules.Company.OurOrganization.Role.Dtos;
+﻿using DSEU.Application.Common.Interfaces;
+using DSEU.Application.Modules.Company.OurOrganization.Role.Dtos;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,29 +8,16 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Role.Queries.GetRoleD
 {
     public class GetRoleDetailQueryHandler : IRequestHandler<GetRoleDetailQuery, RoleDetailDto>
     {
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IRoleManager roleManager;
 
-        public GetRoleDetailQueryHandler(RoleManager<IdentityRole> roleManager)
+        public GetRoleDetailQueryHandler(IRoleManager roleManager)
         {
             this.roleManager = roleManager;
         }
 
         public async Task<RoleDetailDto> Handle(GetRoleDetailQuery request, CancellationToken cancellationToken)
         {
-            var roleDto = new RoleDetailDto();
-
-            var role = await roleManager.FindByIdAsync(request.Id);
-
-            roleDto.Name = role.Name;
-
-            var claims = await roleManager.GetClaimsAsync(role);
-
-            foreach (var claim in claims)
-            {
-                roleDto.Claims.Add(claim.Type.ToString());
-            }
-
-            return roleDto;
+            return await roleManager.GetRoleById(request.Id);
         }
     }
 }

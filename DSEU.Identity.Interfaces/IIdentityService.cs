@@ -78,5 +78,7 @@ namespace DSEU.Application.Common.Interfaces
         /// <param name="userName">Новый логин</param>
         /// <returns></returns>
         Task UpdateUsernameAsync(string userId, string userName);
+
+        Task RemoveFromRoleAsync(string userId);
     }
 }

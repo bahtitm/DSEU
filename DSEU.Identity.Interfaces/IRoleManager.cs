@@ -7,8 +7,11 @@ namespace DSEU.Application.Common.Interfaces
 {
     public interface IRoleManager
     {
-        Task CreateAsync(string role, IEnumerable<UserClaimTypes> claims);
+        Task CreateRoleAsync(string role, IEnumerable<UserClaimTypes> claims);
         Task<IEnumerable<RoleDto>> GetAllRoles();
         Task<RoleDetailDto> GetRoleById(string id);
+        Task UpdateClaimsAsync(string id, IEnumerable<UserClaimTypes> claims);
+        Task UpdateRoleNameAsync(string id, string roleName);
+        Task DeleteRoleAsync(string id);
     }
 }

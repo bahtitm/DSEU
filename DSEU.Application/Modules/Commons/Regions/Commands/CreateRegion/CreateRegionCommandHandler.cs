@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DSEU.Application.Common.Interfaces;
-using DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple;
+using DSEU.Domain.Entities.RealEstateRights.Cases;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

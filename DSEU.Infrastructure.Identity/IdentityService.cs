@@ -1,9 +1,11 @@
+using DSEU.Application.Common.Enums;
 using DSEU.Application.Common.Exceptions;
 using DSEU.Application.Common.Interfaces;
 using DSEU.Shared;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -23,9 +25,6 @@ namespace DSEU.Infrastructure.Identity
 
         public async Task<string> CreateUserAsync(string userName, string email, string password, bool needChangePassword = true, CancellationToken cancellationToken = default)
         {
-
-
-
             var user = new ApplicationUser
             {
                 UserName = userName,
@@ -123,6 +122,15 @@ namespace DSEU.Infrastructure.Identity
         {
             var user = await userManager.FindByIdAsync(userId);
             await userManager.AddToRoleAsync(user, roleName);
+        }
+
+        public async Task RemoveFromRoleAsync(string userId)
+        {
+            var user = await userManager.FindByIdAsync(userId);
+
+            var roles = await userManager.GetRolesAsync(user);
+
+            await userManager.RemoveFromRolesAsync(user, roles);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple;
-using DSEU.Domain.Entities.CoreEntities;
+﻿using DSEU.Domain.Entities.CoreEntities;
 using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.RealEstateRights.Cases

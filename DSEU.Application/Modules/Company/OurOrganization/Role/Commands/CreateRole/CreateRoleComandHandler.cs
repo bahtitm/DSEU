@@ -15,7 +15,7 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Role.Commands.CreateR
 
         protected override async Task Handle(CreateRoleCommand request, CancellationToken cancellationToken)
         {
-            await roleManager.CreateAsync(request.Name, request.UserClaimTypes);
+            await roleManager.CreateRoleAsync(request.Name, request.UserClaimTypes);
         }
     }
 }

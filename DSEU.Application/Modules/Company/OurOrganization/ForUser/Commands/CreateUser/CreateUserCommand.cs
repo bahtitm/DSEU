@@ -42,11 +42,16 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.Crea
         /// <summary>
         /// ID организационной единицы
         /// </summary>
-        public int? OrganizationalUnitId { get; set; }
+        //public int? OrganizationalUnitId { get; set; }
         /// <summary>
         /// ID должности
         /// </summary>
         public int? JobTitleId { get; set; }
+
+        public int? DistrictId { get; set; }
+
+        public string RoleId { get; set; }
+
         public bool NeedChangePassword { get; private set; } = true;
     }
 }

@@ -10,18 +10,25 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.Dele
     public class DeleteUserComandHandler : AsyncRequestHandler<DeleteUserComand>
     {
         private readonly IApplicationDbContext dbContext;
+        private readonly IIdentityService identityService;
 
-        public DeleteUserComandHandler(IApplicationDbContext applicationDbContext)
+        public DeleteUserComandHandler(IApplicationDbContext applicationDbContext, IIdentityService identityService)
         {
             dbContext = applicationDbContext;
+            this.identityService = identityService;
         }
 
         protected override async Task Handle(DeleteUserComand request, CancellationToken cancellationToken)
         {
-            var user = await dbContext.FindByIdAsync<User>(request.Id, cancellationToken);
-            dbContext.Set<User>().Remove(user);
-            await dbContext.SaveChangesAsync(cancellationToken);
-
+            await dbContext.InvokeTransactionAsync(async () =>
+            {
+                var user = await dbContext.FindByIdAsync<User>(request.Id, cancellationToken);
+                
+                await identityService.RemoveFromRoleAsync(user.UserId);
+                
+                dbContext.Set<User>().Remove(user);
+                await dbContext.SaveChangesAsync(cancellationToken);
+            }, cancellationToken);
         }
     }
 }

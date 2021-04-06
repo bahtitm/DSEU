@@ -105,116 +105,6 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.ToTable("TerritorialUnit");
                 });
 
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Country");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.District", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<int>("RegionId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RegionId");
-
-                    b.ToTable("District");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Locality", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("DistrictId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DistrictId");
-
-                    b.ToTable("Locality");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Region", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("Region");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Village", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("LocalityId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LocalityId");
-
-                    b.ToTable("Village");
-                });
-
             modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.JobTitle", b =>
                 {
                     b.Property<int>("Id")
@@ -284,6 +174,9 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("DateOfDismissal")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Email")
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
@@ -315,9 +208,6 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("text");
 
-                    b.Property<int?>("OrganizationalUnitId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Phone")
                         .HasColumnType("text");
 
@@ -329,31 +219,16 @@ namespace DSEU.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DistrictId");
+
                     b.HasIndex("JobTitleId");
 
                     b.HasIndex("Name");
-
-                    b.HasIndex("OrganizationalUnitId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.UserLocality", b =>
-                {
-                    b.Property<int>("LocalityId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("LocalityId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserLocality");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Basis", b =>
@@ -383,6 +258,76 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.ToTable("Basis");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Basis");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Cases.District", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("DistrictCode")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("RegionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RegionId");
+
+                    b.ToTable("District");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Cases.Locality", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DistrictId");
+
+                    b.ToTable("Locality");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Cases.Region", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("RegionCode")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Region");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.RealEstateRight", b =>
@@ -672,83 +617,20 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.HasDiscriminator().HasValue("Land");
                 });
 
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.District", b =>
-                {
-                    b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Region", "Region")
-                        .WithMany("Districts")
-                        .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Region");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Locality", b =>
-                {
-                    b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.District", "District")
-                        .WithMany("Localities")
-                        .HasForeignKey("DistrictId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("District");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Region", b =>
-                {
-                    b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Country", "Country")
-                        .WithMany("Regions")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Village", b =>
-                {
-                    b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Locality", "Locality")
-                        .WithMany("Villages")
-                        .HasForeignKey("LocalityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Locality");
-                });
-
             modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.User", b =>
                 {
+                    b.HasOne("DSEU.Domain.Entities.RealEstateRights.Cases.District", "District")
+                        .WithMany()
+                        .HasForeignKey("DistrictId");
+
                     b.HasOne("DSEU.Domain.Entities.OurOrganization.JobTitle", "JobTitle")
                         .WithMany("Users")
                         .HasForeignKey("JobTitleId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("DSEU.Domain.Entities.OurOrganization.OrganizationalUnit", "OrganizationalUnit")
-                        .WithMany()
-                        .HasForeignKey("OrganizationalUnitId");
+                    b.Navigation("District");
 
                     b.Navigation("JobTitle");
-
-                    b.Navigation("OrganizationalUnit");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.UserLocality", b =>
-                {
-                    b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Locality", "Locality")
-                        .WithMany()
-                        .HasForeignKey("LocalityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DSEU.Domain.Entities.OurOrganization.User", "User")
-                        .WithMany("Localities")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Locality");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Basis", b =>
@@ -760,6 +642,28 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("RealEstateRight");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Cases.District", b =>
+                {
+                    b.HasOne("DSEU.Domain.Entities.RealEstateRights.Cases.Region", "Region")
+                        .WithMany("Districts")
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Region");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Cases.Locality", b =>
+                {
+                    b.HasOne("DSEU.Domain.Entities.RealEstateRights.Cases.District", "District")
+                        .WithMany("Localities")
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("District");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.RealEstateRight", b =>
@@ -779,7 +683,7 @@ namespace DSEU.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Statement", b =>
                 {
-                    b.HasOne("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Locality", "Locality")
+                    b.HasOne("DSEU.Domain.Entities.RealEstateRights.Cases.Locality", "Locality")
                         .WithMany()
                         .HasForeignKey("LocalityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -833,34 +737,19 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.Navigation("Currency");
                 });
 
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Country", b =>
-                {
-                    b.Navigation("Regions");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.District", b =>
-                {
-                    b.Navigation("Localities");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Locality", b =>
-                {
-                    b.Navigation("Villages");
-                });
-
-            modelBuilder.Entity("DSEU.Domain.Entities.Commons.TerritorialUnitOneToManyPrinciple.Region", b =>
-                {
-                    b.Navigation("Districts");
-                });
-
             modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.JobTitle", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.User", b =>
+            modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Cases.District", b =>
                 {
                     b.Navigation("Localities");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.Cases.Region", b =>
+                {
+                    b.Navigation("Districts");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.RealEstateRights.RealEstateRight", b =>

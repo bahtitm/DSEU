@@ -39,5 +39,7 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.Upda
         /// Почта
         /// </summary>
         public string Email { get; set; }
+
+        public string RoleId { get; set; }
     }
 }

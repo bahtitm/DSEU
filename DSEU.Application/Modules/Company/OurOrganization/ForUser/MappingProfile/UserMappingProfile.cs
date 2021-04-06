@@ -10,10 +10,9 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.MappingProfil
     {
         public UserMappingProfile()
         {
-            //for comands
             CreateMap<CreateUserCommand, User>();
             CreateMap<UpdateUserComand, User>();
-            //for queri
+            
             CreateMap<User, UserDto>();
         }
     }
