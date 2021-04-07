@@ -16,7 +16,13 @@ services:
     image: elasticsearch_plugins:7.11.2
     restart: always
 
+   kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.11.2
+    restart: always
+
 volumes:
   postgres-db-data:
   pgAdmin-data:
   elasticsearch-data:
+  kibana-data:

@@ -52,6 +52,7 @@
     <None Include="ClientApp\dist\_nuxt\manifest.78fd31eb.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="config\elasticconfig.json" />
     <None Include="config\identityconfig.json" />
     <None Include="docker-compose-start.ps1" />
     <None Include="docker-compose-stop.ps1" />

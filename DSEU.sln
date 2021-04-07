@@ -44,17 +44,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSEU.Infrastructure.Report"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Entities", "1 Entities", "{67D1514B-B46C-43C0-9641-FE2B2DB9391C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSEU.DataAccess.Interfaces", "DSEU.DataAccess.Interfaces\DSEU.DataAccess.Interfaces.csproj", "{ABB0331A-75AB-4009-A1C0-F4FAF1505B58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSEU.DataAccess.Interfaces", "DSEU.DataAccess.Interfaces\DSEU.DataAccess.Interfaces.csproj", "{ABB0331A-75AB-4009-A1C0-F4FAF1505B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSEU.Identity.Interfaces", "DSEU.Identity.Interfaces\DSEU.Identity.Interfaces.csproj", "{27122E30-51CE-4861-8319-2059C21E36A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSEU.Identity.Interfaces", "DSEU.Identity.Interfaces\DSEU.Identity.Interfaces.csproj", "{27122E30-51CE-4861-8319-2059C21E36A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSEU.Reporting.Interfaces", "DSEU.Reporting.Interfaces\DSEU.Reporting.Interfaces.csproj", "{2C23E536-7A6B-4C13-B522-3FECC3E06D31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSEU.Reporting.Interfaces", "DSEU.Reporting.Interfaces\DSEU.Reporting.Interfaces.csproj", "{2C23E536-7A6B-4C13-B522-3FECC3E06D31}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 ApplicationServices", "3 ApplicationServices", "{D1874A7B-72C4-4CAA-B7CE-43A093E0298B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 Controllers", "5 Controllers", "{58F511E3-241F-4F25-BA10-EF25D4AFE487}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSEU.Infrastrucuture.Interfaces", "DSEU.Infrastrucuture.Interfaces\DSEU.Infrastrucuture.Interfaces.csproj", "{100879AC-77A7-4368-8C0B-CE74AEA77E69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSEU.Infrastrucuture.Interfaces", "DSEU.Infrastrucuture.Interfaces\DSEU.Infrastrucuture.Interfaces.csproj", "{100879AC-77A7-4368-8C0B-CE74AEA77E69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSEU.StateRegisterSearch.Interfaces", "..\DSEU.StateRegisterSearch.Interfaces\DSEU.StateRegisterSearch.Interfaces.csproj", "{8FFCCE2F-7A99-46BA-BCB6-E25DE9778929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSEU.Infrastructure.StateRegisterSearch", "..\DSEU.Infrastructure.StateRegisterSearch\DSEU.Infrastructure.StateRegisterSearch.csproj", "{9DB0B221-5946-4FA5-B847-35A0AEE5B766}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +126,14 @@ Global
 		{100879AC-77A7-4368-8C0B-CE74AEA77E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{100879AC-77A7-4368-8C0B-CE74AEA77E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{100879AC-77A7-4368-8C0B-CE74AEA77E69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FFCCE2F-7A99-46BA-BCB6-E25DE9778929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FFCCE2F-7A99-46BA-BCB6-E25DE9778929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FFCCE2F-7A99-46BA-BCB6-E25DE9778929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FFCCE2F-7A99-46BA-BCB6-E25DE9778929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DB0B221-5946-4FA5-B847-35A0AEE5B766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB0B221-5946-4FA5-B847-35A0AEE5B766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB0B221-5946-4FA5-B847-35A0AEE5B766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB0B221-5946-4FA5-B847-35A0AEE5B766}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +161,8 @@ Global
 		{D1874A7B-72C4-4CAA-B7CE-43A093E0298B} = {55D8BC8A-C3C9-4901-948F-BC37D19E239A}
 		{58F511E3-241F-4F25-BA10-EF25D4AFE487} = {55D8BC8A-C3C9-4901-948F-BC37D19E239A}
 		{100879AC-77A7-4368-8C0B-CE74AEA77E69} = {AA74CF65-A9CC-48E1-983A-7A0EB8E2601A}
+		{8FFCCE2F-7A99-46BA-BCB6-E25DE9778929} = {AA74CF65-A9CC-48E1-983A-7A0EB8E2601A}
+		{9DB0B221-5946-4FA5-B847-35A0AEE5B766} = {997FED7E-0939-469D-9202-7819FB79275F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B318A8D2-A47C-4788-A2D7-DF049D1E0FD9}

@@ -20,6 +20,7 @@ COPY ["DSEU.Infrastructure.DataProtection/DSEU.Infrastructure.DataProtection.csp
 COPY ["DSEU.Infrastructure.Identity/DSEU.Infrastructure.Identity.csproj", "DSEU.Infrastructure.Identity/"]
 COPY ["DSEU.Infrastructure.Persistence/DSEU.Infrastructure.Persistence.csproj", "DSEU.Infrastructure.Persistence/"]
 COPY ["DSEU.Infrastructure.Permissions/DSEU.Infrastructure.Permissions.csproj", "DSEU.Infrastructure.Permissions/"]
+COPY ["DSEU.Infrastructure.StateRegisterSearch/DSEU.Infrastructure.StateRegisterSearch.csproj", "DSEU.Infrastructure.StateRegisterSearch/"]
 RUN dotnet restore "DSEU.UI/DSEU.UI.csproj"
 COPY . .
 WORKDIR "/src/DSEU.UI"

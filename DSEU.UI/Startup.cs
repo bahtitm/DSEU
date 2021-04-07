@@ -4,6 +4,7 @@ using DSEU.Infrastructure;
 using DSEU.Infrastructure.Identity;
 using DSEU.Infrastructure.Persistence;
 using DSEU.Infrastructure.Report;
+using DSEU.Infrastructure.StateRegisterSearch;
 using DSEU.UI.Authorization;
 using DSEU.UI.Extensions;
 using DSEU.UI.Resources;
@@ -45,7 +46,8 @@ namespace DSEU.UI
                     .AddDSEUPersistence(Configuration)
                     .AddDSEUPersistence(Configuration)
                     //.AddDSEUPersistentDataProtectionKeys(Configuration)
-                    .AddDSEUIdentity(Configuration);
+                    .AddDSEUIdentity(Configuration)
+                    .AddDSEUElasticSearch(Configuration);
 
             services.AddValidatorsFromAssembly(typeof(Application.DependencyInjection).Assembly);
 
@@ -83,6 +85,7 @@ namespace DSEU.UI
             services.AddSwagger();
             services.AddMemoryCache();
             services.Configure<IdentityOptions>(Configuration.GetSection("IdentityOptions"));
+            services.Configure<ElasticSearchOptions>(Configuration.GetSection("ElasticOptions"));
             services.AddSession();
 
             services.AddSpaStaticFiles(configuration =>

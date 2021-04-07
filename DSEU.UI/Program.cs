@@ -1,3 +1,4 @@
+using DSEU.Infrastructure.StateRegisterSearch.Configuration;
 using DSEU.UI.Data;
 using DSEU.UI.Data.Extensions;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,7 @@ namespace DSEU.UI
             using var scope = host.Services.CreateScope();
             await MigrateDatabases(scope);
             await SeedData(scope);
+            await ElasticSearchConfiugure(scope);
             await host.RunAsync();
         }
 
@@ -45,6 +47,7 @@ namespace DSEU.UI
                    services.Configure<KestrelServerOptions>(builder.Configuration.GetSection("Kestrel"));
                    services.AddScoped<DatabaseMigrator>();
                    services.AddScoped<DataSeeder>();
+                   services.AddScoped<ElasticSearchConfiguration>();
                    services.AddAppVersionManualMigrations();
                })
               .UseSerilog((context, configuration) =>
@@ -76,7 +79,12 @@ namespace DSEU.UI
         {
             DataSeeder dataSeeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
             await dataSeeder.SeedData();
-            
+        }
+
+        private static async Task ElasticSearchConfiugure(IServiceScope scope)
+        {
+            ElasticSearchConfiguration elasticSearch = scope.ServiceProvider.GetRequiredService<ElasticSearchConfiguration>();
+            await elasticSearch.CreateElasticSearchIndex();
         }
     }
 }
