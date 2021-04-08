@@ -29,6 +29,7 @@
     <ProjectReference Include="..\DSEU.Infrastrucuture.Interfaces\DSEU.Infrastrucuture.Interfaces.csproj" />
     <ProjectReference Include="..\DSEU.Reporting.Interfaces\DSEU.Reporting.Interfaces.csproj" />
     <ProjectReference Include="..\DSEU.Shared\DSEU.Shared.csproj" />
+    <ProjectReference Include="..\DSEU.StateRegisterSearch.Interfaces\DSEU.StateRegisterSearch.Interfaces.csproj" />
   </ItemGroup>
 
   <ItemGroup>
