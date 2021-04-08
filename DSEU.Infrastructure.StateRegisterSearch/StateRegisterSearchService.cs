@@ -29,7 +29,6 @@ namespace DSEU.Infrastructure.StateRegisterSearch
             }
         }
 
-
         public async Task UpdateAsync(int id, StateRegisterSearchModel obj)
         {
             var result = await client.UpdateAsync<StateRegisterSearchModel, object>(id, u => u
@@ -79,276 +78,67 @@ namespace DSEU.Infrastructure.StateRegisterSearch
 
         public async Task<IEnumerable<StateRegisterSearchModel>> GetAll(ElasticClient client, string query, SearchField searchField)
         {
-            if (searchField == SearchField.All)
-            {
-                var responseAll = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                         .From(elasticSearchOptions.ResponseIndexFrom)
-                         .Size(elasticSearchOptions.ResponseCount)
+                var response = await client.SearchAsync<StateRegisterSearchModel>(s => s
+                         .From(0)
+                         .Size(10)
                          .Query(q => q
                          .MultiMatch(mm => mm
+                         .WithField(searchField)
                          .Query(query)
-                         //.Analyzer("standard")
-                         .Boost(elasticSearchOptions.BoostValue)
-                         //.Slop(elasticSearchOptions.SlopCount)
-                         .Fuzziness(Fuzziness.Auto)
-
-                         )
-                       )
+                         .Boost(1.1)
+                         .Slop(2)
+                         .Fuzziness(Fuzziness.Auto)))
                      );
-                return responseAll.Documents;
-            }
-            else if (searchField == SearchField.FullName)
-            {
-                var responseFullName = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                         .From(elasticSearchOptions.ResponseIndexFrom)
-                         .Size(elasticSearchOptions.ResponseCount)
-                         .Query(q => q
-                         .MultiMatch(mm => mm
-                         .Fields(f => f.Fields(ff => ff.Applicant.FullName))
-                         .Query(query)
-                         //.Analyzer("standard")
-                         .Boost(elasticSearchOptions.BoostValue)
-                         //.Slop(elasticSearchOptions.SlopCount)
-                         .Fuzziness(Fuzziness.Auto)
-
-                         )
-                       )
-                     );
-                return responseFullName.Documents;
-            }
-            else if (searchField == SearchField.Address)
-            {
-                var responseAddress = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                    .From(elasticSearchOptions.ResponseIndexFrom)
-                    .Size(elasticSearchOptions.ResponseCount)
-                    .Query(q => q
-                    .MultiMatch(mm => mm
-                    .Fields(f => f.Fields(bp => bp.Applicant.BirthPlace,
-                                          dip => dip.Applicant.DocumentIssuePlace,
-                                          rl => rl.Applicant.RecordLocation,
-                                          ad => ad.RealEstate.Address))
-                    .Query(query)
-                    //.Analyzer("standard")
-                    .Boost(elasticSearchOptions.BoostValue)
-                    //.Slop(elasticSearchOptions.SlopCount)
-                    .Fuzziness(Fuzziness.Auto)
-
-                    )
-                  )
-                );
-                return responseAddress.Documents;
-            }
-            return null;
+                return response.Documents;
         }
 
 
         public async Task<IEnumerable<StateRegisterSearchModel>> GetByRegionId(ElasticClient client, string query, List<int?> regionId, SearchField searchField)
         {
             var responseAll = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                      .From(elasticSearchOptions.ResponseIndexFrom)
-                      .Size(elasticSearchOptions.ResponseCount)
+                      .From(0)
+                      .Size(10)
                       .Query(q => q
                       .Bool(b => b
                       .Must(m => m
                       .MultiMatch(mm => mm
                         .WithField(searchField)
-                        .Fuzziness(Fuzziness.EditDistance(elasticSearchOptions.EditDistanceCount))
+                        .Fuzziness(Fuzziness.EditDistance(2))
                       .Query(query)
-                      //.Analyzer("standard")
-                      .Boost(elasticSearchOptions.BoostValue)))
+                      .Boost(1.1)))
                       //.Slop(2)
                       .Filter(f => f
                       .Terms(t => t
                       .Field(f => f.RegionId)
-                      .Terms(regionId)
-                      )
-                     )
-                    )
-                   )
+                      .Terms(regionId)))))
                   );
-
             return responseAll.Documents;
-            //if (searchField == SearchField.All)
-            //{
-            //    var responseAll = await client.SearchAsync<StateRegisterSearchModel>(s => s
-            //          .From(elasticSearchOptions.ResponseIndexFrom)
-            //          .Size(elasticSearchOptions.ResponseCount)
-            //          .Query(q => q
-            //          .Bool(b => b
-            //          .Must(m => m
-            //          .MultiMatch(mm => mm
-            //          .Fuzziness(Fuzziness.EditDistance(elasticSearchOptions.EditDistanceCount))
-            //          .Query(query)
-            //          //.Analyzer("standard")
-            //          .Boost(elasticSearchOptions.BoostValue)))
-            //          //.Slop(2)
-            //          .Filter(f => f
-            //          .Terms(t => t
-            //          .Field(f => f.RegionId)
-            //          .Terms(regionId)
-            //          )
-            //         )
-            //        )
-            //       )
-            //      );
-            //    return responseAll.Documents;
-            //}
-            //else if (searchField == SearchField.FullName)
-            //{
-            //    var responseFullName = await client.SearchAsync<StateRegisterSearchModel>(s => s
-            //          .From(elasticSearchOptions.ResponseIndexFrom)
-            //          .Size(elasticSearchOptions.ResponseCount)
-            //          .Query(q => q
-            //          .Bool(b => b
-            //          .Must(m => m
-            //          .MultiMatch(mm => mm
-            //          .Fields(f => f.Fields(ff => ff.Applicant.FullName))
-            //          .Fuzziness(Fuzziness.EditDistance(elasticSearchOptions.EditDistanceCount))
-            //          .Query(query)
-            //          //.Analyzer("standard")
-            //          .Boost(1.1)))
-            //          //.Slop(2)
-            //          .Filter(f => f
-            //          .Terms(t => t
-            //          .Field(f => f.RegionId)
-            //          .Terms(regionId)
-            //          )
-            //         )
-            //        )
-            //       )
-            //      );
-
-            //    return responseFullName.Documents;
-            //}
-            //else if (searchField == SearchField.Address)
-            //{
-            //    var responseAddress = await client.SearchAsync<StateRegisterSearchModel>(s => s
-            //              .From(elasticSearchOptions.ResponseIndexFrom)
-            //              .Size(elasticSearchOptions.ResponseCount)
-            //              .Query(q => q
-            //              .Bool(b => b
-            //              .Must(m => m
-            //              .MultiMatch(mm => mm
-            //              .Fields(f => f.Fields(bp => bp.Applicant.BirthPlace,
-            //                                    dip => dip.Applicant.DocumentIssuePlace,
-            //                                    rl => rl.Applicant.RecordLocation,
-            //                                    ad => ad.RealEstate.Address))
-            //              .Fuzziness(Fuzziness.EditDistance(2))
-            //              .Query(query)
-            //              //.Analyzer("standard")
-            //              .Boost(elasticSearchOptions.BoostValue)))
-            //              //.Slop(elasticSearchOptions.SlopCount)
-            //              .Filter(f => f
-            //              .Terms(t => t
-            //              .Field(f => f.RegionId)
-            //              .Terms(regionId)
-            //              )
-            //             )
-            //            )
-            //           )
-            //          );
-
-            //    return responseAddress.Documents;
-            //}
-            //return null;
         }
 
 
         public async Task<IEnumerable<StateRegisterSearchModel>> GetByDistrictId(ElasticClient client, string query, List<int?> regionId, List<int?> districtId, SearchField searchField)
         {
-            if (searchField == SearchField.All)
-            {
-                var responseAll = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                      .From(elasticSearchOptions.ResponseIndexFrom)
-                      .Size(elasticSearchOptions.ResponseCount)
-                      .Query(q => q
-                      .Bool(b => b
-                      .Must(m => m
-                      .MultiMatch(mm => mm
-                      .Fuzziness(Fuzziness.EditDistance(elasticSearchOptions.EditDistanceCount))
-                      .Query(query)
-                      //.Analyzer("standard")
-                      .Boost(elasticSearchOptions.BoostValue)))
-                      //.Slop(elasticSearchOptions.SlopCount)
-                      .Filter(f => f
-                      .Terms(t => t
-                      .Field(f => f.RegionId)
-                      .Terms(regionId)), f => f
-                        .Terms(t => t
-                        .Field(f => f.DistrictId)
-                        .Terms(districtId)
-                      )
-                     )
-                    )
-                   )
-                  );
-                return responseAll.Documents;
-            }
-            else if (searchField == SearchField.FullName)
-            {
-                var responseFullName = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                          .From(elasticSearchOptions.ResponseIndexFrom)
-                          .Size(elasticSearchOptions.ResponseCount)
-                          .Query(q => q
-                          .Bool(b => b
-                          .Must(m => m
-                          .MultiMatch(mm => mm
-                          .Fields(f => f.Fields(ff => ff.Applicant.FullName))
-                          .Fuzziness(Fuzziness.EditDistance(elasticSearchOptions.EditDistanceCount))
-                          .Query(query)
-                          //.Analyzer("standard")
-                          .Boost(elasticSearchOptions.BoostValue)))
-                          //.Slop(elasticSearchOptions.SlopCount)
-                          .Filter(f => f
-                          .Terms(t => t
-                          .Field(f => f.RegionId)
-                          .Terms(regionId)), f => f
-                            .Terms(t => t
-                            .Field(f => f.DistrictId)
-                            .Terms(districtId)
-                          )
-                         )
-                        )
-                       )
-                      );
-
-                return responseFullName.Documents;
-            }
-            if (searchField == SearchField.Address)
-            {
-                var responseAddress = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                          .From(elasticSearchOptions.ResponseIndexFrom)
-                          .Size(elasticSearchOptions.ResponseCount)
-                          .Query(q => q
-                          .Bool(b => b
-                          .Must(m => m
-                          .MultiMatch(mm => mm
-                          .Fields(f => f.Fields(bp => bp.Applicant.BirthPlace,
-                                                dip => dip.Applicant.DocumentIssuePlace,
-                                                rl => rl.Applicant.RecordLocation,
-                                                ad => ad.RealEstate.Address))
-                          .Fuzziness(Fuzziness.EditDistance(elasticSearchOptions.EditDistanceCount))
-                          .Query(query)
-                          //.Analyzer("standard")
-                          .Boost(elasticSearchOptions.BoostValue)))
-                          //.Slop(elasticSearchOptions.SlopCount)
-                          .Filter(f => f
-                          .Terms(t => t
-                          .Field(f => f.RegionId)
-                          .Terms(regionId)), f => f
-                            .Terms(t => t
-                            .Field(f => f.DistrictId)
-                            .Terms(districtId)
-                          )
-                         )
-                        )
-                       )
-                      );
-
-                return responseAddress.Documents;
-            }
-
-            return null;
+            var response = await client.SearchAsync<StateRegisterSearchModel>(s => s
+                         .From(0)
+                         .Size(10)
+                         .Query(q => q
+                         .Bool(b => b
+                         .Must(m => m
+                         .MultiMatch(mm => mm
+                         .WithField(searchField)
+                         .Fuzziness(Fuzziness.EditDistance(2))
+                         .Query(query)
+                         .Boost(1.1)))
+                         //.Slop(elasticSearchOptions.SlopCount)
+                         .Filter(f => f
+                         .Terms(t => t
+                         .Field(f => f.RegionId)
+                         .Terms(regionId)), f => f
+                           .Terms(t => t
+                           .Field(f => f.DistrictId)
+                           .Terms(districtId)))))
+                     );
+            return response.Documents;
         }
     }
 

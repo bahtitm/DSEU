@@ -133,8 +133,9 @@ namespace DSEU.UI
 
             app.UseEndpoints(endpoints =>
             {
-               endpoints.MapControllers().RequireAuthorization();
-               endpoints.MapRazorPages().RequireAuthorization();
+                endpoints.MapDefaultControllerRoute();
+               //endpoints.MapControllers().RequireAuthorization();
+               //endpoints.MapRazorPages().RequireAuthorization();
             });
 
             app.UseSpa(spa =>
