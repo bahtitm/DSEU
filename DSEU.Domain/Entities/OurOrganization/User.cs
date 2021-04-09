@@ -1,7 +1,6 @@
 ﻿using DSEU.Domain.Entities.CoreEntities;
 using DSEU.Domain.Entities.RealEstateRights.Cases;
 using System;
-using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.OurOrganization
 {
@@ -10,7 +9,7 @@ namespace DSEU.Domain.Entities.OurOrganization
     /// </summary>
     public class User : DatabookEntry
     {
-        public string LoginName { get; set; } = "";
+        public string LoginName { get; set; }
         /// <summary>
         /// UserId
         /// </summary>
@@ -57,11 +56,6 @@ namespace DSEU.Domain.Entities.OurOrganization
         /// </summary>
         public string Email { get; set; }
         /// <summary>
-        /// ID организационной единицы
-        /// </summary>
-        //public int? OrganizationalUnitId { get; set; }
-        //public virtual OrganizationalUnit OrganizationalUnit { get; set; }
-        /// <summary>
         /// ID Организации
         /// </summary>
         public int? JobTitleId { get; set; }
@@ -72,17 +66,7 @@ namespace DSEU.Domain.Entities.OurOrganization
 
         public int? DistrictId { get; set; }
         public virtual District District { get; set; }
-        //public virtual ICollection<UserLocality> Localities { get; set; }
+        public int? BranchId { get; set; }
+        public virtual Branch Branch { get; set; }
     }
-
-    /// <summary>
-    /// Зона влияния пользователя
-    /// </summary>
-    //public class UserLocality
-    //{
-    //    public virtual User User { get; set; }
-    //    public int UserId { get; set; }
-    //    public int LocalityId { get; set; }
-    //    public virtual Locality Locality { get; set; }
-    //}
 }

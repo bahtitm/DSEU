@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DSEU.UI.Controllers.Commons
 {
-    [Route("api/{controller}")]
+    [Route("api/[controller]")]
     [ApiController]
     [SwaggerTag("Api для района")]
     public class DistrictController : ControllerBase

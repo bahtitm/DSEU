@@ -25,8 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DSEU.Infrastructure.StateRegisterSearch\DSEU.Infrastructure.StateRegisterSearch.csproj" />
-    <ProjectReference Include="..\..\DSEU.StateRegisterSearch.Interfaces\DSEU.StateRegisterSearch.Interfaces.csproj" />
     <ProjectReference Include="..\DSEU.DataAccess.Interfaces\DSEU.DataAccess.Interfaces.csproj" />
     <ProjectReference Include="..\DSEU.Identity.Interfaces\DSEU.Identity.Interfaces.csproj" />
     <ProjectReference Include="..\DSEU.Infrastructure.DataProtection\DSEU.Infrastructure.DataProtection.csproj" />

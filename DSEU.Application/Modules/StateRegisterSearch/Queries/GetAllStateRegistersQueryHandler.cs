@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DSEU.StateRegisterSearch.Interfaces;
+﻿using DSEU.StateRegisterSearch.Interfaces;
 using DSEU.StateRegisterSearch.Interfaces.Dtos;
 using MediatR;
 using System.Collections.Generic;
@@ -11,12 +10,10 @@ namespace DSEU.Application.Modules.StateRegisterSearch.Queries
     public class GetAllStateRegistersQueryHandler : IRequestHandler<GetAllStateRegistersQuery, IEnumerable<StateRegisterSearchModel>>
     {
         private readonly IStateRegisterSearchService elasticSearchService;
-        private readonly IMapper mapper;
 
-        public GetAllStateRegistersQueryHandler(IStateRegisterSearchService elasticSearchService, IMapper mapper)
+        public GetAllStateRegistersQueryHandler(IStateRegisterSearchService elasticSearchService)
         {
             this.elasticSearchService = elasticSearchService;
-            this.mapper = mapper;
         }
 
         public async Task<IEnumerable<StateRegisterSearchModel>> Handle(GetAllStateRegistersQuery request, CancellationToken cancellationToken)

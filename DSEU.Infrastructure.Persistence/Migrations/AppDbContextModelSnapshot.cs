@@ -105,6 +105,73 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.ToTable("TerritorialUnit");
                 });
 
+            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.Agency", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agency");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.Branch", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("DepartamentId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartamentId");
+
+                    b.ToTable("Branch");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.Departament", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("AgencyId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgencyId");
+
+                    b.ToTable("Departament");
+                });
+
             modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.JobTitle", b =>
                 {
                     b.Property<int>("Id")
@@ -127,43 +194,15 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.ToTable("JobTitle");
                 });
 
-            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.OrganizationalUnit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int?>("Level")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("OrganizationalUnitNumber")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("TypeName")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrganizationalUnit");
-                });
-
             modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("BranchId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("DateOfAppointment")
                         .HasColumnType("timestamp without time zone");
@@ -218,6 +257,8 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
 
                     b.HasIndex("DistrictId");
 
@@ -617,8 +658,34 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                     b.HasDiscriminator().HasValue("Land");
                 });
 
+            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.Branch", b =>
+                {
+                    b.HasOne("DSEU.Domain.Entities.OurOrganization.Departament", "Departament")
+                        .WithMany("Branches")
+                        .HasForeignKey("DepartamentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Departament");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.Departament", b =>
+                {
+                    b.HasOne("DSEU.Domain.Entities.OurOrganization.Agency", "Agency")
+                        .WithMany("Departaments")
+                        .HasForeignKey("AgencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agency");
+                });
+
             modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.User", b =>
                 {
+                    b.HasOne("DSEU.Domain.Entities.OurOrganization.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId");
+
                     b.HasOne("DSEU.Domain.Entities.RealEstateRights.Cases.District", "District")
                         .WithMany()
                         .HasForeignKey("DistrictId");
@@ -627,6 +694,8 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                         .WithMany("Users")
                         .HasForeignKey("JobTitleId")
                         .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Branch");
 
                     b.Navigation("District");
 
@@ -735,6 +804,16 @@ namespace DSEU.Infrastructure.Persistence.Migrations
                         .HasForeignKey("CurrencyId");
 
                     b.Navigation("Currency");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.Agency", b =>
+                {
+                    b.Navigation("Departaments");
+                });
+
+            modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.Departament", b =>
+                {
+                    b.Navigation("Branches");
                 });
 
             modelBuilder.Entity("DSEU.Domain.Entities.OurOrganization.JobTitle", b =>

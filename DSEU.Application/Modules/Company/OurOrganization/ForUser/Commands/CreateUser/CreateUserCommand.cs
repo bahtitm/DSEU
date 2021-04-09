@@ -39,16 +39,15 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.Crea
         /// Дата увольнения
         /// </summary>
         public DateTime? DateOfDismissal { get; set; }
-        /// <summary>
-        /// ID организационной единицы
-        /// </summary>
-        //public int? OrganizationalUnitId { get; set; }
+        
         /// <summary>
         /// ID должности
         /// </summary>
         public int? JobTitleId { get; set; }
 
         public int? DistrictId { get; set; }
+
+        public int? BranchId { get; set; }
 
         public string RoleId { get; set; }
 

@@ -20,10 +20,6 @@ namespace DSEU.Infrastructure.Persistence.Configurations.OurOrganization
                 .WithMany(p => p.Users)
                 .HasForeignKey(p => p.JobTitleId)
                 .OnDelete(DeleteBehavior.SetNull);
-            //builder.HasOne(p => p.OrganizationalUnit)
-            //    .WithMany(p => p.Users)
-            //    .HasForeignKey(p => p.OrganizationalUnitId)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

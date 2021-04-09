@@ -27,7 +27,7 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.Crea
             await dbContext.InvokeTransactionAsync(async () =>
             {
                 var user = mapper.Map<User>(request);
-                var identityUserId = await identityService.CreateUserAsync(user.Name, user.Email, "123456", cancellationToken: cancellationToken);
+                var identityUserId = await identityService.CreateUserAsync(user.Name, user.Email, cancellationToken: cancellationToken);
                 user.UserId = identityUserId;
 
                 await dbContext.AddAsync(user);

@@ -18,10 +18,10 @@ namespace DSEU.UI.Controllers.StateRegisterSearch
             this.mediator = mediator;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ElasticSearch([FromBody] GetAllStateRegistersQuery query)
+        [HttpGet]
+        public async Task<IActionResult> ElasticSearch([FromQuery] GetAllStateRegistersQuery command)
         {
-            var result = await mediator.Send(query);
+            var result = await mediator.Send(command);
             return Ok(result);
         }
     }

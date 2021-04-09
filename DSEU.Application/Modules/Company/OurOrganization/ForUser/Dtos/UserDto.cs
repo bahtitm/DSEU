@@ -46,5 +46,11 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Dtos
         /// </summary>
         public int? JobTitleId { get; set; }
 
+        public int? DistrictId { get; set; }
+
+        public int? BranchId { get; set; }
+
+        public string RoleId { get; set; }
+
     }
 }

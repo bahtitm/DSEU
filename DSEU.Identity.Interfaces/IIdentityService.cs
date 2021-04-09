@@ -15,7 +15,7 @@ namespace DSEU.Application.Common.Interfaces
         /// <param name="password">Пароль работника</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<string> CreateUserAsync(string userName, string email, string password, bool needChangePassword = true, CancellationToken cancellationToken = default);
+        Task<string> CreateUserAsync(string userName, string email, bool needChangePassword = true, CancellationToken cancellationToken = default);
         /// <summary>
         /// Блокировка работник
         /// </summary>

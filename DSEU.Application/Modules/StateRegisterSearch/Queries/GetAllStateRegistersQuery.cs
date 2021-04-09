@@ -5,11 +5,5 @@ using System.Collections.Generic;
 
 namespace DSEU.Application.Modules.StateRegisterSearch.Queries
 {
-    public class GetAllStateRegistersQuery : IRequest<IEnumerable<StateRegisterSearchModel>>
-    {
-        public string Query { get; set; }
-        public List<int?> RegionId { get; set; }
-        public List<int?> DistrictId { get; set; }
-        public SearchField SearchField { get; set; }
-    }
+    public record GetAllStateRegistersQuery(string Query, List<int?> RegionId, List<int?> DistrictId, SearchField SearchField) : IRequest<IEnumerable<StateRegisterSearchModel>>;
 }
