@@ -26,7 +26,7 @@ namespace DSEU.UI.Data.DataMigrations.V_1.V1_0_0
             var firstRunAdminEmail = configuration["FirstRun:AdminEmail"];
             var firstRunPassword = configuration["FirstRun:AdminPassword"];
                  
-            var adminUserId = await identityService.CreateUserAsync(firstRunAdminLogin, firstRunAdminEmail, firstRunPassword, false);
+            var adminUserId = await identityService.CreateAdminAsync(firstRunAdminLogin, firstRunAdminEmail, firstRunPassword, false);
             await identityService.AddToRoleAsync(adminUserId, SystemRoles.Admin);
         }
     }

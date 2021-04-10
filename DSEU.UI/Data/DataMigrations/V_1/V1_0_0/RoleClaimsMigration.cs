@@ -1,4 +1,5 @@
 ﻿using DSEU.Application.Common.Constants;
+using DSEU.Application.Common.Enums;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Linq;
@@ -20,7 +21,9 @@ namespace DSEU.UI.Data.DataMigrations.V_1.V1_0_0
 
         public async Task Migrate()
         {
-            await AssignClaimToRole(SystemRoles.Registrar, UserClaimTypesConstants.All.ToArray());
+            await AssignClaimToRole(SystemRoles.Admin, UserClaimTypes.ManipulateWithDataBookEntries.ToString(),
+                                                       UserClaimTypes.UserRegistration.ToString(),
+                                                       UserClaimTypes.UserClaimRoleRegistration.ToString());
         }
 
         private async Task AssignClaimToRole(string roleName, params string[] claims)

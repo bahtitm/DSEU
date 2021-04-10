@@ -1,4 +1,4 @@
-﻿using DSEU.Application.Common.Constants;
+﻿using DSEU.Application.Common.Enums;
 using System.Security.Claims;
 
 namespace DSEU.Shared.Extensions
@@ -12,7 +12,7 @@ namespace DSEU.Shared.Extensions
         /// <returns></returns>
         public static int UserId(this ClaimsPrincipal principal)
         {
-            return int.Parse(principal.FindFirst(p => p.Type == UserClaimTypesConstants.EmployeeId)?.Value!);
+            return int.Parse(principal.FindFirst(p => p.Type == UserClaimTypes.EmployeeId.ToString())?.Value!);
         }
         public static string IdentityUserId(this ClaimsPrincipal principal)
         {

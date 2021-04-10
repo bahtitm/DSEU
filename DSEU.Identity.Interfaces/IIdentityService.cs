@@ -17,6 +17,16 @@ namespace DSEU.Application.Common.Interfaces
         /// <returns></returns>
         Task<string> CreateUserAsync(string userName, string email, bool needChangePassword = true, CancellationToken cancellationToken = default);
         /// <summary>
+        /// Автоматическое создание администратора
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="needChangePassword"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<string> CreateAdminAsync(string userName, string email, string password, bool needChangePassword = false, CancellationToken cancellationToken = default);
+        /// <summary>
         /// Блокировка работник
         /// </summary>
         /// <param name="userId">Id работника</param>

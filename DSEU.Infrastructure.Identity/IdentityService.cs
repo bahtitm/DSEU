@@ -21,6 +21,22 @@ namespace DSEU.Infrastructure.Identity
             this.roleManager = roleManager;
         }
 
+        public async Task<string> CreateAdminAsync(string userName, string email, string password, bool needChangePassword = false, CancellationToken cancellationToken = default)
+        {
+            var user = new ApplicationUser
+            {
+                UserName = userName,
+                Email = email,
+                EmailConfirmed = !string.IsNullOrEmpty(email),
+                NeedChangePassword = needChangePassword,
+                Created = SystemTime.Now()
+            };
+            var result = await userManager.CreateAsync(user, password);
+            ThrowExceptionIfNotSuccess(result);
+
+            return user.Id;
+        }
+
         public async Task<string> CreateUserAsync(string userName, string email, bool needChangePassword = true, CancellationToken cancellationToken = default)
         {
             string defaultPassword = "123456";

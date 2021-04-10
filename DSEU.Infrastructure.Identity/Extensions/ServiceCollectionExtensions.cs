@@ -1,4 +1,4 @@
-﻿using DSEU.Application.Common.Constants;
+﻿using DSEU.Application.Common.Enums;
 using IdentityModel;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Authentication;
@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DSEU.Infrastructure.Identity.Extensions
 {
@@ -31,7 +30,7 @@ namespace DSEU.Infrastructure.Identity.Extensions
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             ConfigureClients(options.Clients, configuration);
             ConfigureApiResources(options.ApiResources);
-            
+
         }
 
         private static void ConfigureClients(ClientCollection clients, IConfiguration configuration)
@@ -66,7 +65,7 @@ namespace DSEU.Infrastructure.Identity.Extensions
         {
             var apiResource = apiResources.First();
             var claims = new List<string>();
-            claims.AddRange(UserClaimTypesConstants.All);
+            claims.AddRange(Enum.GetNames<UserClaimTypes>().ToList());
             claims.Add(JwtClaimTypes.Role);
             apiResource.UserClaims = claims;
         }

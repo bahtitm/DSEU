@@ -2,6 +2,8 @@
 {
     public enum UserClaimTypes
     {
+        EmployeeId,
+
         //Claim-ы Для роли администратора
 
         /// <summary>
