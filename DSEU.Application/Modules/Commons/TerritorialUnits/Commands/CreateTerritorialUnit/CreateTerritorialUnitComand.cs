@@ -19,5 +19,6 @@ namespace DSEU.Application.Modules.Commons.TerritorialUnits.Commands.CreateTerri
         //public Status Status { get; set; }
         public int? ParentId { get; set; }
 
+        public int DistrictId { get; set; }
     }
 }

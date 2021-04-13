@@ -1,4 +1,5 @@
 ﻿using DSEU.Domain.Entities.CoreEntities;
+using DSEU.Domain.Entities.RealEstateRights.Cases;
 
 namespace DSEU.Domain.Entities.Commons
 {
@@ -19,5 +20,8 @@ namespace DSEU.Domain.Entities.Commons
         /// Вложенность населенного пункта
         /// </summary>
         public int? Level { get; set; }
+
+        public int DistrictId { get; set; }
+        public virtual District District { get; set; }
     }
 }

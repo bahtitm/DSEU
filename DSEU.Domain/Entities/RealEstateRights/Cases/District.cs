@@ -1,4 +1,5 @@
-﻿using DSEU.Domain.Entities.CoreEntities;
+﻿using DSEU.Domain.Entities.Commons;
+using DSEU.Domain.Entities.CoreEntities;
 using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.RealEstateRights.Cases
@@ -17,7 +18,9 @@ namespace DSEU.Domain.Entities.RealEstateRights.Cases
         /// <summary>
         /// теретории под этрапам (могут быть шахери шахерче генеши)
         /// </summary>
-        public virtual ICollection<Locality> Localities { get; set; }
+        //public virtual ICollection<Locality> Localities { get; set; }
+
+        public virtual ICollection<TerritorialUnit> TerritorialUnits { get; set; }
 
     }
 }
