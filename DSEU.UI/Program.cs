@@ -33,9 +33,10 @@ namespace DSEU.UI
                           .AddJsonFile($"serilogconfig.{context.HostingEnvironment.EnvironmentName}.json", optional: true)
                           .AddJsonFile("serilogconfig.json");
 
-                   if (context.HostingEnvironment.IsDevelopment())
+                   if (!context.HostingEnvironment.IsProduction())
                    {
                        builder.AddJsonFile($"identityconfig.{context.HostingEnvironment.EnvironmentName}.json", optional: true);
+                       builder.AddJsonFile($"elasticconfig.{context.HostingEnvironment.EnvironmentName}.json", optional: true);
                    }
                    else
                    {

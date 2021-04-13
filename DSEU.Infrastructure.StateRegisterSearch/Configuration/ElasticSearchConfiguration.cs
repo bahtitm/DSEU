@@ -1,27 +1,24 @@
 ﻿using DSEU.StateRegisterSearch.Interfaces.Dtos;
+using Microsoft.Extensions.Options;
 using Nest;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DSEU.Infrastructure.StateRegisterSearch.Configuration
 {
     public class ElasticSearchConfiguration
     {
-        private readonly IElasticSearchConnect elasticSearchService;
-
-        public ElasticSearchConfiguration(IElasticSearchConnect elasticSearchService)
+        private readonly ElasticClient client;
+        private readonly ElasticSearchOptions elasticSearchOptions;
+        public ElasticSearchConfiguration(IOptions<ElasticSearchOptions> options)
         {
-            this.elasticSearchService = elasticSearchService;
+            elasticSearchOptions = options.Value;
+            var settings = new ConnectionSettings(new Uri(elasticSearchOptions.UriAddress)).DefaultIndex(elasticSearchOptions.IndexName);
+            client = new ElasticClient(settings);
         }
-
         public async Task<ElasticClient> CreateElasticSearchIndex()
         {
-            var client = elasticSearchService.ConnectToElasticSearch();
-
-            await client.Indices.CreateAsync("state_register", c => c
+            await client.Indices.CreateAsync(elasticSearchOptions.IndexName, c => c
                 .Settings(s => s
                    .Analysis(a => a
                         .Analyzers(analyzer => analyzer

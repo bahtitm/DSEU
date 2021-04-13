@@ -12,7 +12,6 @@ namespace DSEU.Infrastructure.StateRegisterSearch
             services.AddScoped<ElasticSearchConfiguration>();
 
             services.AddScoped<IStateRegisterSearchService, StateRegisterSearchService>();
-            services.AddScoped<IElasticSearchConnect, ElasticSearchConnect>();
 
             return services;
         }

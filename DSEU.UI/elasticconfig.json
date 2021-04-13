@@ -1,10 +1,10 @@
 {
 	"ElasticOptions": {
 		"IndexName": "state_register",
-		"UriAddress": "http://localhost:9200",
+		"UriAddress": "http://elasticsearch:9200",
 		"RetryOnConflict": 2,
 		"ResponseIndexFrom": 0,
-		"ResponseCount": 2,
+		"ResponseCount": 10,
 		"SlopCount": 2,
 		"BoostValue": 1.1,
 		"EditDistanceCount": 2

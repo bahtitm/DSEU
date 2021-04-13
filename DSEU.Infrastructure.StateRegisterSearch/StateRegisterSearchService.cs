@@ -13,10 +13,11 @@ namespace DSEU.Infrastructure.StateRegisterSearch
     {
         private readonly ElasticClient client;
         private readonly ElasticSearchOptions elasticSearchOptions;
-        public StateRegisterSearchService(IElasticSearchConnect elasticSearchConnect, IOptions<ElasticSearchOptions> options)
+        public StateRegisterSearchService(IOptions<ElasticSearchOptions> options)
         {
-            client = elasticSearchConnect.ConnectToElasticSearch();
             elasticSearchOptions = options.Value;
+            var settings = new ConnectionSettings(new Uri(elasticSearchOptions.UriAddress)).DefaultIndex(elasticSearchOptions.IndexName);
+            client = new ElasticClient(settings);
         }
 
         public async Task AddSearchIndex(StateRegisterSearchModel stateRegister)
@@ -78,26 +79,26 @@ namespace DSEU.Infrastructure.StateRegisterSearch
 
         public async Task<IEnumerable<StateRegisterSearchModel>> GetAll(ElasticClient client, string query, SearchField searchField)
         {
-                var response = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                         .From(0)
-                         .Size(10)
-                         .Query(q => q
-                         .MultiMatch(mm => mm
-                         .WithField(searchField)
-                         .Query(query)
-                         .Boost(1.1)
-                         .Slop(2)
-                         .Fuzziness(Fuzziness.Auto)))
-                     );
-                return response.Documents;
+            var response = await client.SearchAsync<StateRegisterSearchModel>(s => s
+                     .From(elasticSearchOptions.ResponseIndexFrom)
+                     .Size(elasticSearchOptions.ResponseCount)
+                     .Query(q => q
+                     .MultiMatch(mm => mm
+                     .WithField(searchField)
+                     .Query(query)
+                     .Boost(elasticSearchOptions.BoostValue)
+                     .Slop(elasticSearchOptions.SlopCount)
+                     .Fuzziness(Fuzziness.Auto)))
+                 );
+            return response.Documents;
         }
 
 
         public async Task<IEnumerable<StateRegisterSearchModel>> GetByRegionId(ElasticClient client, string query, List<int?> regionId, SearchField searchField)
         {
             var responseAll = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                      .From(0)
-                      .Size(10)
+                      .From(elasticSearchOptions.ResponseIndexFrom)
+                      .Size(elasticSearchOptions.ResponseCount)
                       .Query(q => q
                       .Bool(b => b
                       .Must(m => m
@@ -119,16 +120,16 @@ namespace DSEU.Infrastructure.StateRegisterSearch
         public async Task<IEnumerable<StateRegisterSearchModel>> GetByDistrictId(ElasticClient client, string query, List<int?> regionId, List<int?> districtId, SearchField searchField)
         {
             var response = await client.SearchAsync<StateRegisterSearchModel>(s => s
-                         .From(0)
-                         .Size(10)
+                         .From(elasticSearchOptions.ResponseIndexFrom)
+                         .Size(elasticSearchOptions.ResponseCount)
                          .Query(q => q
                          .Bool(b => b
                          .Must(m => m
                          .MultiMatch(mm => mm
                          .WithField(searchField)
-                         .Fuzziness(Fuzziness.EditDistance(2))
+                         .Fuzziness(Fuzziness.EditDistance(elasticSearchOptions.EditDistanceCount))
                          .Query(query)
-                         .Boost(1.1)))
+                         .Boost(elasticSearchOptions.BoostValue)))
                          //.Slop(elasticSearchOptions.SlopCount)
                          .Filter(f => f
                          .Terms(t => t

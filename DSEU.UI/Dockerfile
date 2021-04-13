@@ -11,15 +11,19 @@ ENV TZ=Asia/Ashgabat
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["DSEU.UI/DSEU.UI.csproj", "DSEU.UI/"]
-COPY ["DSEU.Devexpress/DSEU.Devexpress.csproj", "DSEU.Devexpress/"]
-COPY ["DSEU.Infrastructure/DSEU.Infrastructure.csproj", "DSEU.Infrastructure/"]
-COPY ["DSEU.Application/DSEU.Application.csproj", "DSEU.Application/"]
+COPY ["DSEU.Shared/DSEU.Shared.csproj", "DSEU.Shared/"]
 COPY ["DSEU.Domain/DSEU.Domain.csproj", "DSEU.Domain/"]
-COPY ["DSEU.Security/DSEU.Security.csproj", "DSEU.Security/"]
+COPY ["DSEU.Application/DSEU.Application.csproj", "DSEU.Application/"]
+COPY ["DSEU.DataAccess.Interfaces/DSEU.DataAccess.Interfaces.csproj", "DSEU.DataAccess.Interfaces/"]
+COPY ["DSEU.Identity.Interfaces/DSEU.Identity.Interfaces.csproj", "DSEU.Identity.Interfaces/"]
+COPY ["DSEU.Infrastrucuture.Interfaces/DSEU.Infrastrucuture.Interfaces.csproj", "DSEU.Infrastrucuture.Interfaces/"]
+COPY ["DSEU.Reporting.Interfaces/DSEU.Reporting.Interfaces.csproj", "DSEU.Reporting.Interfaces/"]
+COPY ["DSEU.StateRegisterSearch.Interfaces/DSEU.StateRegisterSearch.Interfaces.csproj", "DSEU.StateRegisterSearch.Interfaces/"]
+COPY ["DSEU.Infrastructure/DSEU.Infrastructure.csproj", "DSEU.Infrastructure/"]
 COPY ["DSEU.Infrastructure.DataProtection/DSEU.Infrastructure.DataProtection.csproj", "DSEU.Infrastructure.DataProtection/"]
 COPY ["DSEU.Infrastructure.Identity/DSEU.Infrastructure.Identity.csproj", "DSEU.Infrastructure.Identity/"]
 COPY ["DSEU.Infrastructure.Persistence/DSEU.Infrastructure.Persistence.csproj", "DSEU.Infrastructure.Persistence/"]
-COPY ["DSEU.Infrastructure.Permissions/DSEU.Infrastructure.Permissions.csproj", "DSEU.Infrastructure.Permissions/"]
+COPY ["DSEU.Infrastructure.Report/DSEU.Infrastructure.Report.csproj", "DSEU.Infrastructure.Report/"]
 COPY ["DSEU.Infrastructure.StateRegisterSearch/DSEU.Infrastructure.StateRegisterSearch.csproj", "DSEU.Infrastructure.StateRegisterSearch/"]
 RUN dotnet restore --disable-parallel "DSEU.UI/DSEU.UI.csproj"
 COPY . .
@@ -32,4 +36,3 @@ RUN dotnet publish "DSEU.UI.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "DSEU.UI.dll"]
