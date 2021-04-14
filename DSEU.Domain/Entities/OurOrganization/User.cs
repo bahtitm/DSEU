@@ -58,15 +58,15 @@ namespace DSEU.Domain.Entities.OurOrganization
         /// <summary>
         /// ID Организации
         /// </summary>
-        public int? JobTitleId { get; set; }
+        public int JobTitleId { get; set; }
         /// <summary>
         /// Должность
         /// </summary>
         public virtual JobTitle JobTitle { get; set; }
 
-        public int? DistrictId { get; set; }
+        public int DistrictId { get; set; }
         public virtual District District { get; set; }
-        public int? BranchId { get; set; }
+        public int BranchId { get; set; }
         public virtual Branch Branch { get; set; }
     }
 }

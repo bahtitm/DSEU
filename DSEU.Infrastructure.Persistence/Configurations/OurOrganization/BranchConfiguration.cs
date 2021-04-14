@@ -10,7 +10,7 @@ namespace DSEU.Infrastructure.Persistence.Configurations.OurOrganization
         {
             builder.Property(p => p.Name).IsRequired();
 
-            builder.HasOne(p => p.Departament)
+            builder.HasOne(p => p.Department)
                 .WithMany(p => p.Branches)
                 .HasForeignKey(p => p.DepartamentId)
                 .OnDelete(DeleteBehavior.Cascade);

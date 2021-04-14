@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <Compile Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <Compile Remove="Modules\Company\OurOrganization\Role\Dtos\**" />
     <Compile Remove="Modules\Company\OurOrganization\Role\Querys\**" />
     <EmbeddedResource Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <EmbeddedResource Remove="Modules\Company\OurOrganization\Role\Dtos\**" />
     <EmbeddedResource Remove="Modules\Company\OurOrganization\Role\Querys\**" />
     <None Remove="Modules\Company\OurOrganization\ForUser\Commands\ChangePassword\**" />
+    <None Remove="Modules\Company\OurOrganization\Role\Dtos\**" />
     <None Remove="Modules\Company\OurOrganization\Role\Querys\**" />
   </ItemGroup>
 
@@ -32,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Company\OurOrganization\Role\Dtos\" />
     <Folder Include="Modules\CoreEntities\" />
     <Folder Include="Modules\RealEstateRights\" />
     <Folder Include="Modules\RealEstates\" />

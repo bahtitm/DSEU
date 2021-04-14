@@ -10,10 +10,10 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Departaments.MappingP
     {
         public DepartamentMappingProfile()
         {
-            CreateMap<CreateDepartamentCommand, Departament>();
-            CreateMap<UpdateDepartamentCommand, Departament>();
+            CreateMap<CreateDepartamentCommand, Department>();
+            CreateMap<UpdateDepartamentCommand, Department>();
 
-            CreateMap<Departament, DepartamentDto>();
+            CreateMap<Department, DepartamentDto>();
         }
     }
 }

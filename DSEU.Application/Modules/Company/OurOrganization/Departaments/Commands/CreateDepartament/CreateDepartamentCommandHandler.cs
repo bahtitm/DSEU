@@ -19,7 +19,7 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Departaments.Commands
 
         protected override async Task Handle(CreateDepartamentCommand request, CancellationToken cancellationToken)
         {
-            var departament = mapper.Map<Departament>(request);
+            var departament = mapper.Map<Department>(request);
             await dbContext.AddAsync(departament, cancellationToken);
             await dbContext.SaveChangesAsync(cancellationToken);
         }

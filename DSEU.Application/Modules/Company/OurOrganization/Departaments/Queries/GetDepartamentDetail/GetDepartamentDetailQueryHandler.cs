@@ -21,7 +21,7 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Departaments.Queries.
 
         public async Task<DepartamentDto> Handle(GetDepartamentDetailQuery request, CancellationToken cancellationToken)
         {
-            var departament = await dbContext.Set<Departament>().FirstOrDefaultAsync(p => p.Id == request.id);
+            var departament = await dbContext.Set<Department>().FirstOrDefaultAsync(p => p.Id == request.id);
             return mapper.Map<DepartamentDto>(departament);
         }
     }

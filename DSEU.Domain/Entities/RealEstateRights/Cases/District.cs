@@ -15,13 +15,15 @@ namespace DSEU.Domain.Entities.RealEstateRights.Cases
         /// </summary>
         public int DistrictCode { get; set; }
         public int RegionId { get; set; }
+        /// <summary>
+        /// Велаят
+        /// </summary>
         public virtual Region Region { get; set; }
         /// <summary>
-        /// теретории под этрапам (могут быть шахери шахерче генеши)
+        /// определенная територия 
         /// </summary>
-        //public virtual ICollection<Locality> Localities { get; set; }
-
         public virtual ICollection<TerritorialUnit> TerritorialUnits { get; set; }
+
         public virtual ICollection<Branch> Branches { get; set; }
 
     }

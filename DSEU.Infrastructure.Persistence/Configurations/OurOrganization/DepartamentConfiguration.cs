@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DSEU.Infrastructure.Persistence.Configurations.OurOrganization
 {
-    public class DepartamentConfiguration : IEntityTypeConfiguration<Departament>
+    public class DepartamentConfiguration : IEntityTypeConfiguration<Department>
     {
-        public void Configure(EntityTypeBuilder<Departament> builder)
+        public void Configure(EntityTypeBuilder<Department> builder)
         {
             builder.Property(p => p.Name).IsRequired();
 

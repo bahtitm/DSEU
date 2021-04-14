@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DSEU.Domain.Entities.OurOrganization
 {
-    public class Departament : DatabookEntry
+    public class Department : DatabookEntry
     {
         public int AgencyId { get; set; }
         public virtual Agency Agency { get; set; }

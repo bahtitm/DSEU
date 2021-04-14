@@ -22,7 +22,7 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Departaments.Queries.
 
         public async Task<IEnumerable<DepartamentDto>> Handle(GetAllDepartamentsQuery request, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(dbContext.Set<Departament>().ProjectTo<DepartamentDto>(mapper.ConfigurationProvider));
+            return await Task.FromResult(dbContext.Set<Department>().ProjectTo<DepartamentDto>(mapper.ConfigurationProvider));
         }
     }
 }

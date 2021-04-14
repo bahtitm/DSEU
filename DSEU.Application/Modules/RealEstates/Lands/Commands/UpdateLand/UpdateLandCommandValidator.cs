@@ -1,7 +1,12 @@
-﻿namespace DSEU.Application.Modules.RealEstates.Lands.Commands.UpdateLand
+﻿using FluentValidation;
+
+namespace DSEU.Application.Modules.RealEstates.Lands.Commands.UpdateLand
 {
-    public class UpdateLandCommandValidator
+    public class UpdateLandCommandValidator : AbstractValidator<UpdateLandCommand>
     {
-        
+        public UpdateLandCommandValidator()
+        {
+            CascadeMode = CascadeMode.Stop;
+        }
     }
 }

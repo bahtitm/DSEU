@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using DSEU.Domain.Entities;
+using MediatR;
 
 namespace DSEU.Application.Modules.Commons.TerritorialUnits.Commands.UpdateTerritorialUnit
 {
@@ -16,8 +17,9 @@ namespace DSEU.Application.Modules.Commons.TerritorialUnits.Commands.UpdateTerri
         /// <summary>
         /// Состояние
         /// </summary>
-        //public Status Status { get; set; }
+        public Status Status { get; set; }
         public int? ParentId { get; set; }
+        public int? Level { get; set; }
 
         public int DistrictId { get; set; }
     }

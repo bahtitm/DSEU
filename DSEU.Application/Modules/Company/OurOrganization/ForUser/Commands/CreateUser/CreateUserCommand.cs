@@ -43,11 +43,11 @@ namespace DSEU.Application.Modules.Company.OurOrganization.ForUser.Commands.Crea
         /// <summary>
         /// ID должности
         /// </summary>
-        public int? JobTitleId { get; set; }
+        public int JobTitleId { get; set; }
 
-        public int? DistrictId { get; set; }
+        public int DistrictId { get; set; }
 
-        public int? BranchId { get; set; }
+        public int BranchId { get; set; }
 
         public string RoleId { get; set; }
 

@@ -17,8 +17,8 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Departaments.Commands
 
         protected override async Task Handle(DeleteDepartamentCommand request, CancellationToken cancellationToken)
         {
-            var departament = await dbContext.FindByIdAsync<Departament>(request.id);
-            dbContext.Set<Departament>().Remove(departament);
+            var departament = await dbContext.FindByIdAsync<Department>(request.id);
+            dbContext.Set<Department>().Remove(departament);
             await dbContext.SaveChangesAsync(cancellationToken);
         }
     }

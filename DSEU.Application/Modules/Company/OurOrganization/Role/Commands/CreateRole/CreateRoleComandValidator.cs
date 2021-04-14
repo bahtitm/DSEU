@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace DSEU.Application.Modules.Company.OurOrganization.Role.Commands.UpdateRole
+namespace DSEU.Application.Modules.Company.OurOrganization.Role.Commands.CreateRole
 {
-    public class UpdateRoleCommandValidator : AbstractValidator<UpdateRoleCommand>
+    public class CreateRoleComandValidator : AbstractValidator<CreateRoleCommand>
     {
-        public UpdateRoleCommandValidator()
+        public CreateRoleComandValidator()
         {
             CascadeMode = CascadeMode.Stop;
 
