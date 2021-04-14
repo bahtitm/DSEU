@@ -14,5 +14,6 @@ namespace DSEU.Application.Modules.Company.OurOrganization.Branches.Commands.Cre
         /// </summary>
         public Status Status { get; set; }
         public int DepartamentId { get; set; }
+        public int DistrictId { get; set; }
     }
 }
