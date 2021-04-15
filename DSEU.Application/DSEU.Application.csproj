@@ -39,6 +39,7 @@
     <Folder Include="Modules\RealEstateRights\" />
     <Folder Include="Modules\RealEstates\" />
     <Folder Include="Modules\ServicesOffered\" />
+    <Folder Include="Modules\SubjectsOfRights\Applicants\Dtos\" />
   </ItemGroup>
 
 </Project>
